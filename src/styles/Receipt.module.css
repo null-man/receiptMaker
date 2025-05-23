@@ -1,0 +1,340 @@
+/* styles/Receipt.module.css */
+/* 基本样式可以从之前的 style.css 迁移过来，注意调整选择器以适应模块化 */
+
+.container { /* 用于 header 和 footer */
+    width: 90%;
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 15px;
+}
+.mainContainer { /* 用于 main 内容区域 */
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+
+.header {
+    background: #343a40;
+    color: #ffffff;
+    padding: 15px 0;
+    border-bottom: #007bff 3px solid;
+    margin-bottom: 20px;
+}
+.header nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: right;
+}
+.header nav li {
+    display: inline;
+    padding: 0 10px;
+}
+.header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+.header nav a:hover {
+    background-color: #495057;
+}
+.logo {
+    float: left;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.receiptForm {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.formSection {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+}
+.formSection:last-of-type {
+    border-bottom: none;
+}
+.receiptForm > .formGroup:has(#receiptNotes) { /* 针对备注部分的特殊处理 */
+    border-bottom: none;
+    margin-bottom: 25px;
+}
+
+.formSection h2 {
+    text-align: left;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="number"],
+.formGroup input[type="date"],
+.formGroup input[type="time"],
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.formGroup input:focus, .formGroup select:focus, .formGroup textarea:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.formGroup textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+.formGroup input[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.itemRow {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.itemRow input { /* 默认样式，可以被 .itemName, .itemQty, .itemPrice 覆盖 */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.itemName {
+    flex-grow: 3;
+}
+
+.itemQty {
+    flex-grow: 1;
+    max-width: 80px;
+}
+.itemPrice {
+    flex-grow: 1;
+    max-width: 100px;
+}
+
+.removeItemBtn, .addItemBtn {
+    padding: 8px 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+.removeItemBtn:hover, .addItemBtn:hover {
+    opacity: 0.85;
+}
+
+.removeItemBtn {
+    background-color: #dc3545;
+}
+
+.addItemBtn {
+    background-color: #28a745;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.makeReceiptBtn, .printReceiptBtn {
+    display: block;
+    width: auto;
+    min-width: 180px;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 30px auto 0;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.makeReceiptBtn:hover, .printReceiptBtn:hover {
+    background-color: #0056b3;
+}
+
+.receiptOutputContainer {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 20px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.receiptOutputContainer h2 {
+    font-size: 1.6rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.receiptPreview {
+    border: 1px dashed #adb5bd;
+    padding: 25px;
+    min-height: 250px;
+    margin-bottom: 25px;
+    background-color: #f8f9fa;
+    font-family: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace;
+    white-space: pre-wrap; /* 保持换行和空格 */
+    line-height: 1.5;
+    font-size: 0.9rem;
+    color: #212529;
+    border-radius: 5px;
+}
+
+.receiptPreview h3 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+.receiptPreview p {
+    margin: 6px 0;
+}
+.receiptPreview hr {
+    border: none;
+    border-top: 1px dashed #6c757d;
+    margin: 12px 0;
+}
+.itemLine { /* 用于收据预览中的项目行 */
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr;
+    gap: 10px;
+    padding: 3px 0;
+}
+.itemLine.header strong {
+    font-weight: bold;
+}
+.itemLine span:nth-child(2) { /* 数量 */
+    text-align: right;
+}
+.itemLine span:last-child { /* 金额 */
+    text-align: right;
+    font-weight: 500;
+}
+
+.totalsSection {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+}
+.totalsSection p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+.totalsSection p span:first-child {
+    text-align: right;
+    flex-grow: 1;
+    padding-right: 20px;
+    color: #495057;
+}
+.totalsSection p span:last-child {
+    font-weight: bold;
+    min-width: 90px; 
+    text-align: right;
+}
+.totalHighlight span { /* 总计高亮 */
+    font-size: 1.1em;
+    color: #000 !important; /* 确保覆盖其他 p span 样式 */
+}
+.totalHighlight strong span {
+    font-weight: bold;
+}
+
+
+.footer {
+    text-align: center;
+    padding: 25px 0;
+    background: #343a40;
+    color: #adb5bd;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+.footer p {
+    margin:0;
+}
+
+/* 打印样式 */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff !important;
+    }
+    .header, .footer, .makeReceiptBtn, .printReceiptBtn, .noPrint {
+        display: none !important;
+    }
+    .mainContainer, .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .receiptForm {
+        box-shadow: none !important;
+        padding: 0 !important;
+        border: none !important;
+        display: none !important; /* 打印时隐藏表单 */
+    }
+    .receiptOutputContainer {
+        margin-top: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+    .receiptPreview {
+        border: none !important;
+        padding: 0 !important;
+        font-size: 10pt !important;
+        color: #000 !important;
+        min-height: auto !important;
+        background-color: #fff !important;
+    }
+    .receiptPreview h3 { font-size: 14pt !important; }
+    .itemLine {
+       page-break-inside: avoid !important;
+    }
+    .receiptOutputContainer h2 { /* 隐藏 "生成的收据预览" 标题 */
+        display: none !important;
+    }
+} 

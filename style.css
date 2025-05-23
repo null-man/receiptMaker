@@ -1,0 +1,361 @@
+/* style.css */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* 淡雅的背景色 */
+    color: #212529; /* 主要文字颜色 */
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px; /* 限制最大宽度以适应大屏幕 */
+    margin: auto;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+header {
+    background: #343a40; /* 深色导航栏背景 */
+    color: #ffffff;
+    padding: 15px 0;
+    border-bottom: #007bff 3px solid; /* 品牌色边框 */
+    margin-bottom: 20px;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+header a:hover {
+    background-color: #495057;
+}
+
+header ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: right;
+}
+
+header li {
+    display: inline;
+    padding: 0 10px;
+}
+
+header .logo {
+    float: left;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+main {
+    padding: 20px 0;
+}
+
+h1, h2 {
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 25px;
+}
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+main > .container > p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6c757d; /* 副标题文字颜色 */
+    margin-bottom: 30px;
+}
+
+#receiptForm {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 更柔和的阴影 */
+}
+
+.form-section {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef; /* 分隔线颜色 */
+}
+.form-section:last-of-type { /* 指的是金额计算部分*/
+    border-bottom: none;
+}
+/* 备注部分也移除底部边框和边距 */
+#receiptForm > .form-group:has(#receiptNotes) {
+    border-bottom: none;
+    margin-bottom: 25px;
+}
+
+
+.form-section h2 {
+    text-align: left;
+    color: #007bff; /* 品牌色标题 */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600; /* 稍粗的标签字体 */
+    color: #495057;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da; /* 输入框边框颜色 */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+.form-group input[readonly] {
+    background-color: #e9ecef; /* 只读输入框背景色 */
+    opacity: 1;
+}
+
+
+.item-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.item-row input {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.item-name {
+    flex-grow: 3; /* 名称输入框占比更大 */
+}
+
+.item-qty {
+    flex-grow: 1;
+    max-width: 80px; 
+}
+.item-price {
+    flex-grow: 1;
+    max-width: 100px;
+}
+
+.remove-item-btn, #addItemBtn {
+    padding: 8px 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+.remove-item-btn:hover, #addItemBtn:hover {
+    opacity: 0.85;
+}
+
+.remove-item-btn {
+    background-color: #dc3545; /* 移除按钮红色 */
+}
+
+#addItemBtn {
+    background-color: #28a745; /* 添加按钮绿色 */
+    margin-top: 10px;
+    display: inline-block; /* 避免占据整行 */
+}
+
+#makeReceiptBtn, #printReceiptBtn {
+    display: block;
+    width: auto;
+    min-width: 180px;
+    padding: 12px 25px;
+    background-color: #007bff; /* 品牌主色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 30px auto 0;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+#makeReceiptBtn:hover, #printReceiptBtn:hover {
+    background-color: #0056b3; /* 悬停颜色加深 */
+}
+
+
+#receiptOutputContainer {
+    margin-top: 40px;
+    background: #ffffff;
+    padding: 20px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+#receiptOutputContainer h2 {
+    font-size: 1.6rem;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+#receiptPreview {
+    border: 1px dashed #adb5bd; /* 预览边框颜色 */
+    padding: 25px;
+    min-height: 250px;
+    margin-bottom: 25px;
+    background-color: #f8f9fa; /* 预览背景色 */
+    font-family: 'Menlo', 'Monaco', 'Consolas', "Courier New", monospace; /* 等宽字体 */
+    white-space: pre-wrap;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    color: #212529;
+    border-radius: 5px;
+}
+
+#receiptPreview h3 { /* 预览中的商家名称 */
+    text-align: center;
+    margin-top: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+#receiptPreview p {
+    margin: 6px 0;
+}
+#receiptPreview hr {
+    border: none;
+    border-top: 1px dashed #6c757d;
+    margin: 12px 0;
+}
+#receiptPreview .item-line {
+    display: grid; /* 使用Grid布局更灵活 */
+    grid-template-columns: 3fr 1fr 1.5fr; /* 项目名、数量、金额比例 */
+    gap: 10px;
+    padding: 3px 0;
+}
+#receiptPreview .item-line span:nth-child(2) { /* 数量 */
+    text-align: right;
+}
+#receiptPreview .item-line span:last-child { /* 金额 */
+    text-align: right;
+    font-weight: 500;
+}
+#receiptPreview .item-line.header strong {
+    font-weight: bold;
+}
+
+#receiptPreview .totals-section {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #333; /* 实线分隔 */
+}
+#receiptPreview .totals-section p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+#receiptPreview .totals-section p span:first-child { /* "小计:", "总计:" 等 */
+    text-align: right;
+    flex-grow: 1;
+    padding-right: 20px;
+    color: #495057;
+}
+#receiptPreview .totals-section p span:last-child { /* 金额 */
+    font-weight: bold;
+    min-width: 90px; 
+    text-align: right;
+}
+#receiptPreview .totals-section p.total-highlight span { /* 总计高亮 */
+    font-size: 1.1em;
+    color: #000;
+}
+
+
+footer {
+    text-align: center;
+    padding: 25px 0;
+    background: #343a40; /* 与header一致 */
+    color: #adb5bd; /* 页脚文字颜色 */
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+footer p {
+    margin:0;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff; /* 打印时背景为白色 */
+    }
+    header, footer, #makeReceiptBtn, #printReceiptBtn, .no-print {
+        display: none !important; /* 隐藏非打印元素 */
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    #receiptForm {
+        box-shadow: none;
+        padding: 0;
+        border: none;
+    }
+    #receiptOutputContainer {
+        margin-top: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+    #receiptPreview {
+        border: none;
+        padding: 0;
+        font-size: 10pt; /* 调整打印字体大小 */
+        color: #000;
+        min-height: auto;
+    }
+    #receiptPreview h3 { font-size: 14pt; }
+    /* 确保预览内容在打印时正确显示 */
+    .item-line {
+       page-break-inside: avoid;
+    }
+} 
