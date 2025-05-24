@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 import { Printer, Download, Image, Loader2 } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -32,6 +32,7 @@ interface ReceiptPreviewProps {
   taxAmount: string;
   totalAmount: string;
   onPrint: () => void;
+  type?: string;
 }
 
 function formatCurrency(amount: string, symbol: string): string {
@@ -44,6 +45,7 @@ export default function ReceiptPreview({
   taxAmount,
   totalAmount,
   onPrint,
+  type = 'default',
 }: ReceiptPreviewProps) {
   const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
   const [isSavingImage, setIsSavingImage] = useState(false);
@@ -173,85 +175,182 @@ export default function ReceiptPreview({
     }
   };
 
+  // 根据收据类型设置样式
+  const getReceiptStyles = () => {
+    switch (type) {
+      case 'thermal':
+        return {
+          card: "receipt-preview mx-auto max-w-xs bg-white shadow-lg",
+          content: "p-3 font-mono text-xs leading-tight",
+          title: "text-sm font-bold mb-1 tracking-wider uppercase",
+          address: "text-xs leading-tight",
+          spacing: "my-1"
+        };
+      case 'pos':
+        return {
+          card: "receipt-preview mx-auto max-w-sm bg-white shadow-lg",
+          content: "p-4 font-mono text-xs",
+          title: "text-base font-bold mb-2 tracking-wide uppercase",
+          address: "text-xs",
+          spacing: "my-2"
+        };
+      case 'restaurant':
+        return {
+          card: "receipt-preview mx-auto max-w-md bg-white shadow-lg border-2",
+          content: "p-6 font-serif text-sm",
+          title: "text-xl font-bold mb-3 tracking-wide",
+          address: "text-sm italic",
+          spacing: "my-3"
+        };
+      case 'coffee':
+        return {
+          card: "receipt-preview mx-auto max-w-xs bg-amber-50 shadow-lg",
+          content: "p-4 font-mono text-xs",
+          title: "text-sm font-bold mb-2 tracking-wide",
+          address: "text-xs",
+          spacing: "my-2"
+        };
+      case 'gas':
+        return {
+          card: "receipt-preview mx-auto max-w-xs bg-gray-50 shadow-lg",
+          content: "p-3 font-mono text-xs",
+          title: "text-sm font-bold mb-1 tracking-wider uppercase",
+          address: "text-xs",
+          spacing: "my-1"
+        };
+      case 'grocery':
+        return {
+          card: "receipt-preview mx-auto max-w-sm bg-green-50 shadow-lg",
+          content: "p-4 font-mono text-xs",
+          title: "text-base font-bold mb-2 tracking-wide uppercase",
+          address: "text-xs",
+          spacing: "my-2"
+        };
+      case 'pharmacy':
+        return {
+          card: "receipt-preview mx-auto max-w-sm bg-blue-50 shadow-lg",
+          content: "p-4 font-mono text-xs",
+          title: "text-base font-bold mb-2 tracking-wide uppercase",
+          address: "text-xs",
+          spacing: "my-2"
+        };
+      default:
+        return {
+          card: "receipt-preview mx-auto max-w-md bg-white shadow-lg",
+          content: "p-8 font-mono text-sm",
+          title: "text-xl font-bold mb-2 tracking-wider",
+          address: "text-sm",
+          spacing: "my-4"
+        };
+    }
+  };
+
+  const styles = getReceiptStyles();
+
   return (
     <div id="receiptOutputContainer" className="space-y-6">
       {/* 收据预览 */}
-      <Card className="receipt-preview mx-auto max-w-md bg-white shadow-lg">
-        <CardContent className="p-8 font-mono text-sm">
+      <Card className={styles.card}>
+        <CardContent className={styles.content}>
           {/* 餐厅信息 */}
-          <div className="text-center mb-6">
-            <h3 className="text-xl font-bold mb-2 tracking-wider">
+          <div className={`text-center ${styles.spacing}`}>
+            <h3 className={styles.title}>
               {restaurantName || "您的餐厅名称"}
             </h3>
             {restaurantAddress && (
-              <p className="text-muted-foreground mb-1">{restaurantAddress}</p>
+              <div className={`${styles.address} text-muted-foreground mb-1`}>
+                {restaurantAddress.split('\n').map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
+              </div>
             )}
             {restaurantPhone && (
-              <p className="text-muted-foreground">{restaurantPhone}</p>
+              <p className={`${styles.address} text-muted-foreground`}>{restaurantPhone}</p>
             )}
           </div>
 
-          <Separator className="my-4" />
+          <Separator className={styles.spacing} />
 
           {/* 日期时间 */}
-          <div className="flex justify-between text-xs mb-4">
-            <span>日期: {receiptDate}</span>
-            <span>时间: {receiptTime}</span>
+          <div className={`flex justify-between ${type === 'thermal' || type === 'gas' ? 'text-xs' : 'text-xs'} ${styles.spacing}`}>
+            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptDate.replace(/-/g, '/') : `日期: ${receiptDate}`}</span>
+            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptTime : `时间: ${receiptTime}`}</span>
           </div>
 
-          <Separator className="my-4" />
+          <Separator className={styles.spacing} />
 
           {/* 项目标题 */}
-          <div className="grid grid-cols-3 gap-2 font-semibold mb-2 text-xs">
-            <span>项目</span>
-            <span className="text-right">数量</span>
-            <span className="text-right">金额</span>
-          </div>
-
-          <Separator className="my-2" />
+          {type !== 'thermal' && type !== 'gas' && (
+            <>
+              <div className={`grid grid-cols-3 gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
+                <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : '项目'}</span>
+                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'QTY' : '数量'}</span>
+                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'AMOUNT' : '金额'}</span>
+              </div>
+              <Separator className="my-1" />
+            </>
+          )}
 
           {/* 项目列表 */}
-          <div className="space-y-1 mb-4">
+          <div className={`space-y-1 ${styles.spacing}`}>
             {items.map((item, index) => {
               const itemTotal = (parseFloat(item.qty.toString()) || 0) * (parseFloat(item.price.toString()) || 0);
+              const qty = parseFloat(item.qty.toString()) || 0;
+              
+              if (type === 'thermal' || type === 'gas') {
+                return (
+                  <div key={item.id || index} className="text-xs">
+                    <div className="flex justify-between">
+                      <span className="truncate flex-1 pr-2 uppercase">{item.name || "ITEM"}</span>
+                      <span>{formatCurrency(itemTotal.toString(), currency)}</span>
+                    </div>
+                    {qty !== 1 && (
+                      <div className="text-right text-xs opacity-75">
+                        {qty} @ {formatCurrency(item.price.toString(), currency)}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
               return (
-                <div key={item.id || index} className="grid grid-cols-3 gap-2 text-xs">
+                <div key={item.id || index} className={`grid grid-cols-3 gap-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
                   <span className="truncate">{item.name || "未命名项目"}</span>
-                  <span className="text-right">{parseFloat(item.qty.toString()) || 0}</span>
-                  <span className="text-right">{itemTotal.toFixed(2)}</span>
+                  <span className="text-right">{qty}</span>
+                  <span className="text-right">{formatCurrency(itemTotal.toString(), currency)}</span>
                 </div>
               );
             })}
           </div>
 
-          <Separator className="my-4" />
+          <Separator className={styles.spacing} />
 
           {/* 总计部分 */}
-          <div className="space-y-2 text-xs">
+          <div className={`space-y-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
             <div className="flex justify-between">
-              <span>小计:</span>
+              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'SUBTOTAL:' : '小计:'}</span>
               <span className="font-semibold">{formatCurrency(subtotal, currency)}</span>
             </div>
             
             {parseFloat(taxAmount) > 0 && (
               <div className="flex justify-between">
-                <span>税额 ({taxRate}%):</span>
+                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? `TAX:` : `税额 (${taxRate}%):`}</span>
                 <span className="font-semibold">{formatCurrency(taxAmount, currency)}</span>
               </div>
             )}
             
             {parseFloat(data.tipAmount.toString()) > 0 && (
               <div className="flex justify-between">
-                <span>小费:</span>
+                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TIP:' : '小费:'}</span>
                 <span className="font-semibold">{formatCurrency(data.tipAmount.toString(), currency)}</span>
               </div>
             )}
 
-            <Separator className="my-3" />
+            <Separator className="my-2" />
 
-            <div className="flex justify-between text-base font-bold">
-              <span>总计:</span>
-              <span className="text-primary">{formatCurrency(totalAmount, currency)}</span>
+            <div className={`flex justify-between font-bold ${type === 'restaurant' ? 'text-lg' : type === 'thermal' || type === 'gas' ? 'text-sm' : 'text-base'}`}>
+              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TOTAL:' : '总计:'}</span>
+              <span className={type === 'restaurant' ? 'text-primary' : ''}>{formatCurrency(totalAmount, currency)}</span>
             </div>
           </div>
 
