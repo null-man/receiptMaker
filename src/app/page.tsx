@@ -166,6 +166,7 @@ export default function HomePage() {
   });
   
   const [nextItemId, setNextItemId] = useState(2);
+  const [showTemplateSelector, setShowTemplateSelector] = useState(false);
 
   useEffect(() => {
     // 初始化日期和时间
@@ -280,6 +281,8 @@ export default function HomePage() {
     setReceiptData(template.data);
     // 重置ID计数器
     setNextItemId(template.data.items.length + 1);
+    // 隐藏模板选择器
+    setShowTemplateSelector(false);
     // 滚动到表单顶部
     setTimeout(() => {
       const formElement = document.querySelector('.form-container');
@@ -287,6 +290,39 @@ export default function HomePage() {
         formElement.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }, 100);
+  };
+
+  // 清空表单
+  const clearForm = () => {
+    setReceiptData({
+      restaurantName: "",
+      restaurantAddress: "",
+      restaurantPhone: "",
+      receiptDate: "",
+      receiptTime: "",
+      currency: "RMB",
+      items: [initialItem],
+      taxRate: 0,
+      tipAmount: 0,
+      notes: "",
+    });
+    setNextItemId(2);
+    setShowTemplateSelector(false);
+    // 重新初始化日期时间
+    const now = new Date();
+    const YYYY = now.getFullYear();
+    const MM = String(now.getMonth() + 1).padStart(2, "0");
+    const DD = String(now.getDate()).padStart(2, "0");
+    const hh = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    
+    setTimeout(() => {
+      setReceiptData(prev => ({
+        ...prev,
+        receiptDate: `${YYYY}-${MM}-${DD}`,
+        receiptTime: `${hh}:${mm}`,
+      }));
+    }, 0);
   };
 
   return (
@@ -325,10 +361,24 @@ export default function HomePage() {
             <div className="space-y-6">
               <Card className="form-container">
                 <CardHeader>
-                  <CardTitle className="text-2xl">创建收据</CardTitle>
-                  <CardDescription>
-                    填写下方信息生成专业的收据文档
-                  </CardDescription>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle className="text-2xl">创建收据</CardTitle>
+                      <CardDescription>
+                        填写下方信息生成专业的收据文档
+                      </CardDescription>
+                    </div>
+                    {receiptData.restaurantName && !showTemplateSelector && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setShowTemplateSelector(true)}
+                        className="flex items-center gap-2"
+                      >
+                        重选模板
+                      </Button>
+                    )}
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <ReceiptForm
@@ -373,7 +423,7 @@ export default function HomePage() {
           </div>
 
           {/* 模板选择区域 */}
-          {!receiptData.restaurantName && (
+          {(!receiptData.restaurantName || showTemplateSelector) && (
             <Card className="max-w-7xl mx-auto mt-12">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">选择票据模板</CardTitle>
@@ -399,7 +449,7 @@ export default function HomePage() {
                 </div>
                 
                 {/* 模板操作按钮 */}
-                <div className="flex justify-center gap-4">
+                <div className="flex justify-center gap-4 flex-wrap">
                   <Button 
                     onClick={() => useTemplate(selectedTemplate)}
                     size="lg"
@@ -411,6 +461,7 @@ export default function HomePage() {
                     variant="outline"
                     size="lg"
                     onClick={() => {
+                      clearForm();
                       const formElement = document.querySelector('.form-container');
                       if (formElement) {
                         formElement.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -419,6 +470,15 @@ export default function HomePage() {
                   >
                     从空白开始
                   </Button>
+                  {receiptData.restaurantName && (
+                    <Button 
+                      variant="ghost"
+                      size="lg"
+                      onClick={() => setShowTemplateSelector(false)}
+                    >
+                      取消选择
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
