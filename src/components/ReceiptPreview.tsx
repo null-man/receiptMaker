@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { Printer, Download, Image, Loader2 } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ReceiptItem {
   id: number;
@@ -47,6 +47,7 @@ export default function ReceiptPreview({
 }: ReceiptPreviewProps) {
   const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
   const [isSavingImage, setIsSavingImage] = useState(false);
+  const [receiptNumber, setReceiptNumber] = useState<string>("");
 
   const {
     restaurantName,
@@ -59,6 +60,11 @@ export default function ReceiptPreview({
     taxRate,
     notes,
   } = data;
+
+  // 避免水合错误，在客户端生成收据编号
+  useEffect(() => {
+    setReceiptNumber(Date.now().toString().slice(-8));
+  }, []);
 
   // 下载PDF功能
   const handleDownloadPDF = async () => {
@@ -272,7 +278,7 @@ export default function ReceiptPreview({
 
           {/* 收据底部信息 */}
           <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
-            <p>收据编号: #{Date.now().toString().slice(-8)}</p>
+            <p>收据编号: #{receiptNumber || "--------"}</p>
             <p className="mt-1">ReceiptMaker 生成</p>
           </div>
         </CardContent>

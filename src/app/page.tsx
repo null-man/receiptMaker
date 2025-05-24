@@ -27,7 +27,7 @@ interface ReceiptData {
 }
 
 export default function HomePage() {
-  const initialItem: ReceiptItem = { id: Date.now(), name: "", qty: 1, price: "" };
+  const initialItem: ReceiptItem = { id: 1, name: "", qty: 1, price: "" };
   
   // 模板数据
   const templates = {
@@ -164,6 +164,8 @@ export default function HomePage() {
     tipAmount: 0,
     notes: "",
   });
+  
+  const [nextItemId, setNextItemId] = useState(2);
 
   useEffect(() => {
     // 初始化日期和时间
@@ -210,9 +212,10 @@ export default function HomePage() {
       ...prevData,
       items: [
         ...prevData.items,
-        { id: Date.now(), name: "", qty: 1, price: "" },
+        { id: nextItemId, name: "", qty: 1, price: "" },
       ],
     }));
+    setNextItemId(nextItemId + 1);
   };
 
   const removeItem = (index: number) => {
@@ -275,6 +278,8 @@ export default function HomePage() {
   const useTemplate = (templateKey: keyof typeof templates) => {
     const template = templates[templateKey];
     setReceiptData(template.data);
+    // 重置ID计数器
+    setNextItemId(template.data.items.length + 1);
     // 滚动到表单顶部
     setTimeout(() => {
       const formElement = document.querySelector('.form-container');
