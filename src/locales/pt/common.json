@@ -92,5 +92,110 @@
     "ko": "한국어",
     "hi": "हिन्दी",
     "fr": "Français"
+  },
+  "about": {
+    "title": "Sobre o Gerador de Recibos",
+    "subtitle": "Ferramenta profissional online de geração de recibos que facilita a criação de recibos para vários cenários",
+    "whatIs": {
+      "title": "O que é o Gerador de Recibos?",
+      "paragraph1": "O Gerador de Recibos é uma ferramenta online poderosa de geração de recibos projetada para usuários individuais e empresariais. Seja você precisa criar contas de restaurante, recibos de varejo, tickets de posto de gasolina ou outros tipos de recibos, fornecemos soluções profissionais, bonitas e padronizadas da indústria.",
+      "paragraph2": "Nossa plataforma suporta vários formatos de recibo, incluindo recibos de impressora térmica, recibos POS, contas de restaurante, etc., ajudando você a gerar rapidamente recibos que atendem às necessidades de vários cenários comerciais."
+    },
+    "features": {
+      "title": "Recursos Principais",
+      "templates": {
+        "title": "Modelos Diversos",
+        "description": "Modelos de recibo profissionais para restaurantes, varejo, postos de gasolina, cafeterias, farmácias e outras indústrias"
+      },
+      "preview": {
+        "title": "Visualização em Tempo Real",
+        "description": "Edite e visualize simultaneamente, o que você vê é o que você obtém, garantindo que a aparência do recibo atenda às suas expectativas"
+      },
+      "print": {
+        "title": "Impressão com Um Clique",
+        "description": "Suporte para impressão direta ou salvamento como PDF, compatível com várias impressoras e tamanhos de papel"
+      },
+      "multilang": {
+        "title": "Suporte Multi-idioma",
+        "description": "Suporte para português, inglês e outros idiomas para atender às necessidades de uso internacional"
+      },
+      "multicurrency": {
+        "title": "Suporte Multi-moeda",
+        "description": "Suporte para USD, BRL, EUR e outros formatos de moeda"
+      },
+      "responsive": {
+        "title": "Design Responsivo",
+        "description": "Compatibilidade perfeita com telefones celulares, tablets, computadores e outros dispositivos"
+      }
+    },
+    "useCases": {
+      "title": "Casos de Uso",
+      "retail": {
+        "title": "Lojas de Varejo",
+        "description": "Forneça recibos de compra profissionais para clientes"
+      },
+      "foodService": {
+        "title": "Serviço de Alimentação",
+        "description": "Gere contas de restaurante e recibos de entrega"
+      },
+      "serviceIndustry": {
+        "title": "Indústria de Serviços",
+        "description": "Emita recibos para vários itens de serviço"
+      },
+      "education": {
+        "title": "Educação e Treinamento",
+        "description": "Para testar e aprender formatos de recibo"
+      },
+      "filmProduction": {
+        "title": "Produção Cinematográfica",
+        "description": "Crie recibos cenográficos para filmes e programas de TV"
+      },
+      "financial": {
+        "title": "Gestão Financeira",
+        "description": "Crie comprovantes de recibo para contabilidade"
+      }
+    },
+    "whyChoose": {
+      "title": "Por que nos Escolher?",
+      "free": {
+        "title": "Completamente Gratuito",
+        "description": "Não é necessário registro, não é necessário pagamento, todos os recursos são completamente gratuitos para usar"
+      },
+      "easyToUse": {
+        "title": "Fácil de Usar",
+        "description": "Design de interface intuitivo, comece em apenas alguns minutos"
+      },
+      "professional": {
+        "title": "Qualidade Profissional",
+        "description": "Baseado em designs de formato de recibo real, garantindo aparência profissional"
+      },
+      "secure": {
+        "title": "Seguro e Confiável",
+        "description": "Todos os dados são processados localmente e não são enviados para servidores"
+      }
+    },
+    "contact": {
+      "title": "Entre em Contato",
+      "description": "Se você tiver alguma dúvida, sugestão ou precisar de suporte técnico, entre em contato conosco pelas seguintes formas:",
+      "email": "Email"
+    },
+    "footer": {
+      "home": "Início",
+      "about": "Sobre",
+      "termsAndUse": "Termos e Uso",
+      "copyright": "© 2025 Gerador de Recibos. Todos os direitos reservados."
+    }
+  },
+  "terms": {
+    "title": "Termos e Condições",
+    "subtitle": "Por favor, leia estes termos e condições cuidadosamente antes de usar o Gerador de Recibos",
+    "importantNotice": {
+      "title": "⚠️ Aviso Importante",
+      "content": "O Gerador de Recibos é APENAS para fins de entretenimento, pesquisa e educacionais. NÃO se destina ao uso para fins fraudulentos."
+    },
+    "siteContents": {
+      "title": "Conteúdo do Site, Propriedade e Restrições de Uso",
+      "paragraph1": "As informações contidas neste Site, incluindo todas as imagens, ilustrações, designs, escritos e outros materiais que aparecem aqui são direitos autorais, marcas registradas, trade dress ou outra propriedade intelectual de propriedade, controlada ou licenciada (todos"
+    }
   }
 } 

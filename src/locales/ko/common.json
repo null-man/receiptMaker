@@ -92,5 +92,98 @@
     "ko": "한국어",
     "hi": "हिन्दी",
     "fr": "Français"
+  },
+  "about": {
+    "title": "영수증 생성기 소개",
+    "subtitle": "다양한 시나리오에 대한 영수증 생성을 쉽게 만드는 전문 온라인 영수증 생성 도구",
+    "whatIs": {
+      "title": "영수증 생성기란 무엇인가요?",
+      "paragraph1": "영수증 생성기는 개인 및 비즈니스 사용자를 위해 설계된 강력한 온라인 영수증 생성 도구입니다. 레스토랑 계산서, 소매 영수증, 주유소 티켓 또는 기타 유형의 영수증을 만들어야 하는 경우, 전문적이고 아름다우며 업계 표준을 준수하는 솔루션을 제공합니다.",
+      "paragraph2": "우리 플랫폼은 감열 프린터 영수증, POS 영수증, 레스토랑 계산서 등 다양한 영수증 형식을 지원하여 다양한 비즈니스 시나리오의 요구사항을 충족하는 영수증을 빠르게 생성할 수 있도록 도와줍니다."
+    },
+    "features": {
+      "title": "주요 기능",
+      "templates": {
+        "title": "다양한 템플릿",
+        "description": "레스토랑, 소매점, 주유소, 카페, 약국 및 기타 업계를 위한 전문 영수증 템플릿"
+      },
+      "preview": {
+        "title": "실시간 미리보기",
+        "description": "편집과 미리보기를 동시에 진행하여 보이는 것이 얻는 것이며, 영수증 모양이 기대에 부합하도록 보장"
+      },
+      "print": {
+        "title": "원클릭 인쇄",
+        "description": "직접 인쇄 또는 PDF로 저장 지원, 다양한 프린터 및 용지 크기와 호환"
+      },
+      "multilang": {
+        "title": "다국어 지원",
+        "description": "한국어, 영어 및 기타 언어 지원으로 국제적 사용 요구사항 충족"
+      },
+      "multicurrency": {
+        "title": "다중 통화 지원",
+        "description": "USD, KRW, EUR 및 기타 통화 형식 지원"
+      },
+      "responsive": {
+        "title": "반응형 디자인",
+        "description": "휴대폰, 태블릿, 컴퓨터 및 기타 장치와 완벽한 호환성"
+      }
+    },
+    "useCases": {
+      "title": "사용 사례",
+      "retail": {
+        "title": "소매점",
+        "description": "고객에게 전문적인 쇼핑 영수증 제공"
+      },
+      "foodService": {
+        "title": "음식 서비스",
+        "description": "레스토랑 계산서 및 배달 영수증 생성"
+      },
+      "serviceIndustry": {
+        "title": "서비스 업계",
+        "description": "다양한 서비스 항목에 대한 영수증 발행"
+      },
+      "education": {
+        "title": "교육 및 훈련",
+        "description": "영수증 형식 테스트 및 학습용"
+      },
+      "filmProduction": {
+        "title": "영화 제작",
+        "description": "영화 및 TV 프로그램용 소품 영수증 제작"
+      },
+      "financial": {
+        "title": "재무 관리",
+        "description": "부기용 영수증 바우처 작성"
+      }
+    },
+    "whyChoose": {
+      "title": "왜 우리를 선택해야 할까요?",
+      "free": {
+        "title": "완전 무료",
+        "description": "가입 불필요, 결제 불필요, 모든 기능을 완전 무료로 사용"
+      },
+      "easyToUse": {
+        "title": "사용하기 쉬움",
+        "description": "직관적인 인터페이스 디자인으로 몇 분 안에 시작 가능"
+      },
+      "professional": {
+        "title": "전문적 품질",
+        "description": "실제 영수증 형식 디자인 기반으로 전문적인 외관 보장"
+      },
+      "secure": {
+        "title": "안전하고 신뢰할 수 있음",
+        "description": "모든 데이터는 로컬에서 처리되며 서버에 업로드되지 않음"
+      }
+    },
+    "contact": {
+      "title": "문의하기",
+      "description": "질문이나 제안사항이 있거나 기술 지원이 필요하시면 다음 방법으로 연락해 주세요:",
+      "email": "이메일"
+    },
+    "footer": {
+      "home": "홈",
+      "about": "소개",
+      "termsAndUse": "이용약관",
+      "copyright": "© 2025 영수증 생성기. 모든 권리 보유."
+    }
   }
 } 

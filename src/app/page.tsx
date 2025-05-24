@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
+import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -644,14 +645,146 @@ export default function HomePage() {
               </CardContent>
             </Card>
           )}
+
+          {/* FAQ Section */}
+          <Card id="faq" className="max-w-7xl mx-auto mt-12">
+            <CardHeader>
+              <CardTitle className="text-3xl text-center">Frequently Asked Questions (FAQ)</CardTitle>
+              <CardDescription className="text-center">
+                Common questions and answers about using MakeReceipt
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Left Column */}
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        ❓ Is MakeReceipt free to use?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Yes, MakeReceipt is completely free. You don't need to register an account or pay any fees to use all our features for creating and printing receipts.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        🔒 Is my data secure?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Absolutely secure. All receipt generation and editing is done locally in your browser. We don't upload any of your input data to our servers, which means your information is completely under your control.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        🖨️ How do I print the generated receipt?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Click the "Print Receipt" button in the preview area, and the system will automatically call your browser's print function. You can choose to print to a physical printer or save as a PDF file.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        🌍 What languages and currencies are supported?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Currently supports Chinese and English interfaces, with currency support for US Dollar ($), Chinese Yuan (¥), Euro (€), and other major currency symbols. We plan to add more language support in the future.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right Column */}
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        📱 Does it support mobile devices?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Yes, MakeReceipt uses responsive design and works perfectly on mobile phones, tablets, and computers. You can easily create receipts on any device.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        🧾 What receipt templates are available?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        We offer various professional templates: restaurant bills, retail receipts, POS terminal receipts, coffee shop receipts, gas station receipts, pharmacy receipts, and more to meet different scenario needs.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        ⚖️ Do the generated receipts have legal validity?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Our tool is primarily for educational, testing, and demonstration purposes. If you need to use it for commercial transactions, please ensure compliance with local laws and tax requirements.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 text-blue-600">
+                        🛠️ How can I get help if I encounter problems?
+                      </h3>
+                      <p className="text-muted-foreground">
+                        If you encounter any technical issues or have suggestions, please contact us at support@makereceipt.com and we'll respond as soon as possible.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Tips */}
+                <div className="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                  <h4 className="font-semibold text-blue-800 mb-2">💡 Usage Tips</h4>
+                  <ul className="text-blue-700 space-y-1 text-sm">
+                    <li>• Use templates to get started quickly, then modify as needed</li>
+                    <li>• Check all information in the preview before printing</li>
+                    <li>• We recommend using Chrome or Firefox browsers for the best experience</li>
+                    <li>• Receipt data will be cleared after page refresh, so save needed content promptly</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
       {/* Footer */}
       <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container py-8">
+        <div className="container py-12">
+          {/* Navigation Links */}
+          <div className="flex flex-wrap justify-center gap-6 mb-8">
+            <Link href="/">
+              <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                Home
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                About
+              </Button>
+            </Link>
+            {/* <Link href="#faq">
+              <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                FAQ
+              </Button>
+            </Link>
+            <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+              Blog
+            </Button> */}
+            <Link href="/terms-and-use">
+              <Button variant="ghost" className="text-sm text-muted-foreground hover:text-foreground">
+                Terms and Use
+              </Button>
+            </Link>
+          </div>
+          
+          {/* Copyright */}
           <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ReceiptMaker
+            © 2025 MakeReceipt. All rights reserved.
           </div>
         </div>
       </footer>

@@ -92,5 +92,98 @@
     "ko": "한국어",
     "hi": "हिन्दी",
     "fr": "Français"
+  },
+  "about": {
+    "title": "À Propos du Générateur de Reçus",
+    "subtitle": "Outil professionnel en ligne de génération de reçus qui facilite la création de reçus pour divers scénarios",
+    "whatIs": {
+      "title": "Qu'est-ce que le Générateur de Reçus ?",
+      "paragraph1": "Le Générateur de Reçus est un outil puissant en ligne de génération de reçus conçu pour les utilisateurs individuels et professionnels. Que vous ayez besoin de créer des factures de restaurant, des reçus de vente au détail, des tickets de station-service ou d'autres types de reçus, nous fournissons des solutions professionnelles, belles et conformes aux normes de l'industrie.",
+      "paragraph2": "Notre plateforme prend en charge divers formats de reçus, y compris les reçus d'imprimante thermique, les reçus TPV, les factures de restaurant, etc., vous aidant à générer rapidement des reçus qui répondent aux besoins de divers scénarios commerciaux."
+    },
+    "features": {
+      "title": "Fonctionnalités Clés",
+      "templates": {
+        "title": "Modèles Divers",
+        "description": "Modèles de reçus professionnels pour restaurants, vente au détail, stations-service, cafés, pharmacies et autres industries"
+      },
+      "preview": {
+        "title": "Aperçu en Temps Réel",
+        "description": "Modifiez et prévisualisez simultanément, ce que vous voyez est ce que vous obtenez, garantissant que l'apparence du reçu répond à vos attentes"
+      },
+      "print": {
+        "title": "Impression en Un Clic",
+        "description": "Support pour l'impression directe ou l'enregistrement en PDF, compatible avec diverses imprimantes et tailles de papier"
+      },
+      "multilang": {
+        "title": "Support Multi-langues",
+        "description": "Support pour le français, l'anglais et d'autres langues pour répondre aux besoins d'utilisation internationale"
+      },
+      "multicurrency": {
+        "title": "Support Multi-devises",
+        "description": "Support pour USD, EUR, CHF et d'autres formats de devises"
+      },
+      "responsive": {
+        "title": "Design Responsive",
+        "description": "Compatibilité parfaite avec les téléphones mobiles, tablettes, ordinateurs et autres appareils"
+      }
+    },
+    "useCases": {
+      "title": "Cas d'Usage",
+      "retail": {
+        "title": "Magasins de Détail",
+        "description": "Fournir des reçus d'achat professionnels aux clients"
+      },
+      "foodService": {
+        "title": "Service de Restauration",
+        "description": "Générer des factures de restaurant et des reçus de livraison"
+      },
+      "serviceIndustry": {
+        "title": "Industrie des Services",
+        "description": "Émettre des reçus pour divers articles de service"
+      },
+      "education": {
+        "title": "Éducation et Formation",
+        "description": "Pour tester et apprendre les formats de reçus"
+      },
+      "filmProduction": {
+        "title": "Production Cinématographique",
+        "description": "Créer des reçus de décor pour films et émissions TV"
+      },
+      "financial": {
+        "title": "Gestion Financière",
+        "description": "Créer des justificatifs de reçu pour la comptabilité"
+      }
+    },
+    "whyChoose": {
+      "title": "Pourquoi nous Choisir ?",
+      "free": {
+        "title": "Complètement Gratuit",
+        "description": "Aucune inscription requise, aucun paiement nécessaire, toutes les fonctionnalités sont complètement gratuites à utiliser"
+      },
+      "easyToUse": {
+        "title": "Facile à Utiliser",
+        "description": "Design d'interface intuitif, commencez en quelques minutes seulement"
+      },
+      "professional": {
+        "title": "Qualité Professionnelle",
+        "description": "Basé sur des designs de format de reçu réels, garantissant une apparence professionnelle"
+      },
+      "secure": {
+        "title": "Sûr et Fiable",
+        "description": "Toutes les données sont traitées localement et ne sont pas téléchargées sur les serveurs"
+      }
+    },
+    "contact": {
+      "title": "Nous Contacter",
+      "description": "Si vous avez des questions, des suggestions ou avez besoin d'un support technique, veuillez nous contacter par les moyens suivants :",
+      "email": "Email"
+    },
+    "footer": {
+      "home": "Accueil",
+      "about": "À Propos",
+      "termsAndUse": "Conditions d'Utilisation",
+      "copyright": "© 2025 Générateur de Reçus. Tous droits réservés."
+    }
   }
 } 

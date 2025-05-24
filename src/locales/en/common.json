@@ -92,5 +92,185 @@
     "ko": "한국어",
     "hi": "हिन्दी",
     "fr": "Français"
+  },
+  "about": {
+    "title": "About Receipt Generator",
+    "subtitle": "Professional online receipt generation tool that makes it easy to create receipts for various scenarios",
+    "whatIs": {
+      "title": "What is Receipt Generator?",
+      "paragraph1": "Receipt Generator is a powerful online receipt generation tool designed for individuals and business users. Whether you need to create restaurant bills, retail receipts, gas station tickets, or other types of receipts, we provide professional, beautiful, and industry-standard solutions.",
+      "paragraph2": "Our platform supports various receipt formats, including thermal printer receipts, POS receipts, restaurant bills, etc., helping you quickly generate receipts that meet the needs of various business scenarios."
+    },
+    "features": {
+      "title": "Key Features",
+      "templates": {
+        "title": "Diverse Templates",
+        "description": "Professional receipt templates for restaurants, retail, gas stations, coffee shops, pharmacies, and other industries"
+      },
+      "preview": {
+        "title": "Real-time Preview",
+        "description": "Edit and preview simultaneously, what you see is what you get, ensuring the receipt appearance meets your expectations"
+      },
+      "print": {
+        "title": "One-click Print",
+        "description": "Support direct printing or saving as PDF, compatible with various printers and paper sizes"
+      },
+      "multilang": {
+        "title": "Multi-language Support",
+        "description": "Support Chinese, English, and other languages to meet international usage needs"
+      },
+      "multicurrency": {
+        "title": "Multi-currency Support",
+        "description": "Support USD, CNY, EUR, and other currency formats"
+      },
+      "responsive": {
+        "title": "Responsive Design",
+        "description": "Perfect compatibility with mobile phones, tablets, computers, and other devices"
+      }
+    },
+    "useCases": {
+      "title": "Use Cases",
+      "retail": {
+        "title": "Retail Stores",
+        "description": "Provide professional shopping receipts for customers"
+      },
+      "foodService": {
+        "title": "Food Service",
+        "description": "Generate restaurant bills and takeout receipts"
+      },
+      "serviceIndustry": {
+        "title": "Service Industry",
+        "description": "Issue receipts for various service items"
+      },
+      "education": {
+        "title": "Education & Training",
+        "description": "For testing and learning receipt formats"
+      },
+      "filmProduction": {
+        "title": "Film Production",
+        "description": "Create prop receipts for movies and TV shows"
+      },
+      "financial": {
+        "title": "Financial Management",
+        "description": "Create receipt vouchers for bookkeeping"
+      }
+    },
+    "whyChoose": {
+      "title": "Why Choose Us?",
+      "free": {
+        "title": "Completely Free",
+        "description": "No registration required, no payment needed, all features are completely free to use"
+      },
+      "easyToUse": {
+        "title": "Easy to Use",
+        "description": "Intuitive interface design, get started in just a few minutes"
+      },
+      "professional": {
+        "title": "Professional Quality",
+        "description": "Based on real receipt format designs, ensuring professional appearance"
+      },
+      "secure": {
+        "title": "Safe and Reliable",
+        "description": "All data is processed locally and not uploaded to servers"
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have any questions, suggestions, or need technical support, please contact us through the following ways:",
+      "email": "Email"
+    },
+    "footer": {
+      "home": "Home",
+      "about": "About",
+      "termsAndUse": "Terms and Use",
+      "copyright": "© 2025 MakeReceipt. All rights reserved."
+    }
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "subtitle": "Please read these terms and conditions carefully before using Receipt Generator",
+    "importantNotice": {
+      "title": "⚠️ Important Notice",
+      "content": "Receipt Generator is for entertainment, research and educational purposes ONLY. It is NOT intended for use for fraudulent purposes."
+    },
+    "siteContents": {
+      "title": "Site Contents, Ownership, and Use Restrictions",
+      "paragraph1": "The information contained in this Site including all images, illustrations, designs, writings and other materials that appear herein are copyrights, trademarks, trade dress or other intellectual property owned, controlled, or licensed (all of which, collectively, are herein referred to as the \"Contents\") by Receipt Generator or are the property of their respective owners.",
+      "paragraph2": "You may use the Site as part of your personal or business correspondence. You may not use the Site to send illegal, harmful, threatening, abusive, harassing, defamatory, hateful or other offensive material. You may not use the Site to send or create unsolicited advertisements, spam, or junk digital services. Automated submission of digital services (including but not limited to information submitted using any bot, script, or macro) is not permitted.",
+      "paragraph3": "Any other use of the Contents on this Site including reproduction for purposes other than as noted above, and including any reproduction, modification, distribution, or republication may violate copyright or trademark laws, and, without the prior written permission of Receipt Generator, is strictly prohibited."
+    },
+    "disclaimerWarranty": {
+      "title": "Disclaimer of Warranty",
+      "paragraph1": "RECEIPT GENERATOR PROVIDES THIS SITE AND ITS CONTENTS ON AN \"AS IS\" BASIS AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES OR CONDITIONS OF TITLE OR IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.",
+      "paragraph2": "ALTHOUGH RECEIPT GENERATOR BELIEVES THE CONTENT TO BE ACCURATE, COMPLETE, AND CURRENT, RECEIPT GENERATOR DOES NOT REPRESENT OR WARRANT THAT THE INFORMATION ACCESSIBLE ON THIS SITE IS ACCURATE, COMPLETE, OR CURRENT.",
+      "paragraph3": "Receipt Generator does not guarantee that digital services, whether paid or free, will be delivered; nor does it guarantee that digital services will be delivered within a particular time period. We cannot guarantee that a digital service or digital asset will be delivered to the person for whom it is intended.",
+      "paragraph4": "You understand that digital service or digital asset information may be transmitted without encryption over the Internet and other telecommunications networks; and stored on our servers, and is not guaranteed to be private. You understand that Receipt Generator has no control over material sent via the digital service or digital asset site.",
+      "paragraph5": "You agree to hold Receipt Generator harmless from any damages caused by usage of this site, damage to your computer or anything else you can think of. Use this Site at your own risk."
+    },
+    "disclaimerLiability": {
+      "title": "Disclaimer of Liability",
+      "paragraph1": "IN NO EVENT SHALL RECEIPT GENERATOR BE LIABLE FOR SPECIAL, INDIRECT, EXEMPLARY, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING BUT NOT LIMITED TO, LOSS OF USE, DATA, FRAUD, OR PROFITS, WITHOUT REGARD TO THE FORM OF ANY ACTION, INCLUDING BUT NOT LIMITED TO CONTRACT, NEGLIGENCE, OR OTHER TORTIOUS ACTIONS, ALL ARISING OUT OF OR IN CONNECTION WITH THE USE, COPYING, OR DISPLAY OF THE CONTENTS OF THIS SITE OR FILES DOWNLOADED FROM IT.",
+      "paragraph2": "In an effort to provide our customers with the most current information, Receipt Generator will, from time to time, make changes in the Contents and in the products or services described on this Site."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "intro": "Receipt Generator takes online privacy very seriously. We actively protect the privacy of users of our web sites and people who subscribe to our mailing lists.",
+      "subscriptionLists": {
+        "title": "Subscription Lists & Email Addresses",
+        "content": "To receive certain services such as mailing lists, you must provide us with your name and email address -- without it, we can't send you anything. We hold the names and email addresses of subscribers in the strictest confidence, and will not disclose specific subscriber information unless complying with legal process, preventing fraud or imminent harm, or ensuring the security of our network and services."
+      },
+      "webServerUsage": {
+        "title": "Web Server Usage",
+        "content": "Receipt Generator records information about how people access our web sites. This information includes your IP address (or the DNS name associated with it) and what web software you're using. Unless your IP address or its DNS name identifies you specifically, there's no way to use this connection information to identify a particular user."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Receipt Generator web sites may use cookies to keep track of your online session."
+      },
+      "advertisements": {
+        "title": "Advertisements",
+        "content": "We reserve the right to allow third-party advertising companies to serve ads when you visit our website. These companies may use cookies to serve ads. They may also use information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you."
+      },
+      "externalLinks": {
+        "title": "External Links",
+        "content": "The Receipt Generator web sites may contain numerous links to other sites. Receipt Generator cannot be responsible for the privacy practices of other organizations or the content of external web sites."
+      }
+    },
+    "paymentPolicy": {
+      "title": "Payment Policy",
+      "intro": "In order to utilize some Receipt Generator Services or product offerings, the user of such Services or product offerings must pay Receipt Generator either a recurring subscription, one-time, or other fees. In addition, the user is responsible for any state or local sales taxes associated with the Services or product offerings purchased.",
+      "billingPayment": {
+        "title": "Billing and Payment",
+        "content": "If you sign up for a Receipt Generator paid membership subscription, you agree to pay Receipt Generator all subscription charges associated with the plan you subscribe to as described on the Site at the time you subscribe and provide your payment information. You also authorize Receipt Generator to charge your chosen payment provider according to the terms of the plan to which you subscribe."
+      },
+      "autoRenewal": {
+        "title": "Automatic Subscription Renewal and Cancellation",
+        "paragraph1": "RECEIPT GENERATOR PAID MEMBERSHIP SUBSCRIPTIONS WILL CONTINUE INDEFINITELY UNTIL CANCELLED BY THE USER. After your initial subscription commitment period, and again after any subsequent subscription period, your subscription will automatically renew for an additional equivalent period.",
+        "paragraph2": "You may cancel your paid membership subscription by following the instructions on your account settings page or contacting Receipt Generator's customer service department."
+      }
+    },
+    "refundPolicy": {
+      "title": "Refund Policy",
+      "paragraph1": "In accordance with standard practice for online digital sales and our terms of sale for each transaction, we are unable to refund any payment after any purchase is made. This no refund policy is a result of the non-returnable nature of digital products.",
+      "paragraph2": "Digital products sold via this website are like software purchases made at a store that are not refundable once opened. Once you have been granted access to the product (membership), upon payment, it has been subject to being \"opened\", utilized/read/viewed/listened to, and/or copied and it cannot be returned and therefore cannot be refunded.",
+      "paragraph3": "All sales are final."
+    },
+    "apiFairUsage": {
+      "title": "API Fair Usage",
+      "paragraph1": "Receipts are included in your Account and subject to a usage limit of 2,500 receipts generated per month, per Plan. Use of the API Service in excess of 2,500 receipts per month is excessive use and is a violation of Receipt Generator Terms and Conditions.",
+      "paragraph2": "Once the receipts included in your Plan have been used, your receipt API usage will be suspended for the balance of the month.",
+      "paragraph3": "Please contact us for pricing tiers above 2,500 receipts per month."
+    },
+    "termsRevisions": {
+      "title": "Terms of Use Revisions",
+      "paragraph1": "Receipt Generator may revise these terms of use by updating this posting. You agree that in the event any portion of these Site terms of use are found to be unenforceable, the remainder of these Site terms and conditions shall remain in full force and effect.",
+      "paragraph2": "By using this Site you agree to be bound by any such revisions and should therefore periodically visit this page to determine the then current terms of use to which you are bound."
+    },
+    "footer": {
+      "home": "Home",
+      "about": "About",
+      "termsAndUse": "Terms and Use",
+      "copyright": "© 2025 Receipt Generator. All rights reserved."
+    }
   }
 } 
