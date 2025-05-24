@@ -25,6 +25,7 @@ interface ReceiptData {
   taxRate: number;
   tipAmount: number;
   notes: string;
+  paymentMethod: string;
 }
 
 interface ReceiptPreviewProps {
@@ -63,6 +64,7 @@ export default function ReceiptPreview({
     items,
     taxRate,
     notes,
+    paymentMethod,
   } = data;
 
   // 避免水合错误，在客户端生成收据编号
@@ -329,6 +331,10 @@ export default function ReceiptPreview({
                 <div>APPR #:A359A</div>
                 <div>TRACE #: 9</div>
               </div>
+
+              <div className="text-left space-y-0 mb-0 mt-1">
+                <div>{paymentMethod}</div>
+              </div>
               
               {/* 商品信息 */}
               <div className="space-y-0 mb-0 mt-2">
@@ -554,7 +560,7 @@ export default function ReceiptPreview({
       <div className="flex flex-col sm:flex-row gap-3 justify-center no-print">
         <Button onClick={onPrint} size="lg" className="flex items-center gap-2">
           <Printer className="h-5 w-5" />
-          打印收据
+          Print
         </Button>
         <Button 
           onClick={(e) => {
@@ -573,7 +579,7 @@ export default function ReceiptPreview({
           ) : (
             <Download className="h-5 w-5" />
           )}
-          {isDownloadingPDF ? "生成中..." : "下载 PDF"}
+          {isDownloadingPDF ? "Generating..." : "Download PDF"}
         </Button>
         <Button 
           onClick={(e) => {
@@ -592,7 +598,7 @@ export default function ReceiptPreview({
           ) : (
             <Image className="h-5 w-5" />
           )}
-          {isSavingImage ? "保存中..." : "保存图片"}
+          {isSavingImage ? "Saving..." : "Save Image"}
         </Button>
       </div>
     </div>

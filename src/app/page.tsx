@@ -28,6 +28,7 @@ interface ReceiptData {
   receiptDate: string;
   receiptTime: string;
   currency: string;
+  paymentMethod: string;
   items: ReceiptItem[];
   taxRate: number;
   tipAmount: number;
@@ -40,7 +41,7 @@ export default function HomePage() {
   // 模板数据
   const templates = {
     pos_terminal: {
-      name: "💳 POS机收据",
+      name: "💳 POS Terminal Receipt",
       data: {
         restaurantName: "YOUR BUSINESS",
         restaurantCity: "NEW YORK, NY",
@@ -49,6 +50,7 @@ export default function HomePage() {
         receiptDate: "2024-05-24",
         receiptTime: "11:07 AM",
         currency: "$",
+        paymentMethod: "card",
         items: [
           { id: 1, name: "PURCHASE", qty: 1, price: 45.67 },
         ],
@@ -58,7 +60,7 @@ export default function HomePage() {
       },
     },
     thermal: {
-      name: "🧾 热敏纸收据",
+      name: "🧾 Thermal Receipt",
       data: {
         restaurantName: "McDONALD'S #2847",
         restaurantCity: "NEW YORK, NY",
@@ -67,6 +69,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "11:47 AM",
         currency: "$",
+        paymentMethod: "cash",
         items: [
           { id: 1, name: "BIG MAC", qty: 1, price: 5.69 },
           { id: 2, name: "MEDIUM FRIES", qty: 1, price: 2.79 },
@@ -78,7 +81,7 @@ export default function HomePage() {
       },
     },
     pos: {
-      name: "🏪 POS零售收据",
+      name: "🏪 POS Retail Receipt",
       data: {
         restaurantName: "TARGET T-1847",
         restaurantCity: "ST PAUL, MN",
@@ -87,6 +90,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "04:23 PM",
         currency: "$",
+        paymentMethod: "credit_card",
         items: [
           { id: 1, name: "IPHONE CHARGER", qty: 1, price: 19.99 },
           { id: 2, name: "NOTEBOOK 3-PACK", qty: 1, price: 7.49 },
@@ -98,7 +102,7 @@ export default function HomePage() {
       },
     },
     restaurant: {
-      name: "🍽️ 餐厅账单",
+      name: "🍽️ Restaurant Bill",
       data: {
         restaurantName: "The Olive Garden",
         restaurantCity: "BOSTON, MA",
@@ -107,6 +111,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "07:30 PM",
         currency: "$",
+        paymentMethod: "credit_card",
         items: [
           { id: 1, name: "Chicken Parmigiana", qty: 1, price: 18.99 },
           { id: 2, name: "Caesar Salad", qty: 1, price: 8.99 },
@@ -119,7 +124,7 @@ export default function HomePage() {
       },
     },
     coffee: {
-      name: "☕ 咖啡店收据",
+      name: "☕ Coffee Shop Receipt",
       data: {
         restaurantName: "Starbucks Coffee",
         restaurantCity: "SEATTLE, WA",
@@ -128,6 +133,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "08:15 AM",
         currency: "$",
+        paymentMethod: "mobile_pay",
         items: [
           { id: 1, name: "Grande Caffe Latte", qty: 1, price: 5.45 },
           { id: 2, name: "Blueberry Muffin", qty: 1, price: 3.25 },
@@ -139,7 +145,7 @@ export default function HomePage() {
       },
     },
     gas: {
-      name: "⛽ 加油站收据",
+      name: "⛽ Gas Station Receipt",
       data: {
         restaurantName: "SHELL STATION #4821",
         restaurantCity: "LOS ANGELES, CA",
@@ -148,6 +154,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "01:42 PM",
         currency: "$",
+        paymentMethod: "debit_card",
         items: [
           { id: 1, name: "UNLEADED 87 (12.5 GAL)", qty: 1, price: 45.75 },
           { id: 2, name: "ENERGY DRINK", qty: 1, price: 2.49 },
@@ -159,7 +166,7 @@ export default function HomePage() {
       },
     },
     grocery: {
-      name: "🛒 高端超市收据",
+      name: "🛒 Grocery Store Receipt",
       data: {
         restaurantName: "WHOLE FOODS MARKET",
         restaurantCity: "SAN FRANCISCO, CA",
@@ -168,6 +175,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "05:28 PM",
         currency: "$",
+        paymentMethod: "apple_pay",
         items: [
           { id: 1, name: "Organic Apples (2.3 lb)", qty: 1, price: 6.89 },
           { id: 2, name: "Almond Milk Unsweetened", qty: 1, price: 4.99 },
@@ -180,7 +188,7 @@ export default function HomePage() {
       },
     },
     pharmacy: {
-      name: "💊 药店收据",
+      name: "💊 Pharmacy Receipt",
       data: {
         restaurantName: "CVS PHARMACY #9847",
         restaurantCity: "CHICAGO, IL",
@@ -189,6 +197,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "02:15 PM",
         currency: "$",
+        paymentMethod: "cash",
         items: [
           { id: 1, name: "TYLENOL EXTRA STRENGTH", qty: 1, price: 8.99 },
           { id: 2, name: "VITAMIN D3", qty: 1, price: 12.49 },
@@ -200,7 +209,7 @@ export default function HomePage() {
       },
     },
     chinese: {
-      name: "🥢 中式餐厅",
+      name: "🥢 Chinese Restaurant",
       data: {
         restaurantName: "川香阁",
         restaurantCity: "北京市朝阳区",
@@ -209,6 +218,7 @@ export default function HomePage() {
         receiptDate: "2024-01-15",
         receiptTime: "07:30 PM",
         currency: "RMB",
+        paymentMethod: "wechat_pay",
         items: [
           { id: 1, name: "宫保鸡丁", qty: 1, price: 28 },
           { id: 2, name: "麻婆豆腐", qty: 1, price: 18 },
@@ -251,6 +261,7 @@ export default function HomePage() {
     receiptDate: "",
     receiptTime: "",
     currency: "$",
+    paymentMethod: "card",
     items: [initialItem],
     taxRate: 0,
     tipAmount: 0,
@@ -279,16 +290,16 @@ export default function HomePage() {
   // 模板名称映射
   const getTemplateName = (templateKey: string) => {
     const templateNames: { [key: string]: string } = {
-      thermal: "🧾 热敏纸收据",
-      pos: "🏪 POS零售收据", 
-      restaurant: "🍽️ 餐厅账单",
-      coffee: "☕ 咖啡店收据",
-      gas: "⛽ 加油站收据",
-      grocery: "🛒 高端超市收据",
-      pharmacy: "💊 药店收据",
-      pos_terminal: "💳 POS机收据"
+      thermal: "🧾 Thermal Receipt",
+      pos: "🏪 POS Retail Receipt", 
+      restaurant: "🍽️ Restaurant Bill",
+      coffee: "☕ Coffee Shop Receipt",
+      gas: "⛽ Gas Station Receipt",
+      grocery: "🛒 Grocery Store Receipt",
+      pharmacy: "💊 Pharmacy Receipt",
+      pos_terminal: "💳 POS Terminal Receipt"
     };
-    return templateNames[templateKey] || "收据模板";
+    return templateNames[templateKey] || "Receipt Template";
   };
 
   useEffect(() => {
@@ -373,7 +384,7 @@ export default function HomePage() {
     e.preventDefault();
     // 简单的表单验证示例
     if (!receiptData.restaurantName) {
-      alert("请输入餐厅名称");
+      alert("Please enter business name");
       return;
     }
     if (
@@ -381,7 +392,7 @@ export default function HomePage() {
         (item) => !item.name || Number(item.qty) <= 0 || Number(item.price) <= 0
       )
     ) {
-      alert("请确保所有项目都填写了有效的名称、数量和单价");
+      alert("Please ensure all items have valid name, quantity and price");
       return;
     }
     // 滚动到预览区域
@@ -428,6 +439,7 @@ export default function HomePage() {
       receiptDate: "",
       receiptTime: "",
       currency: "$",
+      paymentMethod: "card",
       items: [initialItem],
       taxRate: 0,
       tipAmount: 0,
@@ -476,10 +488,10 @@ export default function HomePage() {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
-              现代化收据生成器
+              Modern Receipt Generator
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              简单易用的在线收据生成工具，支持多种货币和自定义样式。左侧填写信息，右侧实时预览效果。
+              Easy-to-use online receipt generation tool. Supports multiple currencies and custom styles. Fill in information on the left, preview in real-time on the right.
             </p>
           </div>
 
@@ -489,9 +501,9 @@ export default function HomePage() {
             <div className="space-y-6">
               <Card className="form-container">
                 <CardHeader>
-                  <CardTitle className="text-2xl">创建收据</CardTitle>
+                  <CardTitle className="text-2xl">Create Receipt</CardTitle>
                   <CardDescription>
-                    填写下方信息生成专业的收据文档
+                    Fill out the form below to generate a professional receipt document
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -518,17 +530,17 @@ export default function HomePage() {
                     <div className="flex justify-between items-start">
                       <div>
                         <CardTitle className="text-2xl">
-                          实时预览
+                          Live Preview
                         </CardTitle>
                         <CardDescription>
-                          选择模板或自定义收据内容
+                          Select a template or customize receipt content
                         </CardDescription>
                       </div>
                     </div>
                     
                     {/* 快速模板选择器 */}
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border">
-                      <span className="text-sm font-medium text-gray-700">收据模板:</span>
+                      <span className="text-sm font-medium text-gray-700">Receipt Template:</span>
                       <Select
                         value={isUsingTemplate ? currentTemplateType : 'default'}
                         onValueChange={(value) => {
@@ -540,10 +552,10 @@ export default function HomePage() {
                         }}
                       >
                         <SelectTrigger className="flex-1">
-                          <SelectValue placeholder="选择模板" />
+                          <SelectValue placeholder="Select template" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="default">🧾 自定义收据</SelectItem>
+                          <SelectItem value="default">🧾 Custom Receipt</SelectItem>
                           {Object.entries(templates).map(([key, template]) => (
                             <SelectItem key={key} value={key}>
                               {template.name}
