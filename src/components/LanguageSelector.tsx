@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import {
   Select,
   SelectContent,
@@ -21,11 +22,41 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
-  const { i18n, t } = useTranslation('common');
+  const { i18n } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
 
+  // 确保组件在客户端挂载后才显示真实内容
+  useEffect(() => {
+    setMounted(true);
+    
+    // 从localStorage恢复语言设置
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && savedLanguage !== i18n.language) {
+      const supportedLanguages = languages.map(lang => lang.code);
+      if (supportedLanguages.includes(savedLanguage)) {
+        i18n.changeLanguage(savedLanguage);
+      }
+    }
+  }, [i18n]);
+
+  // 处理语言切换
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
+    localStorage.setItem('language', langCode);
   };
+
+  // 在服务器端和客户端挂载前显示默认英语状态，避免hydration错误
+  if (!mounted) {
+    return (
+      <div className="w-40 h-9 bg-white border border-gray-200 rounded-md flex items-center gap-2 px-3">
+        <Globe size={16} className="text-gray-500" />
+        <span className="flex items-center gap-2">
+          <span>🇺🇸</span>
+          <span className="text-sm">English</span>
+        </span>
+      </div>
+    );
+  }
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 

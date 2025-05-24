@@ -185,5 +185,137 @@
       "termsAndUse": "Conditions d'Utilisation",
       "copyright": "© 2025 Générateur de Reçus. Tous droits réservés."
     }
+  },
+  "terms": {
+    "title": "Conditions Générales d'Utilisation",
+    "subtitle": "Veuillez lire attentivement ces conditions générales avant d'utiliser le Générateur de Reçus",
+    "importantNotice": {
+      "title": "⚠️ Avis Important",
+      "content": "Le Générateur de Reçus est UNIQUEMENT destiné à des fins de divertissement, de recherche et d'éducation. Il n'est PAS destiné à être utilisé à des fins frauduleuses."
+    },
+    "siteContents": {
+      "title": "Contenu du Site, Propriété et Restrictions d'Utilisation",
+      "paragraph1": "Les informations contenues dans ce Site, y compris toutes les images, illustrations, designs, écrits et autres matériaux qui apparaissent ici sont des droits d'auteur, marques de commerce, habillage commercial ou autre propriété intellectuelle possédée, contrôlée ou sous licence (tous collectivement appelés ici \"Contenus\") par le Générateur de Reçus ou sont la propriété de leurs propriétaires respectifs.",
+      "paragraph2": "Vous pouvez utiliser le Site dans le cadre de votre correspondance personnelle ou professionnelle. Vous ne pouvez pas utiliser le Site pour envoyer du matériel illégal, nuisible, menaçant, abusif, harcelant, diffamatoire, haineux ou autrement offensant. Vous ne pouvez pas utiliser le Site pour envoyer ou créer des publicités non sollicitées, du spam ou des services numériques indésirables.",
+      "paragraph3": "Toute autre utilisation du Contenu sur ce Site, y compris la reproduction à d'autres fins que celles mentionnées ci-dessus, et y compris toute reproduction, modification, distribution ou republication peut violer les lois sur les droits d'auteur ou les marques de commerce et, sans l'autorisation écrite préalable du Générateur de Reçus, est strictement interdite."
+    },
+    "disclaimerWarranty": {
+      "title": "Clause de Non-Responsabilité sur la Garantie",
+      "paragraph1": "LE GÉNÉRATEUR DE REÇUS FOURNIT CE SITE ET SON CONTENU \"TEL QUEL\" ET NE FAIT AUCUNE REPRÉSENTATION OU GARANTIE D'AUCUNE SORTE, EXPRESSE OU IMPLICITE, Y COMPRIS, SANS LIMITATION, LES GARANTIES OU CONDITIONS DE TITRE OU LES GARANTIES IMPLICITES DE QUALITÉ MARCHANDE OU D'ADÉQUATION À UN USAGE PARTICULIER, ET DE NON-CONTREFAÇON.",
+      "paragraph2": "BIEN QUE LE GÉNÉRATEUR DE REÇUS CROIE QUE LE CONTENU EST PRÉCIS, COMPLET ET ACTUEL, LE GÉNÉRATEUR DE REÇUS NE REPRÉSENTE OU NE GARANTIT PAS QUE LES INFORMATIONS ACCESSIBLES SUR CE SITE SONT PRÉCISES, COMPLÈTES OU ACTUELLES.",
+      "paragraph3": "Le Générateur de Reçus ne garantit pas que les services numériques, qu'ils soient payants ou gratuits, seront livrés ; il ne garantit pas non plus que les services numériques seront livrés dans un délai particulier.",
+      "paragraph4": "Vous comprenez que les informations de service numérique ou d'actif numérique peuvent être transmises sans cryptage sur Internet et d'autres réseaux de télécommunications ; et stockées sur nos serveurs, et ne sont pas garanties privées.",
+      "paragraph5": "Vous acceptez de tenir le Générateur de Reçus indemne de tout dommage causé par l'utilisation de ce site, des dommages à votre ordinateur ou tout autre chose que vous pouvez imaginer. Utilisez ce Site à vos propres risques."
+    },
+    "disclaimerLiability": {
+      "title": "Clause de Non-Responsabilité",
+      "paragraph1": "EN AUCUN CAS LE GÉNÉRATEUR DE REÇUS NE SERA RESPONSABLE DE DOMMAGES SPÉCIAUX, INDIRECTS, EXEMPLAIRES OU CONSÉCUTIFS OU DE TOUT DOMMAGE QUEL QU'IL SOIT, Y COMPRIS MAIS SANS S'Y LIMITER, LA PERTE D'UTILISATION, DE DONNÉES, DE FRAUDE OU DE PROFITS.",
+      "paragraph2": "Dans un effort pour fournir à nos clients les informations les plus actuelles, le Générateur de Reçus apportera, de temps à autre, des modifications au Contenu et aux produits ou services décrits sur ce Site."
+    },
+    "privacyPolicy": {
+      "title": "Politique de Confidentialité",
+      "intro": "Le Générateur de Reçus prend la confidentialité en ligne très au sérieux. Nous protégeons activement la vie privée des utilisateurs de nos sites web et des personnes qui s'abonnent à nos listes de diffusion.",
+      "subscriptionLists": {
+        "title": "Listes d'Abonnement et Adresses Email",
+        "content": "Pour recevoir certains services tels que les listes de diffusion, vous devez nous fournir votre nom et votre adresse email -- sans cela, nous ne pouvons rien vous envoyer."
+      },
+      "webServerUsage": {
+        "title": "Utilisation du Serveur Web",
+        "content": "Le Générateur de Reçus enregistre des informations sur la façon dont les gens accèdent à nos sites web. Ces informations incluent votre adresse IP et quel logiciel web vous utilisez."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Les sites web du Générateur de Reçus peuvent utiliser des cookies pour suivre votre session en ligne."
+      },
+      "advertisements": {
+        "title": "Publicités",
+        "content": "Nous nous réservons le droit de permettre à des entreprises de publicité tierces de diffuser des annonces lorsque vous visitez notre site web."
+      },
+      "externalLinks": {
+        "title": "Liens Externes",
+        "content": "Les sites web du Générateur de Reçus peuvent contenir de nombreux liens vers d'autres sites. Le Générateur de Reçus ne peut être responsable des pratiques de confidentialité d'autres organisations."
+      }
+    },
+    "paymentPolicy": {
+      "title": "Politique de Paiement",
+      "intro": "Pour utiliser certains Services ou offres de produits du Générateur de Reçus, l'utilisateur doit payer au Générateur de Reçus des frais d'abonnement récurrents, uniques ou autres.",
+      "billingPayment": {
+        "title": "Facturation et Paiement",
+        "content": "Si vous vous inscrivez à un abonnement payant du Générateur de Reçus, vous acceptez de payer tous les frais d'abonnement associés au plan auquel vous vous abonnez."
+      },
+      "autoRenewal": {
+        "title": "Renouvellement Automatique d'Abonnement et Annulation",
+        "paragraph1": "LES ABONNEMENTS PAYANTS DU GÉNÉRATEUR DE REÇUS CONTINUERONT INDÉFINIMENT JUSQU'À ANNULATION PAR L'UTILISATEUR.",
+        "paragraph2": "Vous pouvez annuler votre abonnement payant en suivant les instructions sur votre page de paramètres de compte."
+      }
+    },
+    "refundPolicy": {
+      "title": "Politique de Remboursement",
+      "paragraph1": "Conformément à la pratique standard pour les ventes numériques en ligne, nous ne pouvons rembourser aucun paiement après qu'un achat ait été effectué.",
+      "paragraph2": "Les produits numériques vendus via ce site web sont comme des achats de logiciels faits dans un magasin qui ne sont pas remboursables une fois ouverts.",
+      "paragraph3": "Toutes les ventes sont finales."
+    },
+    "apiFairUsage": {
+      "title": "Utilisation Équitable de l'API",
+      "paragraph1": "Les reçus sont inclus dans votre Compte et soumis à une limite d'utilisation de 2 500 reçus générés par mois, par Plan.",
+      "paragraph2": "Une fois que les reçus inclus dans votre Plan ont été utilisés, votre utilisation de l'API de reçus sera suspendue pour le reste du mois.",
+      "paragraph3": "Veuillez nous contacter pour les niveaux de prix au-dessus de 2 500 reçus par mois."
+    },
+    "termsRevisions": {
+      "title": "Révisions des Conditions d'Utilisation",
+      "paragraph1": "Le Générateur de Reçus peut réviser ces conditions d'utilisation en mettant à jour cette publication.",
+      "paragraph2": "En utilisant ce Site, vous acceptez d'être lié par de telles révisions et devriez donc visiter périodiquement cette page."
+    },
+    "footer": {
+      "home": "Accueil",
+      "about": "À Propos",
+      "termsAndUse": "Conditions d'Utilisation",
+      "copyright": "© 2025 Générateur de Reçus. Tous droits réservés."
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées (FAQ)",
+    "subtitle": "Questions et réponses courantes sur l'utilisation du Générateur de Reçus",
+    "questions": {
+      "isFree": {
+        "question": "Le Générateur de Reçus est-il gratuit ?",
+        "answer": "Oui, le Générateur de Reçus est complètement gratuit. Vous n'avez pas besoin d'enregistrer un compte ou de payer des frais pour utiliser toutes nos fonctionnalités de création et d'impression de reçus."
+      },
+      "dataSecure": {
+        "question": "Mes données sont-elles sécurisées ?",
+        "answer": "Absolument sécurisées. Toute la génération et l'édition de reçus se fait localement dans votre navigateur. Nous ne téléchargeons aucune de vos données d'entrée sur nos serveurs, ce qui signifie que vos informations sont complètement sous votre contrôle."
+      },
+      "priceRange": {
+        "question": "Quelles gammes de prix sont supportées ?",
+        "answer": "Notre outil supporte toute gamme de prix, des petits achats aux grandes transactions. Vous pouvez saisir des décimales et nous supportons plusieurs formats de devises pour répondre à divers besoins commerciaux."
+      },
+      "howToPrint": {
+        "question": "Comment imprimer les reçus ?",
+        "answer": "Après avoir généré un reçu, vous pouvez utiliser la fonction d'impression de votre navigateur pour imprimer directement, ou sauvegarder comme fichier PDF puis imprimer. Notre design est optimisé pour l'impression pour assurer une sortie claire."
+      },
+      "mobileSupport": {
+        "question": "Est-ce que ça supporte les appareils mobiles ?",
+        "answer": "Oui, le Générateur de Reçus utilise un design responsive et fonctionne parfaitement sur les téléphones mobiles, tablettes et ordinateurs. Vous pouvez facilement créer des reçus sur n'importe quel appareil."
+      },
+      "templates": {
+        "question": "Quels modèles de reçus sont disponibles ?",
+        "answer": "Nous offrons divers modèles professionnels : factures de restaurant, reçus de vente au détail, reçus de terminal TPV, reçus de café, reçus de station-service, reçus de pharmacie et plus pour répondre aux besoins de différents scénarios."
+      },
+      "legalValidity": {
+        "question": "Les reçus générés ont-ils une validité légale ?",
+        "answer": "Notre outil est principalement à des fins éducatives, de test et de démonstration. Si vous devez l'utiliser pour des transactions commerciales, assurez-vous de vous conformer aux lois locales et aux exigences fiscales."
+      },
+      "getHelp": {
+        "question": "Comment puis-je obtenir de l'aide si je rencontre des problèmes ?",
+        "answer": "Si vous rencontrez des problèmes techniques ou avez des suggestions, contactez-nous à support@makereceipt.com et nous répondrons dès que possible."
+      }
+    },
+    "tips": {
+      "title": "Conseils d'Utilisation",
+      "tip1": "Utilisez les modèles pour commencer rapidement, puis modifiez selon vos besoins",
+      "tip2": "Vérifiez toutes les informations dans l'aperçu avant d'imprimer",
+      "tip3": "Nous recommandons d'utiliser les navigateurs Chrome ou Firefox pour la meilleure expérience",
+      "tip4": "Les données de reçu seront effacées après rafraîchissement de la page, sauvegardez le contenu nécessaire rapidement"
+    }
   }
 } 

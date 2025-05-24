@@ -272,5 +272,50 @@
       "termsAndUse": "Terms and Use",
       "copyright": "© 2025 Receipt Generator. All rights reserved."
     }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "subtitle": "Common questions and answers about using Receipt Generator",
+    "questions": {
+      "isFree": {
+        "question": "Is Receipt Generator free to use?",
+        "answer": "Yes, Receipt Generator is completely free. You don't need to register an account or pay any fees to use all our features for creating and printing receipts."
+      },
+      "dataSecure": {
+        "question": "Is my data secure?",
+        "answer": "Absolutely secure. All receipt generation and editing is done locally in your browser. We don't upload any of your input data to our servers, which means your information is completely under your control."
+      },
+      "priceRange": {
+        "question": "What price ranges are supported?",
+        "answer": "Our tool supports any price range, from small purchases to large transactions. You can input decimals and we support multiple currency formats to meet various business needs."
+      },
+      "howToPrint": {
+        "question": "How do I print receipts?",
+        "answer": "After generating a receipt, you can use your browser's print function to print directly, or save as a PDF file and then print. Our design is optimized for printing to ensure clear output."
+      },
+      "mobileSupport": {
+        "question": "Does it support mobile devices?",
+        "answer": "Yes, Receipt Generator uses responsive design and works perfectly on mobile phones, tablets, and computers. You can easily create receipts on any device."
+      },
+      "templates": {
+        "question": "What receipt templates are available?",
+        "answer": "We offer various professional templates: restaurant bills, retail receipts, POS terminal receipts, coffee shop receipts, gas station receipts, pharmacy receipts, and more to meet different scenario needs."
+      },
+      "legalValidity": {
+        "question": "Do the generated receipts have legal validity?",
+        "answer": "Our tool is primarily for educational, testing, and demonstration purposes. If you need to use it for commercial transactions, please ensure compliance with local laws and tax requirements."
+      },
+      "getHelp": {
+        "question": "How can I get help if I encounter problems?",
+        "answer": "If you encounter any technical issues or have suggestions, please contact us at support@makereceipt.com and we'll respond as soon as possible."
+      }
+    },
+    "tips": {
+      "title": "Usage Tips",
+      "tip1": "Use templates to get started quickly, then modify as needed",
+      "tip2": "Check all information in the preview before printing",
+      "tip3": "We recommend using Chrome or Firefox browsers for the best experience",
+      "tip4": "Receipt data will be cleared after page refresh, so save needed content promptly"
+    }
   }
 } 

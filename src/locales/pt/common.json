@@ -197,5 +197,50 @@
       "title": "Conteúdo do Site, Propriedade e Restrições de Uso",
       "paragraph1": "As informações contidas neste Site, incluindo todas as imagens, ilustrações, designs, escritos e outros materiais que aparecem aqui são direitos autorais, marcas registradas, trade dress ou outra propriedade intelectual de propriedade, controlada ou licenciada (todos"
     }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes (FAQ)",
+    "subtitle": "Perguntas e respostas comuns sobre o uso do Gerador de Recibos",
+    "questions": {
+      "isFree": {
+        "question": "O Gerador de Recibos é gratuito?",
+        "answer": "Sim, o Gerador de Recibos é completamente gratuito. Você não precisa registrar uma conta ou pagar taxas para usar todos os nossos recursos de criação e impressão de recibos."
+      },
+      "dataSecure": {
+        "question": "Meus dados estão seguros?",
+        "answer": "Absolutamente seguros. Toda a geração e edição de recibos é feita localmente no seu navegador. Não enviamos nenhum dos seus dados para nossos servidores, o que significa que suas informações estão completamente sob seu controle."
+      },
+      "priceRange": {
+        "question": "Quais faixas de preço são suportadas?",
+        "answer": "Nossa ferramenta suporta qualquer faixa de preço, desde pequenas compras até grandes transações. Você pode inserir decimais e suportamos múltiplos formatos de moeda para atender várias necessidades comerciais."
+      },
+      "howToPrint": {
+        "question": "Como imprimir recibos?",
+        "answer": "Após gerar um recibo, você pode usar a função de impressão do seu navegador para imprimir diretamente, ou salvar como arquivo PDF e depois imprimir. Nosso design é otimizado para impressão para garantir saída clara."
+      },
+      "mobileSupport": {
+        "question": "Suporta dispositivos móveis?",
+        "answer": "Sim, o Gerador de Recibos usa design responsivo e funciona perfeitamente em telefones celulares, tablets e computadores. Você pode facilmente criar recibos em qualquer dispositivo."
+      },
+      "templates": {
+        "question": "Quais modelos de recibo estão disponíveis?",
+        "answer": "Oferecemos vários modelos profissionais: contas de restaurante, recibos de varejo, recibos de terminal POS, recibos de cafeteria, recibos de posto de gasolina, recibos de farmácia e mais para atender diferentes necessidades de cenário."
+      },
+      "legalValidity": {
+        "question": "Os recibos gerados têm validade legal?",
+        "answer": "Nossa ferramenta é principalmente para fins educacionais, de teste e demonstração. Se você precisar usá-la para transações comerciais, certifique-se de estar em conformidade com as leis locais e requisitos fiscais."
+      },
+      "getHelp": {
+        "question": "Como posso obter ajuda se encontrar problemas?",
+        "answer": "Se você encontrar problemas técnicos ou tiver sugestões, entre em contato conosco em support@makereceipt.com e responderemos o mais rápido possível."
+      }
+    },
+    "tips": {
+      "title": "Dicas de Uso",
+      "tip1": "Use modelos para começar rapidamente, depois modifique conforme necessário",
+      "tip2": "Verifique todas as informações na visualização antes de imprimir",
+      "tip3": "Recomendamos usar navegadores Chrome ou Firefox para a melhor experiência",
+      "tip4": "Os dados do recibo serão limpos após atualizar a página, então salve o conteúdo necessário prontamente"
+    }
   }
 } 

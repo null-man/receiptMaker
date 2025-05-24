@@ -92,5 +92,230 @@
     "ko": "한국어",
     "hi": "हिन्दी",
     "fr": "Français"
+  },
+  "about": {
+    "title": "Über den Quittungsgenerator",
+    "subtitle": "Professionelles Online-Tool zur Quittungserstellung, das die Erstellung von Quittungen für verschiedene Szenarien erleichtert",
+    "whatIs": {
+      "title": "Was ist der Quittungsgenerator?",
+      "paragraph1": "Der Quittungsgenerator ist ein leistungsstarkes Online-Tool zur Quittungserstellung, das für Privatpersonen und Geschäftsnutzer entwickelt wurde. Ob Sie Restaurantrechnungen, Einzelhandelsquittungen, Tankstellenbelege oder andere Arten von Quittungen erstellen müssen, wir bieten professionelle, schöne und branchenübliche Lösungen.",
+      "paragraph2": "Unsere Plattform unterstützt verschiedene Quittungsformate, einschließlich Thermoquittungen, POS-Quittungen, Restaurantrechnungen usw., und hilft Ihnen dabei, schnell Quittungen zu generieren, die den Anforderungen verschiedener Geschäftsszenarien entsprechen."
+    },
+    "features": {
+      "title": "Hauptfunktionen",
+      "templates": {
+        "title": "Vielfältige Vorlagen",
+        "description": "Professionelle Quittungsvorlagen für Restaurants, Einzelhandel, Tankstellen, Cafés, Apotheken und andere Branchen"
+      },
+      "preview": {
+        "title": "Echtzeit-Vorschau",
+        "description": "Bearbeiten und Vorschau gleichzeitig, was Sie sehen ist was Sie bekommen, um sicherzustellen, dass das Erscheinungsbild der Quittung Ihren Erwartungen entspricht"
+      },
+      "print": {
+        "title": "Ein-Klick-Druck",
+        "description": "Unterstützung für direktes Drucken oder Speichern als PDF, kompatibel mit verschiedenen Druckern und Papiergrößen"
+      },
+      "multilang": {
+        "title": "Mehrsprachige Unterstützung",
+        "description": "Unterstützung für Deutsch, Englisch und andere Sprachen, um internationale Nutzungsanforderungen zu erfüllen"
+      },
+      "multicurrency": {
+        "title": "Mehrwährungs-Unterstützung",
+        "description": "Unterstützung für USD, EUR, CHF und andere Währungsformate"
+      },
+      "responsive": {
+        "title": "Responsive Design",
+        "description": "Perfekte Kompatibilität mit Handys, Tablets, Computern und anderen Geräten"
+      }
+    },
+    "useCases": {
+      "title": "Anwendungsfälle",
+      "retail": {
+        "title": "Einzelhandelsgeschäfte",
+        "description": "Professionelle Einkaufsquittungen für Kunden bereitstellen"
+      },
+      "foodService": {
+        "title": "Gastronomie",
+        "description": "Restaurantrechnungen und Lieferquittungen erstellen"
+      },
+      "serviceIndustry": {
+        "title": "Dienstleistungsbranche",
+        "description": "Quittungen für verschiedene Dienstleistungsposten ausstellen"
+      },
+      "education": {
+        "title": "Bildung & Ausbildung",
+        "description": "Zum Testen und Erlernen von Quittungsformaten"
+      },
+      "filmProduction": {
+        "title": "Filmproduktion",
+        "description": "Requisiten-Quittungen für Filme und TV-Shows erstellen"
+      },
+      "financial": {
+        "title": "Finanzmanagement",
+        "description": "Quittungsbelege für die Buchhaltung erstellen"
+      }
+    },
+    "whyChoose": {
+      "title": "Warum uns wählen?",
+      "free": {
+        "title": "Völlig Kostenlos",
+        "description": "Keine Registrierung erforderlich, keine Zahlung nötig, alle Funktionen sind völlig kostenlos nutzbar"
+      },
+      "easyToUse": {
+        "title": "Einfach zu Bedienen",
+        "description": "Intuitives Interface-Design, starten Sie in nur wenigen Minuten"
+      },
+      "professional": {
+        "title": "Professionelle Qualität",
+        "description": "Basierend auf echten Quittungsformat-Designs, professionelles Erscheinungsbild gewährleistet"
+      },
+      "secure": {
+        "title": "Sicher und Zuverlässig",
+        "description": "Alle Daten werden lokal verarbeitet und nicht an Server hochgeladen"
+      }
+    },
+    "contact": {
+      "title": "Kontaktieren Sie uns",
+      "description": "Wenn Sie Fragen, Vorschläge haben oder technische Unterstützung benötigen, kontaktieren Sie uns bitte auf folgende Weise:",
+      "email": "E-Mail"
+    },
+    "footer": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "termsAndUse": "Nutzungsbedingungen",
+      "copyright": "© 2025 Quittungsgenerator. Alle Rechte vorbehalten."
+    }
+  },
+  "terms": {
+    "title": "Allgemeine Geschäftsbedingungen",
+    "subtitle": "Bitte lesen Sie diese Allgemeinen Geschäftsbedingungen sorgfältig durch, bevor Sie den Quittungsgenerator verwenden",
+    "importantNotice": {
+      "title": "⚠️ Wichtiger Hinweis",
+      "content": "Der Quittungsgenerator ist NUR für Unterhaltungs-, Forschungs- und Bildungszwecke bestimmt. Er ist NICHT für betrügerische Zwecke vorgesehen."
+    },
+    "siteContents": {
+      "title": "Website-Inhalte, Eigentum und Nutzungsbeschränkungen",
+      "paragraph1": "Die auf dieser Website enthaltenen Informationen, einschließlich aller Bilder, Illustrationen, Designs, Texte und anderen hier erscheinenden Materialien sind Urheberrechte, Marken, Handelsaufmachung oder anderes geistiges Eigentum, das vom Quittungsgenerator besessen, kontrolliert oder lizenziert wird (alle zusammen hier als \"Inhalte\" bezeichnet) oder Eigentum ihrer jeweiligen Besitzer sind.",
+      "paragraph2": "Sie dürfen die Website als Teil Ihrer persönlichen oder geschäftlichen Korrespondenz verwenden. Sie dürfen die Website nicht verwenden, um illegale, schädliche, bedrohende, beleidigende, belästigende, diffamierende, hasserfüllte oder andere anstößige Materialien zu senden. Sie dürfen die Website nicht verwenden, um unerwünschte Werbung, Spam oder unerwünschte digitale Dienste zu senden oder zu erstellen.",
+      "paragraph3": "Jede andere Nutzung der Inhalte auf dieser Website, einschließlich der Vervielfältigung für andere als die oben genannten Zwecke und einschließlich jeder Vervielfältigung, Änderung, Verbreitung oder Wiederveröffentlichung, kann Urheberrechts- oder Markengesetze verletzen und ist ohne vorherige schriftliche Genehmigung des Quittungsgenerators strengstens untersagt."
+    },
+    "disclaimerWarranty": {
+      "title": "Gewährleistungsausschluss",
+      "paragraph1": "DER QUITTUNGSGENERATOR STELLT DIESE WEBSITE UND IHRE INHALTE \"WIE BESEHEN\" ZUR VERFÜGUNG UND MACHT KEINE DARSTELLUNGEN ODER GEWÄHRLEISTUNGEN JEDER ART, WEDER AUSDRÜCKLICH NOCH STILLSCHWEIGEND, EINSCHLIESSLICH, OHNE EINSCHRÄNKUNG, GEWÄHRLEISTUNGEN ODER BEDINGUNGEN DES TITELS ODER STILLSCHWEIGENDE GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT ODER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG.",
+      "paragraph2": "OBWOHL DER QUITTUNGSGENERATOR GLAUBT, DASS DER INHALT GENAU, VOLLSTÄNDIG UND AKTUELL IST, STELLT DER QUITTUNGSGENERATOR NICHT DAR ODER GARANTIERT, DASS DIE AUF DIESER WEBSITE ZUGÄNGLICHEN INFORMATIONEN GENAU, VOLLSTÄNDIG ODER AKTUELL SIND.",
+      "paragraph3": "Der Quittungsgenerator garantiert nicht, dass digitale Dienste, ob kostenpflichtig oder kostenlos, geliefert werden; noch garantiert er, dass digitale Dienste innerhalb eines bestimmten Zeitraums geliefert werden.",
+      "paragraph4": "Sie verstehen, dass Informationen über digitale Dienste oder digitale Assets ohne Verschlüsselung über das Internet und andere Telekommunikationsnetze übertragen und auf unseren Servern gespeichert werden können und nicht garantiert privat sind.",
+      "paragraph5": "Sie stimmen zu, den Quittungsgenerator von allen Schäden freizustellen, die durch die Nutzung dieser Website, Schäden an Ihrem Computer oder alles andere, was Sie sich vorstellen können, verursacht werden. Nutzen Sie diese Website auf eigenes Risiko."
+    },
+    "disclaimerLiability": {
+      "title": "Haftungsausschluss",
+      "paragraph1": "IN KEINEM FALL HAFTET DER QUITTUNGSGENERATOR FÜR BESONDERE, INDIREKTE, BEISPIELHAFTE ODER FOLGESCHÄDEN ODER ANDERE SCHÄDEN JEDER ART, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF VERLUST VON NUTZUNG, DATEN, BETRUG ODER GEWINNEN.",
+      "paragraph2": "In dem Bemühen, unseren Kunden die aktuellsten Informationen zu bieten, wird der Quittungsgenerator von Zeit zu Zeit Änderungen an den Inhalten und an den auf dieser Website beschriebenen Produkten oder Dienstleistungen vornehmen."
+    },
+    "privacyPolicy": {
+      "title": "Datenschutzrichtlinie",
+      "intro": "Der Quittungsgenerator nimmt den Online-Datenschutz sehr ernst. Wir schützen aktiv die Privatsphäre der Nutzer unserer Websites und Personen, die sich für unsere Mailinglisten anmelden.",
+      "subscriptionLists": {
+        "title": "Abonnementlisten und E-Mail-Adressen",
+        "content": "Um bestimmte Dienste wie Mailinglisten zu erhalten, müssen Sie uns Ihren Namen und Ihre E-Mail-Adresse mitteilen -- ohne diese können wir Ihnen nichts senden."
+      },
+      "webServerUsage": {
+        "title": "Webserver-Nutzung",
+        "content": "Der Quittungsgenerator zeichnet Informationen darüber auf, wie Personen auf unsere Websites zugreifen. Diese Informationen umfassen Ihre IP-Adresse und welche Web-Software Sie verwenden."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Die Websites des Quittungsgenerators können Cookies verwenden, um Ihre Online-Sitzung zu verfolgen."
+      },
+      "advertisements": {
+        "title": "Werbung",
+        "content": "Wir behalten uns das Recht vor, Drittanbieter-Werbefirmen zu erlauben, Anzeigen zu schalten, wenn Sie unsere Website besuchen."
+      },
+      "externalLinks": {
+        "title": "Externe Links",
+        "content": "Die Websites des Quittungsgenerators können zahlreiche Links zu anderen Websites enthalten. Der Quittungsgenerator kann nicht für die Datenschutzpraktiken anderer Organisationen verantwortlich sein."
+      }
+    },
+    "paymentPolicy": {
+      "title": "Zahlungsrichtlinie",
+      "intro": "Um einige Dienste oder Produktangebote des Quittungsgenerators zu nutzen, muss der Nutzer dem Quittungsgenerator wiederkehrende Abonnement-, einmalige oder andere Gebühren zahlen.",
+      "billingPayment": {
+        "title": "Abrechnung und Zahlung",
+        "content": "Wenn Sie sich für ein kostenpflichtiges Abonnement des Quittungsgenerators anmelden, stimmen Sie zu, alle Abonnementgebühren zu zahlen, die mit dem Plan verbunden sind, den Sie abonnieren."
+      },
+      "autoRenewal": {
+        "title": "Automatische Abonnement-Verlängerung und Kündigung",
+        "paragraph1": "KOSTENPFLICHTIGE ABONNEMENTS DES QUITTUNGSGENERATORS WERDEN UNBEGRENZT FORTGESETZT, BIS SIE VOM NUTZER GEKÜNDIGT WERDEN.",
+        "paragraph2": "Sie können Ihr kostenpflichtiges Abonnement kündigen, indem Sie den Anweisungen auf Ihrer Kontoeinstellungsseite folgen."
+      }
+    },
+    "refundPolicy": {
+      "title": "Rückerstattungsrichtlinie",
+      "paragraph1": "In Übereinstimmung mit der Standardpraxis für Online-Digitalverkäufe können wir nach einem Kauf keine Zahlung zurückerstatten.",
+      "paragraph2": "Über diese Website verkaufte digitale Produkte sind wie Software-Käufe in einem Geschäft, die nach dem Öffnen nicht zurückerstattet werden können.",
+      "paragraph3": "Alle Verkäufe sind endgültig."
+    },
+    "apiFairUsage": {
+      "title": "API-Faire Nutzung",
+      "paragraph1": "Quittungen sind in Ihrem Konto enthalten und unterliegen einer Nutzungsgrenze von 2.500 generierten Quittungen pro Monat pro Plan.",
+      "paragraph2": "Sobald die in Ihrem Plan enthaltenen Quittungen aufgebraucht sind, wird Ihre Quittungs-API-Nutzung für den Rest des Monats ausgesetzt.",
+      "paragraph3": "Bitte kontaktieren Sie uns für Preisstufen über 2.500 Quittungen pro Monat."
+    },
+    "termsRevisions": {
+      "title": "Überarbeitungen der Nutzungsbedingungen",
+      "paragraph1": "Der Quittungsgenerator kann diese Nutzungsbedingungen durch Aktualisierung dieser Veröffentlichung überarbeiten.",
+      "paragraph2": "Durch die Nutzung dieser Website stimmen Sie zu, an solche Überarbeitungen gebunden zu sein und sollten daher regelmäßig diese Seite besuchen."
+    },
+    "footer": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "termsAndUse": "Nutzungsbedingungen",
+      "copyright": "© 2025 Quittungsgenerator. Alle Rechte vorbehalten."
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen (FAQ)",
+    "subtitle": "Häufige Fragen und Antworten zur Verwendung des Quittungsgenerators",
+    "questions": {
+      "isFree": {
+        "question": "Ist der Quittungsgenerator kostenlos?",
+        "answer": "Ja, der Quittungsgenerator ist völlig kostenlos. Sie müssen kein Konto registrieren oder Gebühren zahlen, um alle unsere Funktionen zur Erstellung und zum Drucken von Quittungen zu nutzen."
+      },
+      "dataSecure": {
+        "question": "Sind meine Daten sicher?",
+        "answer": "Absolut sicher. Alle Quittungsgenerierung und -bearbeitung erfolgt lokal in Ihrem Browser. Wir laden keine Ihrer Eingabedaten auf unsere Server hoch, was bedeutet, dass Ihre Informationen vollständig unter Ihrer Kontrolle stehen."
+      },
+      "priceRange": {
+        "question": "Welche Preisbereiche werden unterstützt?",
+        "answer": "Unser Tool unterstützt jeden Preisbereich, von kleinen Einkäufen bis zu großen Transaktionen. Sie können Dezimalzahlen eingeben und wir unterstützen mehrere Währungsformate, um verschiedene Geschäftsanforderungen zu erfüllen."
+      },
+      "howToPrint": {
+        "question": "Wie drucke ich Quittungen?",
+        "answer": "Nach der Generierung einer Quittung können Sie die Druckfunktion Ihres Browsers verwenden, um direkt zu drucken, oder als PDF-Datei speichern und dann drucken. Unser Design ist für das Drucken optimiert, um eine klare Ausgabe zu gewährleisten."
+      },
+      "mobileSupport": {
+        "question": "Unterstützt es mobile Geräte?",
+        "answer": "Ja, der Quittungsgenerator verwendet responsives Design und funktioniert perfekt auf Handys, Tablets und Computern. Sie können auf jedem Gerät einfach Quittungen erstellen."
+      },
+      "templates": {
+        "question": "Welche Quittungsvorlagen sind verfügbar?",
+        "answer": "Wir bieten verschiedene professionelle Vorlagen: Restaurantrechnungen, Einzelhandelsquittungen, POS-Terminal-Quittungen, Café-Quittungen, Tankstellen-Quittungen, Apotheken-Quittungen und mehr, um verschiedene Szenario-Anforderungen zu erfüllen."
+      },
+      "legalValidity": {
+        "question": "Haben die generierten Quittungen rechtliche Gültigkeit?",
+        "answer": "Unser Tool ist hauptsächlich für Bildungs-, Test- und Demonstrationszwecke. Wenn Sie es für kommerzielle Transaktionen verwenden müssen, stellen Sie bitte sicher, dass Sie lokale Gesetze und Steueranforderungen einhalten."
+      },
+      "getHelp": {
+        "question": "Wie kann ich Hilfe bekommen, wenn ich Probleme habe?",
+        "answer": "Wenn Sie technische Probleme haben oder Vorschläge haben, kontaktieren Sie uns bitte unter support@makereceipt.com und wir werden so schnell wie möglich antworten."
+      }
+    },
+    "tips": {
+      "title": "Nutzungstipps",
+      "tip1": "Verwenden Sie Vorlagen, um schnell zu beginnen, und ändern Sie sie dann nach Bedarf",
+      "tip2": "Überprüfen Sie alle Informationen in der Vorschau vor dem Drucken",
+      "tip3": "Wir empfehlen die Verwendung von Chrome- oder Firefox-Browsern für die beste Erfahrung",
+      "tip4": "Quittungsdaten werden nach dem Aktualisieren der Seite gelöscht, speichern Sie daher benötigte Inhalte umgehend"
+    }
   }
 } 

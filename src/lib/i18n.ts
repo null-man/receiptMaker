@@ -37,7 +37,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // default language
+    lng: 'en', // 始终使用英语作为默认语言
     fallbackLng: 'en',
     debug: false,
     
@@ -51,5 +51,12 @@ i18n
       useSuspense: false,
     },
   });
+
+// 监听语言变化并保存到localStorage
+i18n.on('languageChanged', (lng) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('language', lng);
+  }
+});
 
 export default i18n; 

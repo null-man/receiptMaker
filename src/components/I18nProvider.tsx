@@ -5,7 +5,7 @@ import '../lib/i18n';
 
 export default function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // i18n is initialized when this component mounts
+    // 这里不需要做任何特殊处理，让LanguageSelector自己处理语言恢复
   }, []);
 
   return <>{children}</>;

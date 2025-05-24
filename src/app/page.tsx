@@ -649,9 +649,9 @@ export default function HomePage() {
           {/* FAQ Section */}
           <Card id="faq" className="max-w-7xl mx-auto mt-12">
             <CardHeader>
-              <CardTitle className="text-3xl text-center">Frequently Asked Questions (FAQ)</CardTitle>
+              <CardTitle className="text-3xl text-center">{t('faq.title')}</CardTitle>
               <CardDescription className="text-center">
-                Common questions and answers about using MakeReceipt
+                {t('faq.subtitle')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -661,37 +661,37 @@ export default function HomePage() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        ❓ Is MakeReceipt free to use?
+                        ❓ {t('faq.questions.isFree.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Yes, MakeReceipt is completely free. You don't need to register an account or pay any fees to use all our features for creating and printing receipts.
+                        {t('faq.questions.isFree.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        🔒 Is my data secure?
+                        🔒 {t('faq.questions.dataSecure.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Absolutely secure. All receipt generation and editing is done locally in your browser. We don't upload any of your input data to our servers, which means your information is completely under your control.
+                        {t('faq.questions.dataSecure.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        🖨️ How do I print the generated receipt?
+                        💰 {t('faq.questions.priceRange.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Click the "Print Receipt" button in the preview area, and the system will automatically call your browser's print function. You can choose to print to a physical printer or save as a PDF file.
+                        {t('faq.questions.priceRange.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        🌍 What languages and currencies are supported?
+                        🖨️ {t('faq.questions.howToPrint.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Currently supports Chinese and English interfaces, with currency support for US Dollar ($), Chinese Yuan (¥), Euro (€), and other major currency symbols. We plan to add more language support in the future.
+                        {t('faq.questions.howToPrint.answer')}
                       </p>
                     </div>
                   </div>
@@ -700,37 +700,37 @@ export default function HomePage() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        📱 Does it support mobile devices?
+                        📱 {t('faq.questions.mobileSupport.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Yes, MakeReceipt uses responsive design and works perfectly on mobile phones, tablets, and computers. You can easily create receipts on any device.
+                        {t('faq.questions.mobileSupport.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        🧾 What receipt templates are available?
+                        🧾 {t('faq.questions.templates.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        We offer various professional templates: restaurant bills, retail receipts, POS terminal receipts, coffee shop receipts, gas station receipts, pharmacy receipts, and more to meet different scenario needs.
+                        {t('faq.questions.templates.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        ⚖️ Do the generated receipts have legal validity?
+                        ⚖️ {t('faq.questions.legalValidity.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        Our tool is primarily for educational, testing, and demonstration purposes. If you need to use it for commercial transactions, please ensure compliance with local laws and tax requirements.
+                        {t('faq.questions.legalValidity.answer')}
                       </p>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold mb-3 text-blue-600">
-                        🛠️ How can I get help if I encounter problems?
+                        🛠️ {t('faq.questions.getHelp.question')}
                       </h3>
                       <p className="text-muted-foreground">
-                        If you encounter any technical issues or have suggestions, please contact us at support@makereceipt.com and we'll respond as soon as possible.
+                        {t('faq.questions.getHelp.answer')}
                       </p>
                     </div>
                   </div>
@@ -738,12 +738,12 @@ export default function HomePage() {
 
                 {/* Additional Tips */}
                 <div className="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                  <h4 className="font-semibold text-blue-800 mb-2">💡 Usage Tips</h4>
+                  <h4 className="font-semibold text-blue-800 mb-2">💡 {t('faq.tips.title')}</h4>
                   <ul className="text-blue-700 space-y-1 text-sm">
-                    <li>• Use templates to get started quickly, then modify as needed</li>
-                    <li>• Check all information in the preview before printing</li>
-                    <li>• We recommend using Chrome or Firefox browsers for the best experience</li>
-                    <li>• Receipt data will be cleared after page refresh, so save needed content promptly</li>
+                    <li>• {t('faq.tips.tip1')}</li>
+                    <li>• {t('faq.tips.tip2')}</li>
+                    <li>• {t('faq.tips.tip3')}</li>
+                    <li>• {t('faq.tips.tip4')}</li>
                   </ul>
                 </div>
               </div>
