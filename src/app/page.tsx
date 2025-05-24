@@ -166,6 +166,23 @@ export default function HomePage() {
         notes: "ExtraCare Card Used\nSaved Today: $4.23\nCoupons Available: 3",
       },
     },
+    pos_terminal: {
+      name: "💳 POS机收据",
+      data: {
+        restaurantName: "2112\n212\n12",
+        restaurantAddress: "",
+        restaurantPhone: "",
+        receiptDate: "2024-05-24",
+        receiptTime: "11:07",
+        currency: "USD",
+        items: [
+          { id: 1, name: "PURCHASE", qty: 1, price: 45.67 },
+        ],
+        taxRate: 0,
+        tipAmount: 0,
+        notes: "SALE\nBATCH #:06B2D\nAPPR #:C8910\nTRACE #: 9\n\nAPPROVED\nTHANK YOU\nCUSTOMER COPY",
+      },
+    },
     chinese: {
       name: "🥢 中式餐厅",
       data: {
@@ -515,7 +532,7 @@ export default function HomePage() {
                     taxAmount={receiptData.restaurantName ? taxAmount.toFixed(2) : calculateTemplateTax(templates[selectedTemplate].data).toFixed(2)}
                     totalAmount={receiptData.restaurantName ? totalAmount.toFixed(2) : calculateTemplateTotal(templates[selectedTemplate].data).toFixed(2)}
                     onPrint={handlePrint}
-                    type={isUsingTemplate ? selectedTemplate : 'default'}
+                    type={isUsingTemplate ? selectedTemplate : (receiptData.restaurantName && receiptData.restaurantName !== templates[selectedTemplate].data.restaurantName ? 'default' : selectedTemplate)}
                   />
                 </CardContent>
               </Card>

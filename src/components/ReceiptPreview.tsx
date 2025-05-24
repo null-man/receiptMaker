@@ -98,6 +98,12 @@ export default function ReceiptPreview({
 
       // 创建PDF
       const imgData = canvas.toDataURL("image/png", 1.0);
+      console.log('PDF Canvas data URL:', imgData.substring(0, 50), '...', 'Length:', imgData.length);
+      
+      if (!imgData || imgData === "data:," || imgData.length < 100) {
+        throw new Error("生成的图片数据无效");
+      }
+      
       const pdf = new jsPDF({
         orientation: "portrait",
         unit: "mm",
@@ -120,7 +126,7 @@ export default function ReceiptPreview({
       pdf.addImage(imgData, "PNG", imgX, imgY, finalWidth, finalHeight);
       
       // 下载PDF
-      const fileName = `收据_${restaurantName || "餐厅"}_${receiptDate.replace(/-/g, '')}.pdf`;
+      const fileName = `receipt_${receiptDate.replace(/-/g, '')}.pdf`;
       pdf.save(fileName);
     } catch (error) {
       console.error("生成PDF失败:", error);
@@ -158,19 +164,51 @@ export default function ReceiptPreview({
       // 移除临时样式
       element.classList.remove("receipt-capture");
 
-      // 创建下载链接
-      const link = document.createElement("a");
-      link.download = `收据_${restaurantName || "餐厅"}_${receiptDate.replace(/-/g, '')}.png`;
-      link.href = canvas.toDataURL("image/png", 1.0);
-      
-      // 触发下载
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // 创建下载链接 - 使用Blob方法更稳定
+      canvas.toBlob((blob) => {
+        try {
+          if (!blob) {
+            console.error("生成图片Blob失败");
+            alert("生成图片失败，请重试");
+            setIsSavingImage(false);
+            return;
+          }
+          
+          console.log('Generated blob:', blob.size, 'bytes');
+          
+          const url = URL.createObjectURL(blob);
+          console.log('Created object URL:', url);
+          
+          const link = document.createElement("a");
+          link.download = `receipt_${receiptDate.replace(/-/g, '')}.png`;
+          link.href = url;
+          link.style.cssText = 'position: absolute; left: -9999px; visibility: hidden;';
+          link.rel = 'noopener';
+          link.target = '_self';
+          link.id = 'download-link-' + Date.now();
+          
+          // 触发下载
+          document.body.appendChild(link);
+          console.log('Clicking download link...');
+          link.click();
+          document.body.removeChild(link);
+          
+          // 清理URL对象
+          setTimeout(() => {
+            URL.revokeObjectURL(url);
+            console.log('Revoked object URL');
+          }, 1000);
+          
+          setIsSavingImage(false);
+        } catch (blobError) {
+          console.error("Blob处理失败:", blobError);
+          alert("下载失败，请重试");
+          setIsSavingImage(false);
+        }
+      }, "image/png", 1.0);
     } catch (error) {
       console.error("保存图片失败:", error);
       alert("保存图片失败，请重试");
-    } finally {
       setIsSavingImage(false);
     }
   };
@@ -234,6 +272,14 @@ export default function ReceiptPreview({
           address: "text-xs",
           spacing: "my-2"
         };
+      case 'pos_terminal':
+        return {
+          card: "receipt-preview mx-auto max-w-xs bg-white shadow-lg border",
+          content: "p-2 font-mono text-xs leading-none",
+          title: "text-xs font-bold mb-1 tracking-wider text-center",
+          address: "text-xs text-center",
+          spacing: "my-1"
+        };
       default:
         return {
           card: "receipt-preview mx-auto max-w-md bg-white shadow-lg",
@@ -250,24 +296,107 @@ export default function ReceiptPreview({
   return (
     <div id="receiptOutputContainer" className="space-y-6">
       {/* 收据预览 */}
-      <Card className={styles.card}>
+      <Card className={`${styles.card} receipt-preview`}>
         <CardContent className={styles.content}>
-          {/* 餐厅信息 */}
-          <div className={`text-center ${styles.spacing}`}>
-            <h3 className={styles.title}>
-              {restaurantName || "您的餐厅名称"}
-            </h3>
-            {restaurantAddress && (
-              <div className={`${styles.address} text-muted-foreground mb-1`}>
-                {restaurantAddress.split('\n').map((line, i) => (
-                  <div key={i}>{line}</div>
-                ))}
+          {type === 'pos_terminal' ? (
+            /* POS机收据特殊布局 */
+            <div className="text-left text-xs leading-none space-y-0" style={{
+              fontFamily: '"SF Mono", "Monaco", "Menlo", "Consolas", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace',
+              letterSpacing: '0.5px',
+              fontWeight: '700',
+              fontVariantNumeric: 'tabular-nums',
+              textRendering: 'optimizeSpeed',
+              WebkitFontSmoothing: 'none',
+              MozOsxFontSmoothing: 'unset',
+              fontSize: '11px',
+              lineHeight: '12px'
+            }}>
+              {/* 商户编号 - 分三行显示 */}
+              <div className="font-bold tracking-wider space-y-0">
+                <div>2112</div>
+                <div>212</div>
+                <div>12</div>
               </div>
-            )}
-            {restaurantPhone && (
-              <p className={`${styles.address} text-muted-foreground`}>{restaurantPhone}</p>
-            )}
-          </div>
+              
+              <div className="py-1"></div>
+              
+              {/* SALE 信息 */}
+              <div className="space-y-0">
+                <div className="font-bold tracking-wider">SALE</div>
+                <div className="flex justify-between">
+                  <span>{receiptDate.replace(/-/g, '/')}</span>
+                  <span>{receiptTime} AM</span>
+                </div>
+              </div>
+              
+              {/* 交易信息 */}
+              <div className="space-y-0">
+                <div>BATCH #:06B2D</div>
+                <div>APPR #:C8910</div>
+                <div>TRACE #: 9</div>
+              </div>
+              
+              <div className="py-4"></div>
+              <div className="text-right text-lg font-bold">$</div>
+              <div className="py-6"></div>
+              
+              {/* 金额部分 */}
+              <div className="space-y-1">
+                <div className="flex justify-between">
+                  <span>SUBTOTAL:</span>
+                  <span>{formatCurrency(subtotal, currency)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>•</span>
+                  <span>{formatCurrency(taxAmount, currency)}</span>
+                </div>
+                <div className="flex justify-between font-bold">
+                  <span>TOTAL:</span>
+                  <span>{formatCurrency(totalAmount, currency)}</span>
+                </div>
+                
+                <div className="py-2"></div>
+                
+                <div className="flex justify-between">
+                  <span>TIP:</span>
+                  <span>__________</span>
+                </div>
+                
+                <div className="py-1"></div>
+                
+                <div className="flex justify-between">
+                  <span>TOTAL:</span>
+                  <span>__________</span>
+                </div>
+              </div>
+              
+              <div className="py-8"></div>
+              
+              {/* 底部信息 */}
+              <div className="space-y-1 font-bold text-center">
+                <div>APPROVED</div>
+                <div>THANK YOU</div>
+                <div>CUSTOMER COPY</div>
+              </div>
+            </div>
+          ) : (
+            <>
+              {/* 餐厅信息 */}
+              <div className={`text-center ${styles.spacing}`}>
+                <h3 className={styles.title}>
+                  {restaurantName || "您的餐厅名称"}
+                </h3>
+                {restaurantAddress && (
+                  <div className={`${styles.address} text-muted-foreground mb-1`}>
+                    {restaurantAddress.split('\n').map((line, i) => (
+                      <div key={i}>{line}</div>
+                    ))}
+                  </div>
+                )}
+                {restaurantPhone && (
+                  <p className={`${styles.address} text-muted-foreground`}>{restaurantPhone}</p>
+                )}
+              </div>
 
           <Separator className={styles.spacing} />
 
@@ -280,7 +409,7 @@ export default function ReceiptPreview({
           <Separator className={styles.spacing} />
 
           {/* 项目标题 */}
-          {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && (
+          {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && type !== 'pos_terminal' && (
             <>
               <div className={`grid gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
                 <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : '项目'}</span>
@@ -296,6 +425,11 @@ export default function ReceiptPreview({
             {items.map((item, index) => {
               const itemTotal = (parseFloat(item.qty.toString()) || 0) * (parseFloat(item.price.toString()) || 0);
               const qty = parseFloat(item.qty.toString()) || 0;
+              
+              if (type === 'pos_terminal') {
+                // POS机收据特殊渲染 - 通常不显示单独的项目
+                return null;
+              }
               
               if (type === 'thermal' || type === 'gas') {
                 return (
@@ -388,12 +522,16 @@ export default function ReceiptPreview({
               </div>
             </>
           )}
-
-          {/* 收据底部信息 */}
-          <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
-            <p>收据编号: #{receiptNumber || "--------"}</p>
-            <p className="mt-1">ReceiptMaker 生成</p>
-          </div>
+              
+              {/* 收据底部信息 - 仅非POS机收据显示 */}
+              {type !== 'pos_terminal' && (
+                <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
+                  <p>收据编号: #{receiptNumber || "--------"}</p>
+                  <p className="mt-1">ReceiptMaker 生成</p>
+                </div>
+              )}
+            </>
+          )}
         </CardContent>
       </Card>
 
@@ -404,11 +542,16 @@ export default function ReceiptPreview({
           打印收据
         </Button>
         <Button 
-          onClick={handleDownloadPDF} 
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleDownloadPDF();
+          }} 
           variant="outline" 
           size="lg" 
           className="flex items-center gap-2"
           disabled={isDownloadingPDF}
+          type="button"
         >
           {isDownloadingPDF ? (
             <Loader2 className="h-5 w-5 animate-spin" />
@@ -418,11 +561,16 @@ export default function ReceiptPreview({
           {isDownloadingPDF ? "生成中..." : "下载 PDF"}
         </Button>
         <Button 
-          onClick={handleSaveAsImage} 
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleSaveAsImage();
+          }} 
           variant="outline" 
           size="lg" 
           className="flex items-center gap-2"
           disabled={isSavingImage}
+          type="button"
         >
           {isSavingImage ? (
             <Loader2 className="h-5 w-5 animate-spin" />
