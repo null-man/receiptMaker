@@ -28,6 +28,25 @@ interface ReceiptData {
 
 export default function HomePage() {
   const initialItem: ReceiptItem = { id: Date.now(), name: "", qty: 1, price: "" };
+  
+  // 示例数据
+  const sampleData: ReceiptData = {
+    restaurantName: "美味餐厅",
+    restaurantAddress: "北京市朝阳区建国门外大街1号",
+    restaurantPhone: "010-12345678",
+    receiptDate: "2024-05-23",
+    receiptTime: "18:30",
+    currency: "RMB",
+    items: [
+      { id: 1, name: "宫保鸡丁", qty: 1, price: 38 },
+      { id: 2, name: "麻婆豆腐", qty: 1, price: 22 },
+      { id: 3, name: "白米饭", qty: 2, price: 3 },
+    ],
+    taxRate: 10,
+    tipAmount: 5,
+    notes: "谢谢惠顾，欢迎下次光临！",
+  };
+
   const [receiptData, setReceiptData] = useState<ReceiptData>({
     restaurantName: "",
     restaurantAddress: "",
@@ -40,7 +59,6 @@ export default function HomePage() {
     tipAmount: 0,
     notes: "",
   });
-  const [showPreview, setShowPreview] = useState<boolean>(false);
 
   useEffect(() => {
     // 初始化日期和时间
@@ -135,7 +153,6 @@ export default function HomePage() {
       alert("请确保所有项目都填写了有效的名称、数量和单价");
       return;
     }
-    setShowPreview(true);
     // 滚动到预览区域
     setTimeout(() => {
       const previewElement = document.getElementById("receiptOutputContainer");
@@ -175,53 +192,62 @@ export default function HomePage() {
               现代化收据生成器
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              简单易用的在线收据生成工具，支持多种货币和自定义样式，让您的业务更加专业。
+              简单易用的在线收据生成工具，支持多种货币和自定义样式。左侧填写信息，右侧实时预览效果。
             </p>
           </div>
 
-          {/* Form Card */}
-          <Card className="w-full max-w-4xl mx-auto mb-8">
-            <CardHeader>
-              <CardTitle className="text-2xl">创建收据</CardTitle>
-              <CardDescription>
-                填写下方信息生成专业的收据文档
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ReceiptForm
-                formData={receiptData}
-                onInputChange={handleInputChange}
-                onItemChange={handleItemChange}
-                onAddItem={addItem}
-                onRemoveItem={removeItem}
-                onSubmit={handleSubmit}
-                subtotal={subtotal}
-                taxAmount={taxAmount}
-                totalAmount={totalAmount}
-              />
-            </CardContent>
-          </Card>
+          {/* 表单和预览并排布局 */}
+          <div className="grid xl:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* 左侧：表单 */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">创建收据</CardTitle>
+                  <CardDescription>
+                    填写下方信息生成专业的收据文档
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ReceiptForm
+                    formData={receiptData}
+                    onInputChange={handleInputChange}
+                    onItemChange={handleItemChange}
+                    onAddItem={addItem}
+                    onRemoveItem={removeItem}
+                    onSubmit={handleSubmit}
+                    subtotal={subtotal}
+                    taxAmount={taxAmount}
+                    totalAmount={totalAmount}
+                  />
+                </CardContent>
+              </Card>
+            </div>
 
-          {/* Preview Card */}
-          {showPreview && (
-            <Card className="w-full max-w-4xl mx-auto">
-              <CardHeader>
-                <CardTitle className="text-2xl">收据预览</CardTitle>
-                <CardDescription>
-                  请检查收据信息，确认无误后可以打印
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ReceiptPreview
-                  data={receiptData}
-                  subtotal={subtotal.toFixed(2)}
-                  taxAmount={taxAmount.toFixed(2)}
-                  totalAmount={totalAmount.toFixed(2)}
-                  onPrint={handlePrint}
-                />
-              </CardContent>
-            </Card>
-          )}
+            {/* 右侧：实时预览 */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">
+                    {receiptData.restaurantName ? "实时预览" : "示例预览"}
+                  </CardTitle>
+                  <CardDescription>
+                    {receiptData.restaurantName 
+                      ? "您的收据实时预览，填写左侧表单查看变化" 
+                      : "填写左侧表单查看您的收据效果"}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ReceiptPreview
+                    data={receiptData.restaurantName ? receiptData : sampleData}
+                    subtotal={receiptData.restaurantName ? subtotal.toFixed(2) : "66.00"}
+                    taxAmount={receiptData.restaurantName ? taxAmount.toFixed(2) : "6.60"}
+                    totalAmount={receiptData.restaurantName ? totalAmount.toFixed(2) : "77.60"}
+                    onPrint={handlePrint}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </main>
 
