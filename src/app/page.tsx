@@ -224,6 +224,7 @@ export default function HomePage() {
   
   const [nextItemId, setNextItemId] = useState(2);
   const [showTemplateSelector, setShowTemplateSelector] = useState(false);
+  const [isUsingTemplate, setIsUsingTemplate] = useState(false);
 
   useEffect(() => {
     // 初始化日期和时间
@@ -243,6 +244,8 @@ export default function HomePage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    // 用户开始修改数据时，退出模板模式
+    setIsUsingTemplate(false);
     setReceiptData((prevData) => ({
       ...prevData,
       [name]:
@@ -254,6 +257,8 @@ export default function HomePage() {
 
   const handleItemChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    // 用户开始修改项目时，退出模板模式
+    setIsUsingTemplate(false);
     const newItems = [...receiptData.items];
     newItems[index] = {
       ...newItems[index],
@@ -338,6 +343,8 @@ export default function HomePage() {
     setReceiptData(template.data);
     // 重置ID计数器
     setNextItemId(template.data.items.length + 1);
+    // 设置正在使用模板
+    setIsUsingTemplate(true);
     // 隐藏模板选择器
     setShowTemplateSelector(false);
     // 滚动到页面顶部，确保重选模板按钮可见
@@ -365,6 +372,7 @@ export default function HomePage() {
     });
     setNextItemId(2);
     setShowTemplateSelector(false);
+    setIsUsingTemplate(false);
     // 重新初始化日期时间
     const now = new Date();
     const YYYY = now.getFullYear();
@@ -507,7 +515,7 @@ export default function HomePage() {
                     taxAmount={receiptData.restaurantName ? taxAmount.toFixed(2) : calculateTemplateTax(templates[selectedTemplate].data).toFixed(2)}
                     totalAmount={receiptData.restaurantName ? totalAmount.toFixed(2) : calculateTemplateTotal(templates[selectedTemplate].data).toFixed(2)}
                     onPrint={handlePrint}
-                    type={receiptData.restaurantName ? 'default' : selectedTemplate}
+                    type={isUsingTemplate ? selectedTemplate : 'default'}
                   />
                 </CardContent>
               </Card>

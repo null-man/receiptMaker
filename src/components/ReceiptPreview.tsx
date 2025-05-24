@@ -280,9 +280,9 @@ export default function ReceiptPreview({
           <Separator className={styles.spacing} />
 
           {/* 项目标题 */}
-          {type !== 'thermal' && type !== 'gas' && (
+          {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && (
             <>
-              <div className={`grid grid-cols-3 gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
+              <div className={`grid gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
                 <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : '项目'}</span>
                 <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'QTY' : '数量'}</span>
                 <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'AMOUNT' : '金额'}</span>
@@ -313,9 +313,23 @@ export default function ReceiptPreview({
                 );
               }
               
+              if (type === 'restaurant') {
+                return (
+                  <div key={item.id || index} className="flex justify-between text-sm">
+                    <div className="flex-1 pr-4">
+                      <div className="font-medium">{item.name || "未命名项目"}</div>
+                      {qty !== 1 && (
+                        <div className="text-xs text-muted-foreground">数量: {qty}</div>
+                      )}
+                    </div>
+                    <span className="font-semibold">{formatCurrency(itemTotal.toString(), currency)}</span>
+                  </div>
+                );
+              }
+              
               return (
-                <div key={item.id || index} className={`grid grid-cols-3 gap-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
-                  <span className="truncate">{item.name || "未命名项目"}</span>
+                <div key={item.id || index} className={`grid gap-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
+                  <span className="break-words">{item.name || "未命名项目"}</span>
                   <span className="text-right">{qty}</span>
                   <span className="text-right">{formatCurrency(itemTotal.toString(), currency)}</span>
                 </div>
