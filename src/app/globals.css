@@ -1,6 +1,41 @@
 @tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
 @tailwind components;
 @tailwind utilities;
+
+/* 热敏打印机字体 */
+@font-face {
+  font-family: 'Fake Receipt';
+  src: url('/fonts/Fake Receipt.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 热敏打印机字体样式 */
+.thermal-printer-font {
+  font-family: 'Fake Receipt', 'Inconsolata', 'OCR A Extended', 'Courier New', 'Lucida Console', monospace !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  line-height: 11px !important;
+  letter-spacing: 0.3px !important;
+  text-rendering: optimizeSpeed !important;
+  -webkit-font-smoothing: none !important;
+  -moz-osx-font-smoothing: unset !important;
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: "tnum" 1 !important;
+  /* 增强点阵效果 */
+  text-shadow: none !important;
+  font-stretch: normal !important;
+}
+
+/* POS机收据专用样式 - 匹配 819 × 1361 比例 */
+.pos-receipt-container {
+  width: 245px !important;  /* 基于819比例计算的适当宽度 */
+  min-height: 407px !important;  /* 基于1361比例计算的最小高度 */
+  max-width: none !important;
+}
 
 
 

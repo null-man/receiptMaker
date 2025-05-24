@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { PlusCircle, Trash2, Calculator, Receipt } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface ReceiptItem {
   id: number;
@@ -22,6 +23,7 @@ interface ReceiptItem {
 
 interface ReceiptData {
   restaurantName: string;
+  restaurantCity: string;
   restaurantAddress: string;
   restaurantPhone: string;
   receiptDate: string;
@@ -56,6 +58,46 @@ export default function ReceiptForm({
   taxAmount,
   totalAmount,
 }: ReceiptFormProps) {
+  // 解析12小时制时间格式（如 "11:07 AM"）为组件状态
+  const parseTime12Hour = (timeStr: string) => {
+    if (!timeStr) return { hours: '12', minutes: '00', ampm: 'AM' };
+    
+    const match = timeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+    if (match) {
+      return {
+        hours: match[1].padStart(2, '0'),
+        minutes: match[2],
+        ampm: match[3].toUpperCase()
+      };
+    }
+    
+    // 如果格式不匹配，返回默认值
+    return { hours: '12', minutes: '00', ampm: 'AM' };
+  };
+
+  // 初始化时间状态
+  const initialTime = parseTime12Hour(formData.receiptTime);
+  const [timeState, setTimeState] = useState(initialTime);
+
+  // 当formData.receiptTime变化时更新timeState
+  useEffect(() => {
+    const parsedTime = parseTime12Hour(formData.receiptTime);
+    setTimeState(parsedTime);
+  }, [formData.receiptTime]);
+
+  // 处理时间变化
+  const handleTimeChange = (field: 'hours' | 'minutes' | 'ampm', value: string) => {
+    const newTimeState = { ...timeState, [field]: value };
+    setTimeState(newTimeState);
+    
+    // 构建12小时制时间字符串并更新formData
+    const timeString = `${newTimeState.hours}:${newTimeState.minutes} ${newTimeState.ampm}`;
+    const syntheticEvent = {
+      target: { name: 'receiptTime', value: timeString }
+    } as React.ChangeEvent<HTMLInputElement>;
+    onInputChange(syntheticEvent);
+  };
+
   const handleCurrencyChange = (value: string) => {
     const syntheticEvent = {
       target: { name: 'currency', value }
@@ -87,6 +129,28 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="restaurantCity">城市</Label>
+              <Input
+                id="restaurantCity"
+                name="restaurantCity"
+                value={formData.restaurantCity}
+                onChange={onInputChange}
+                placeholder="请输入城市信息"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="restaurantAddress">地址</Label>
+              <Input
+                id="restaurantAddress"
+                name="restaurantAddress"
+                value={formData.restaurantAddress}
+                onChange={onInputChange}
+                placeholder="请输入餐厅地址"
+              />
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="restaurantPhone">联系电话</Label>
               <Input
                 id="restaurantPhone"
@@ -94,49 +158,6 @@ export default function ReceiptForm({
                 value={formData.restaurantPhone}
                 onChange={onInputChange}
                 placeholder="请输入联系电话"
-              />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="restaurantAddress">地址</Label>
-            <Input
-              id="restaurantAddress"
-              name="restaurantAddress"
-              value={formData.restaurantAddress}
-              onChange={onInputChange}
-              placeholder="请输入餐厅地址"
-            />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* 收据详情 */}
-      <Card>
-        <CardHeader>
-          <CardTitle>收据详情</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="receiptDate">日期 *</Label>
-              <Input
-                type="date"
-                id="receiptDate"
-                name="receiptDate"
-                value={formData.receiptDate}
-                onChange={onInputChange}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="receiptTime">时间 *</Label>
-              <Input
-                type="time"
-                id="receiptTime"
-                name="receiptTime"
-                value={formData.receiptTime}
-                onChange={onInputChange}
-                required
               />
             </div>
             <div className="space-y-2">
@@ -153,6 +174,81 @@ export default function ReceiptForm({
                   <SelectItem value="¥">日元 (¥)</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+          </div>
+
+        </CardContent>
+      </Card>
+
+      {/* 收据详情 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>收据详情</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="receiptDate">日期 *</Label>
+              <Input
+                type="date"
+                id="receiptDate"
+                name="receiptDate"
+                value={formData.receiptDate}
+                onChange={onInputChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="receiptTime">时间 *</Label>
+              <div className="flex gap-2">
+                {/* 小时选择 */}
+                <Select value={timeState.hours} onValueChange={(value) => handleTimeChange('hours', value)}>
+                  <SelectTrigger className="w-20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 12 }, (_, i) => {
+                      const hour = i + 1;
+                      const hourStr = hour.toString().padStart(2, '0');
+                      return (
+                        <SelectItem key={hourStr} value={hourStr}>
+                          {hourStr}
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
+                
+                <span className="flex items-center">:</span>
+                
+                {/* 分钟选择 */}
+                <Select value={timeState.minutes} onValueChange={(value) => handleTimeChange('minutes', value)}>
+                  <SelectTrigger className="w-20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 60 }, (_, i) => {
+                      const minute = i.toString().padStart(2, '0');
+                      return (
+                        <SelectItem key={minute} value={minute}>
+                          {minute}
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
+                
+                {/* AM/PM 选择 */}
+                <Select value={timeState.ampm} onValueChange={(value) => handleTimeChange('ampm', value)}>
+                  <SelectTrigger className="w-20">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="AM">AM</SelectItem>
+                    <SelectItem value="PM">PM</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -315,4 +411,4 @@ export default function ReceiptForm({
       </div>
     </form>
   );
-} 
+}

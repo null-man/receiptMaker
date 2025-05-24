@@ -3,6 +3,13 @@
 import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import ReceiptForm from "@/components/ReceiptForm";
 import ReceiptPreview from "@/components/ReceiptPreview";
 
@@ -15,6 +22,7 @@ interface ReceiptItem {
 
 interface ReceiptData {
   restaurantName: string;
+  restaurantCity: string;
   restaurantAddress: string;
   restaurantPhone: string;
   receiptDate: string;
@@ -31,15 +39,34 @@ export default function HomePage() {
   
   // 模板数据
   const templates = {
+    pos_terminal: {
+      name: "💳 POS机收据",
+      data: {
+        restaurantName: "YOUR BUSINESS",
+        restaurantCity: "NEW YORK, NY",
+        restaurantAddress: "123 MAIN ST",
+        restaurantPhone: "",
+        receiptDate: "2024-05-24",
+        receiptTime: "11:07 AM",
+        currency: "$",
+        items: [
+          { id: 1, name: "PURCHASE", qty: 1, price: 45.67 },
+        ],
+        taxRate: 0,
+        tipAmount: 0,
+        notes: "SALE\nBATCH #:06B2D\nAPPR #:C8910\nTRACE #: 9\n\nAPPROVED\nTHANK YOU\nCUSTOMER COPY",
+      },
+    },
     thermal: {
       name: "🧾 热敏纸收据",
       data: {
         restaurantName: "McDONALD'S #2847",
-        restaurantAddress: "1234 BROADWAY ST\nNEW YORK NY 10001",
+        restaurantCity: "NEW YORK, NY",
+        restaurantAddress: "1234 BROADWAY ST",
         restaurantPhone: "",
         receiptDate: "2024-01-15",
-        receiptTime: "11:47",
-        currency: "USD",
+        receiptTime: "11:47 AM",
+        currency: "$",
         items: [
           { id: 1, name: "BIG MAC", qty: 1, price: 5.69 },
           { id: 2, name: "MEDIUM FRIES", qty: 1, price: 2.79 },
@@ -54,11 +81,12 @@ export default function HomePage() {
       name: "🏪 POS零售收据",
       data: {
         restaurantName: "TARGET T-1847",
-        restaurantAddress: "2500 CENTRAL AVE\nST PAUL MN 55108",
+        restaurantCity: "ST PAUL, MN",
+        restaurantAddress: "2500 CENTRAL AVE",
         restaurantPhone: "(651) 555-0199",
         receiptDate: "2024-01-15",
-        receiptTime: "16:23",
-        currency: "USD",
+        receiptTime: "04:23 PM",
+        currency: "$",
         items: [
           { id: 1, name: "IPHONE CHARGER", qty: 1, price: 19.99 },
           { id: 2, name: "NOTEBOOK 3-PACK", qty: 1, price: 7.49 },
@@ -73,11 +101,12 @@ export default function HomePage() {
       name: "🍽️ 餐厅账单",
       data: {
         restaurantName: "The Olive Garden",
-        restaurantAddress: "123 Italian Way, Boston MA 02101",
+        restaurantCity: "BOSTON, MA",
+        restaurantAddress: "123 Italian Way",
         restaurantPhone: "(617) 555-OLIVE",
         receiptDate: "2024-01-15",
-        receiptTime: "19:30",
-        currency: "USD",
+        receiptTime: "07:30 PM",
+        currency: "$",
         items: [
           { id: 1, name: "Chicken Parmigiana", qty: 1, price: 18.99 },
           { id: 2, name: "Caesar Salad", qty: 1, price: 8.99 },
@@ -93,11 +122,12 @@ export default function HomePage() {
       name: "☕ 咖啡店收据",
       data: {
         restaurantName: "Starbucks Coffee",
-        restaurantAddress: "456 Pike Place\nSeattle WA 98101",
+        restaurantCity: "SEATTLE, WA",
+        restaurantAddress: "456 Pike Place",
         restaurantPhone: "",
         receiptDate: "2024-01-15",
-        receiptTime: "08:15",
-        currency: "USD",
+        receiptTime: "08:15 AM",
+        currency: "$",
         items: [
           { id: 1, name: "Grande Caffe Latte", qty: 1, price: 5.45 },
           { id: 2, name: "Blueberry Muffin", qty: 1, price: 3.25 },
@@ -112,11 +142,12 @@ export default function HomePage() {
       name: "⛽ 加油站收据",
       data: {
         restaurantName: "SHELL STATION #4821",
-        restaurantAddress: "7890 HIGHWAY 101\nLOS ANGELES CA 90028",
+        restaurantCity: "LOS ANGELES, CA",
+        restaurantAddress: "7890 HIGHWAY 101",
         restaurantPhone: "",
         receiptDate: "2024-01-15",
-        receiptTime: "13:42",
-        currency: "USD",
+        receiptTime: "01:42 PM",
+        currency: "$",
         items: [
           { id: 1, name: "UNLEADED 87 (12.5 GAL)", qty: 1, price: 45.75 },
           { id: 2, name: "ENERGY DRINK", qty: 1, price: 2.49 },
@@ -131,11 +162,12 @@ export default function HomePage() {
       name: "🛒 高端超市收据",
       data: {
         restaurantName: "WHOLE FOODS MARKET",
-        restaurantAddress: "555 UNION SQUARE\nSAN FRANCISCO CA 94108",
+        restaurantCity: "SAN FRANCISCO, CA",
+        restaurantAddress: "555 UNION SQUARE",
         restaurantPhone: "(415) 555-FOOD",
         receiptDate: "2024-01-15",
-        receiptTime: "17:28",
-        currency: "USD",
+        receiptTime: "05:28 PM",
+        currency: "$",
         items: [
           { id: 1, name: "Organic Apples (2.3 lb)", qty: 1, price: 6.89 },
           { id: 2, name: "Almond Milk Unsweetened", qty: 1, price: 4.99 },
@@ -151,11 +183,12 @@ export default function HomePage() {
       name: "💊 药店收据",
       data: {
         restaurantName: "CVS PHARMACY #9847",
-        restaurantAddress: "321 MAIN STREET\nCHICAGO IL 60601",
+        restaurantCity: "CHICAGO, IL",
+        restaurantAddress: "321 MAIN STREET",
         restaurantPhone: "(312) 555-CVS1",
         receiptDate: "2024-01-15",
-        receiptTime: "14:15",
-        currency: "USD",
+        receiptTime: "02:15 PM",
+        currency: "$",
         items: [
           { id: 1, name: "TYLENOL EXTRA STRENGTH", qty: 1, price: 8.99 },
           { id: 2, name: "VITAMIN D3", qty: 1, price: 12.49 },
@@ -166,31 +199,15 @@ export default function HomePage() {
         notes: "ExtraCare Card Used\nSaved Today: $4.23\nCoupons Available: 3",
       },
     },
-    pos_terminal: {
-      name: "💳 POS机收据",
-      data: {
-        restaurantName: "2112\n212\n12",
-        restaurantAddress: "",
-        restaurantPhone: "",
-        receiptDate: "2024-05-24",
-        receiptTime: "11:07",
-        currency: "USD",
-        items: [
-          { id: 1, name: "PURCHASE", qty: 1, price: 45.67 },
-        ],
-        taxRate: 0,
-        tipAmount: 0,
-        notes: "SALE\nBATCH #:06B2D\nAPPR #:C8910\nTRACE #: 9\n\nAPPROVED\nTHANK YOU\nCUSTOMER COPY",
-      },
-    },
     chinese: {
       name: "🥢 中式餐厅",
       data: {
         restaurantName: "川香阁",
-        restaurantAddress: "北京市朝阳区三里屯路12号",
+        restaurantCity: "北京市朝阳区",
+        restaurantAddress: "三里屯路12号",
         restaurantPhone: "(010) 8765-4321",
         receiptDate: "2024-01-15",
-        receiptTime: "19:30",
+        receiptTime: "07:30 PM",
         currency: "RMB",
         items: [
           { id: 1, name: "宫保鸡丁", qty: 1, price: 28 },
@@ -204,7 +221,7 @@ export default function HomePage() {
     },
   };
 
-  const [selectedTemplate, setSelectedTemplate] = useState<keyof typeof templates>('thermal');
+  const [selectedTemplate, setSelectedTemplate] = useState<keyof typeof templates>('pos_terminal');
 
   // 计算模板金额
   const calculateTemplateSubtotal = (templateData: ReceiptData) => {
@@ -228,11 +245,12 @@ export default function HomePage() {
 
   const [receiptData, setReceiptData] = useState<ReceiptData>({
     restaurantName: "",
+    restaurantCity: "",
     restaurantAddress: "",
     restaurantPhone: "",
     receiptDate: "",
     receiptTime: "",
-    currency: "RMB",
+    currency: "$",
     items: [initialItem],
     taxRate: 0,
     tipAmount: 0,
@@ -242,27 +260,53 @@ export default function HomePage() {
   const [nextItemId, setNextItemId] = useState(2);
   const [showTemplateSelector, setShowTemplateSelector] = useState(false);
   const [isUsingTemplate, setIsUsingTemplate] = useState(false);
+  const [currentTemplateType, setCurrentTemplateType] = useState<string>("");
+
+  // 格式化时间为12小时制并添加AM/PM
+  const formatTimeWithAMPM = (date: Date) => {
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    // 转换为12小时制
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0点显示为12点
+    const formattedHours = String(hours).padStart(2, "0");
+    
+    return `${formattedHours}:${minutes} ${ampm}`;
+  };
+
+  // 模板名称映射
+  const getTemplateName = (templateKey: string) => {
+    const templateNames: { [key: string]: string } = {
+      thermal: "🧾 热敏纸收据",
+      pos: "🏪 POS零售收据", 
+      restaurant: "🍽️ 餐厅账单",
+      coffee: "☕ 咖啡店收据",
+      gas: "⛽ 加油站收据",
+      grocery: "🛒 高端超市收据",
+      pharmacy: "💊 药店收据",
+      pos_terminal: "💳 POS机收据"
+    };
+    return templateNames[templateKey] || "收据模板";
+  };
 
   useEffect(() => {
-    // 初始化日期和时间
+    // 初始化日期和时间，并默认使用POS机模板
     const now = new Date();
     const YYYY = now.getFullYear();
     const MM = String(now.getMonth() + 1).padStart(2, "0");
     const DD = String(now.getDate()).padStart(2, "0");
-    const hh = String(now.getHours()).padStart(2, "0");
-    const mm = String(now.getMinutes()).padStart(2, "0");
+    const formattedTime = formatTimeWithAMPM(now);
 
-    setReceiptData((prevData) => ({
-      ...prevData,
-      receiptDate: `${YYYY}-${MM}-${DD}`,
-      receiptTime: `${hh}:${mm}`,
-    }));
+    // 设置POS机模板作为默认
+    useTemplate('pos_terminal');
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    // 用户开始修改数据时，退出模板模式
-    setIsUsingTemplate(false);
+    // 只有在用户修改核心数据时才退出模板模式（保持模板样式但允许编辑内容）
+    // 不退出模板模式，保持当前模板样式
     setReceiptData((prevData) => ({
       ...prevData,
       [name]:
@@ -274,8 +318,7 @@ export default function HomePage() {
 
   const handleItemChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // 用户开始修改项目时，退出模板模式
-    setIsUsingTemplate(false);
+    // 保持模板模式，允许用户编辑项目内容
     const newItems = [...receiptData.items];
     newItems[index] = {
       ...newItems[index],
@@ -362,6 +405,8 @@ export default function HomePage() {
     setNextItemId(template.data.items.length + 1);
     // 设置正在使用模板
     setIsUsingTemplate(true);
+    // 保存当前模板类型
+    setCurrentTemplateType(templateKey);
     // 隐藏模板选择器
     setShowTemplateSelector(false);
     // 滚动到页面顶部，确保重选模板按钮可见
@@ -377,11 +422,12 @@ export default function HomePage() {
   const clearForm = () => {
     setReceiptData({
       restaurantName: "",
+      restaurantCity: "",
       restaurantAddress: "",
       restaurantPhone: "",
       receiptDate: "",
       receiptTime: "",
-      currency: "RMB",
+      currency: "$",
       items: [initialItem],
       taxRate: 0,
       tipAmount: 0,
@@ -390,19 +436,19 @@ export default function HomePage() {
     setNextItemId(2);
     setShowTemplateSelector(false);
     setIsUsingTemplate(false);
+    setCurrentTemplateType("");
     // 重新初始化日期时间
     const now = new Date();
     const YYYY = now.getFullYear();
     const MM = String(now.getMonth() + 1).padStart(2, "0");
     const DD = String(now.getDate()).padStart(2, "0");
-    const hh = String(now.getHours()).padStart(2, "0");
-    const mm = String(now.getMinutes()).padStart(2, "0");
+    const formattedTime = formatTimeWithAMPM(now);
     
     setTimeout(() => {
       setReceiptData(prev => ({
         ...prev,
         receiptDate: `${YYYY}-${MM}-${DD}`,
-        receiptTime: `${hh}:${mm}`,
+        receiptTime: formattedTime,
       }));
     }, 0);
   };
@@ -466,81 +512,64 @@ export default function HomePage() {
 
             {/* 右侧：实时预览 */}
             <div className="space-y-6">
-              <Card>
+              <Card className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">{/* 使预览区域跟随滚动并限制高度 */}
                 <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-2xl">
-                        {receiptData.restaurantName ? "实时预览" : "示例预览"}
-                      </CardTitle>
-                      <CardDescription>
-                        {receiptData.restaurantName 
-                          ? "您的收据实时预览，填写左侧表单查看变化" 
-                          : "选择下方模板查看不同风格效果"}
-                      </CardDescription>
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-2xl">
+                          实时预览
+                        </CardTitle>
+                        <CardDescription>
+                          选择模板或自定义收据内容
+                        </CardDescription>
+                      </div>
                     </div>
-                    {receiptData.restaurantName && !showTemplateSelector && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          setShowTemplateSelector(true);
-                          // 滚动到模板选择区域
-                          setTimeout(() => {
-                            const templateElement = document.getElementById("template-selector");
-                            if (templateElement) {
-                              // 获取元素顶部位置，减去一些偏移量确保标题完全可见
-                              const elementTop = templateElement.offsetTop - 100;
-                              window.scrollTo({
-                                top: elementTop,
-                                behavior: "smooth"
-                              });
-                            }
-                          }, 100);
-                        }}
-                        className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-200 transition-colors"
-                      >
-                        🔄 重选模板
-                      </Button>
-                    )}
-                    {!receiptData.restaurantName && !showTemplateSelector && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          const templateElement = document.getElementById("template-selector");
-                          if (templateElement) {
-                            // 获取元素顶部位置，减去一些偏移量确保标题完全可见
-                            const elementTop = templateElement.offsetTop - 100;
-                            window.scrollTo({
-                              top: elementTop,
-                              behavior: "smooth"
-                            });
+                    
+                    {/* 快速模板选择器 */}
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border">
+                      <span className="text-sm font-medium text-gray-700">收据模板:</span>
+                      <Select
+                        value={isUsingTemplate ? currentTemplateType : 'default'}
+                        onValueChange={(value) => {
+                          if (value === 'default') {
+                            clearForm();
+                          } else {
+                            useTemplate(value as keyof typeof templates);
                           }
                         }}
-                        className="flex items-center gap-2 text-blue-600 hover:text-blue-800"
                       >
-                        👇 查看更多模板
-                      </Button>
-                    )}
+                        <SelectTrigger className="flex-1">
+                          <SelectValue placeholder="选择模板" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="default">🧾 自定义收据</SelectItem>
+                          {Object.entries(templates).map(([key, template]) => (
+                            <SelectItem key={key} value={key}>
+                              {template.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <ReceiptPreview
-                    data={receiptData.restaurantName ? receiptData : templates[selectedTemplate].data}
-                    subtotal={receiptData.restaurantName ? subtotal.toFixed(2) : calculateTemplateSubtotal(templates[selectedTemplate].data).toFixed(2)}
-                    taxAmount={receiptData.restaurantName ? taxAmount.toFixed(2) : calculateTemplateTax(templates[selectedTemplate].data).toFixed(2)}
-                    totalAmount={receiptData.restaurantName ? totalAmount.toFixed(2) : calculateTemplateTotal(templates[selectedTemplate].data).toFixed(2)}
+                    data={receiptData}
+                    subtotal={subtotal.toFixed(2)}
+                    taxAmount={taxAmount.toFixed(2)}
+                    totalAmount={totalAmount.toFixed(2)}
                     onPrint={handlePrint}
-                    type={isUsingTemplate ? selectedTemplate : (receiptData.restaurantName && receiptData.restaurantName !== templates[selectedTemplate].data.restaurantName ? 'default' : selectedTemplate)}
+                    type={isUsingTemplate ? currentTemplateType : 'default'}
                   />
                 </CardContent>
               </Card>
             </div>
           </div>
 
-          {/* 模板选择区域 */}
-          {(!receiptData.restaurantName || showTemplateSelector) && (
+          {/* 模板选择区域 - 隐藏，使用顶部下拉选择器 */}
+          {false && (
             <Card id="template-selector" className="max-w-7xl mx-auto mt-12">
               <CardHeader>
                 <CardTitle className="text-2xl text-center">选择票据模板</CardTitle>

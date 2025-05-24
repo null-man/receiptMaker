@@ -15,6 +15,7 @@ interface ReceiptItem {
 
 interface ReceiptData {
   restaurantName: string;
+  restaurantCity: string;
   restaurantAddress: string;
   restaurantPhone: string;
   receiptDate: string;
@@ -53,6 +54,7 @@ export default function ReceiptPreview({
 
   const {
     restaurantName,
+    restaurantCity,
     restaurantAddress,
     restaurantPhone,
     receiptDate,
@@ -274,7 +276,7 @@ export default function ReceiptPreview({
         };
       case 'pos_terminal':
         return {
-          card: "receipt-preview mx-auto max-w-xs bg-white shadow-lg border",
+          card: "receipt-preview mx-auto bg-white shadow-lg border pos-receipt-container",
           content: "p-2 font-mono text-xs leading-none",
           title: "text-xs font-bold mb-1 tracking-wider text-center",
           address: "text-xs text-center",
@@ -299,81 +301,79 @@ export default function ReceiptPreview({
       <Card className={`${styles.card} receipt-preview`}>
         <CardContent className={styles.content}>
           {type === 'pos_terminal' ? (
-            /* POS机收据特殊布局 */
-            <div className="text-left text-xs leading-none space-y-0" style={{
-              fontFamily: '"SF Mono", "Monaco", "Menlo", "Consolas", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace',
-              letterSpacing: '0.5px',
-              fontWeight: '700',
-              fontVariantNumeric: 'tabular-nums',
-              textRendering: 'optimizeSpeed',
-              WebkitFontSmoothing: 'none',
-              MozOsxFontSmoothing: 'unset',
-              fontSize: '11px',
-              lineHeight: '12px'
+            /* POS机收据特殊布局 - 完全匹配用户图片 */
+            <div className="text-left thermal-printer-font leading-none" style={{
+              textTransform: 'uppercase'
             }}>
-              {/* 商户编号 - 分三行显示 */}
-              <div className="font-bold tracking-wider space-y-0">
-                <div>2112</div>
-                <div>212</div>
-                <div>12</div>
+              {/* 餐厅信息 */}
+              <div className="space-y-0">
+                <div>{restaurantName.toUpperCase() || "YOUR RESTAURANT"}</div>
+                {restaurantCity && (
+                  <div>{restaurantCity.toUpperCase()}</div>
+                )}
+                {restaurantAddress && (
+                  <div>{restaurantAddress.toUpperCase()}</div>
+                )}
+                {restaurantPhone && (
+                  <div>{restaurantPhone}</div>
+                )}
               </div>
               
-              <div className="py-1"></div>
+              <div className="mb-1"></div>
               
               {/* SALE 信息 */}
-              <div className="space-y-0">
-                <div className="font-bold tracking-wider">SALE</div>
-                <div className="flex justify-between">
-                  <span>{receiptDate.replace(/-/g, '/')}</span>
-                  <span>{receiptTime} AM</span>
-                </div>
-              </div>
-              
-              {/* 交易信息 */}
-              <div className="space-y-0">
-                <div>BATCH #:06B2D</div>
-                <div>APPR #:C8910</div>
+              <div className="text-left space-y-0 mb-0 mt-2">
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SALE</div>
+                <div>{receiptDate.replace(/-/g, '/')}    {receiptTime}</div>
+                <div>BATCH #:0DE85</div>
+                <div>APPR #:A359A</div>
                 <div>TRACE #: 9</div>
               </div>
               
-              <div className="py-4"></div>
-              <div className="text-right text-lg font-bold">$</div>
-              <div className="py-6"></div>
-              
-              {/* 金额部分 */}
-              <div className="space-y-1">
-                <div className="flex justify-between">
-                  <span>SUBTOTAL:</span>
-                  <span>{formatCurrency(subtotal, currency)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>•</span>
-                  <span>{formatCurrency(taxAmount, currency)}</span>
-                </div>
-                <div className="flex justify-between font-bold">
-                  <span>TOTAL:</span>
-                  <span>{formatCurrency(totalAmount, currency)}</span>
-                </div>
-                
-                <div className="py-2"></div>
-                
-                <div className="flex justify-between">
-                  <span>TIP:</span>
-                  <span>__________</span>
-                </div>
-                
-                <div className="py-1"></div>
-                
-                <div className="flex justify-between">
-                  <span>TOTAL:</span>
-                  <span>__________</span>
-                </div>
+              {/* 商品信息 */}
+              <div className="space-y-0 mb-0 mt-2">
+                {items.length > 0 ? (
+                  <>
+                    {items.map((item, index) => (
+                      <div key={index} style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                        <span>{item.qty}</span>
+                        <span>{item.name.toUpperCase()}</span>
+                        <span>{formatCurrency(((parseFloat(item.price.toString()) || 0) * (parseFloat(item.qty.toString()) || 0)).toString(), currency)}</span>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <div>kkkkk</div>
+                    <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                      <span>1 1</span>
+                      <span>$1.00</span>
+                    </div>
+                  </>
+                )}
               </div>
               
-              <div className="py-8"></div>
+              <div className="mb-1"></div>
+              
+              {/* 金额部分 */}
+              <div className="space-y-0 mb-1 mt-8">
+                <div>SUBTOTAL:&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(subtotal, currency)}</div>
+                <div>TAX:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(taxAmount, currency)}</div>
+                <div>TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(totalAmount, currency)}</div>
+              </div>
+              
+              <div className="mb-1"></div>
+              
+              <div className="space-y-0 mb-1 mt-6">
+                <div>TIP: &nbsp;&nbsp;---------------------</div>
+                <div>&nbsp;</div>
+                <div>TOTAL:  ---------------------</div>
+              </div>
+              
+              <div className="mb-2"></div>
               
               {/* 底部信息 */}
-              <div className="space-y-1 font-bold text-center">
+              <div className="text-center space-y-0 mt-12">
                 <div>APPROVED</div>
                 <div>THANK YOU</div>
                 <div>CUSTOMER COPY</div>
@@ -386,11 +386,14 @@ export default function ReceiptPreview({
                 <h3 className={styles.title}>
                   {restaurantName || "您的餐厅名称"}
                 </h3>
+                {restaurantCity && (
+                  <div className={`${styles.address} text-muted-foreground mb-1`}>
+                    {restaurantCity}
+                  </div>
+                )}
                 {restaurantAddress && (
                   <div className={`${styles.address} text-muted-foreground mb-1`}>
-                    {restaurantAddress.split('\n').map((line, i) => (
-                      <div key={i}>{line}</div>
-                    ))}
+                    {restaurantAddress}
                   </div>
                 )}
                 {restaurantPhone && (
@@ -427,8 +430,20 @@ export default function ReceiptPreview({
               const qty = parseFloat(item.qty.toString()) || 0;
               
               if (type === 'pos_terminal') {
-                // POS机收据特殊渲染 - 通常不显示单独的项目
-                return null;
+                // POS机收据样式渲染
+                return (
+                  <div key={item.id || index} className="text-xs">
+                    <div className="flex justify-between">
+                      <span className="truncate flex-1 pr-2 uppercase">{item.name || "ITEM"}</span>
+                      <span>{formatCurrency(itemTotal.toFixed(2), currency)}</span>
+                    </div>
+                    {qty !== 1 && (
+                      <div className="text-right text-xs opacity-75">
+                        {qty} @ {formatCurrency(item.price.toString(), currency)}
+                      </div>
+                    )}
+                  </div>
+                );
               }
               
               if (type === 'thermal' || type === 'gas') {
