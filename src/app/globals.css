@@ -13,6 +13,15 @@
   font-display: swap;
 }
 
+/* Hypermarket Exp 字体 */
+@font-face {
+  font-family: 'Hypermarket Exp';
+  src: url('/fonts/hypermarket-exp.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* 热敏打印机字体样式 */
 .thermal-printer-font {
   font-family: 'Fake Receipt', 'Inconsolata', 'OCR A Extended', 'Courier New', 'Lucida Console', monospace !important;
@@ -28,6 +37,23 @@
   /* 增强点阵效果 */
   text-shadow: none !important;
   font-stretch: normal !important;
+}
+
+/* POS Terminal 字体样式 */
+.pos-terminal-font {
+  font-family: 'Hypermarket Exp', 'Inconsolata', 'OCR A Extended', 'Courier New', 'Lucida Console', monospace !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  line-height: 11px !important;
+  letter-spacing: 0.1px !important;
+  text-rendering: optimizeSpeed !important;
+  -webkit-font-smoothing: none !important;
+  -moz-osx-font-smoothing: unset !important;
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: "tnum" 1 !important;
+  /* 增强点阵效果 */
+  text-shadow: none !important;
+  font-stretch: condensed !important;
 }
 
 /* POS机收据专用样式 - 匹配 819 × 1361 比例 */

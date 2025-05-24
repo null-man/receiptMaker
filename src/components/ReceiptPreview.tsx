@@ -279,10 +279,10 @@ export default function ReceiptPreview({
       case 'pos_terminal':
         return {
           card: "receipt-preview mx-auto bg-white shadow-lg border pos-receipt-container",
-          content: "p-2 font-mono text-xs leading-none",
+          content: "p-1 font-mono text-xs leading-none",
           title: "text-xs font-bold mb-1 tracking-wider text-center",
           address: "text-xs text-center",
-          spacing: "my-1"
+          spacing: "my-0"
         };
       default:
         return {
@@ -304,7 +304,7 @@ export default function ReceiptPreview({
         <CardContent className={styles.content}>
           {type === 'pos_terminal' ? (
             /* POS机收据特殊布局 - 完全匹配用户图片 */
-            <div className="text-left thermal-printer-font leading-none" style={{
+            <div className="text-left pos-terminal-font leading-none" style={{
               textTransform: 'uppercase'
             }}>
               {/* 餐厅信息 */}
@@ -324,7 +324,7 @@ export default function ReceiptPreview({
               <div className="mb-1"></div>
               
               {/* SALE 信息 */}
-              <div className="text-left space-y-0 mb-0 mt-2">
+              <div className="text-left space-y-0 mb-0 mt-1">
                 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SALE</div>
                 <div>{receiptDate.replace(/-/g, '/')}    {receiptTime}</div>
                 <div>BATCH #:0DE85</div>
@@ -337,7 +337,7 @@ export default function ReceiptPreview({
               </div>
               
               {/* 商品信息 */}
-              <div className="space-y-0 mb-0 mt-2">
+              <div className="space-y-0 mb-0 mt-1">
                 {items.length > 0 ? (
                   <>
                     {items.map((item, index) => (
@@ -362,7 +362,7 @@ export default function ReceiptPreview({
               <div className="mb-1"></div>
               
               {/* 金额部分 */}
-              <div className="space-y-0 mb-1 mt-8">
+              <div className="space-y-0 mb-1 mt-4">
                 <div>SUBTOTAL:&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(subtotal, currency)}</div>
                 <div>TAX:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(taxAmount, currency)}</div>
                 <div>TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatCurrency(totalAmount, currency)}</div>
@@ -370,16 +370,16 @@ export default function ReceiptPreview({
               
               <div className="mb-1"></div>
               
-              <div className="space-y-0 mb-1 mt-6">
+              <div className="space-y-0 mb-1 mt-3">
                 <div>TIP: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatCurrency(data.tipAmount.toString(), currency)}</div>
                 <div>&nbsp;</div>
                 <div>TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatCurrency((parseFloat(totalAmount) + parseFloat(data.tipAmount.toString())).toString(), currency)}</div>
               </div>
               
-              <div className="mb-2"></div>
+              <div className="mb-1"></div>
               
               {/* 底部信息 */}
-              <div className="text-center space-y-0 mt-12">
+              <div className="text-center space-y-0 mt-8">
                 <div>APPROVED</div>
                 <div>THANK YOU</div>
                 <div>CUSTOMER COPY</div>
@@ -547,8 +547,8 @@ export default function ReceiptPreview({
               {/* 收据底部信息 - 仅非POS机收据显示 */}
               {type !== 'pos_terminal' && (
                 <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
-                  <p>Receipt Number: #{receiptNumber || "--------"}</p>
-                  <p className="mt-1">ReceiptMaker Generated</p>
+                  {/* <p>Receipt Number: #{receiptNumber || "--------"}</p> */}
+                  {/* <p className="mt-1">ReceiptMaker Generated</p> */}
                 </div>
               )}
             </>
