@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Printer, Download } from "lucide-react";
+import { Printer, Download, Image, Loader2 } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { useState } from "react";
 
 interface ReceiptItem {
   id: number;
@@ -42,6 +45,9 @@ export default function ReceiptPreview({
   totalAmount,
   onPrint,
 }: ReceiptPreviewProps) {
+  const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
+  const [isSavingImage, setIsSavingImage] = useState(false);
+
   const {
     restaurantName,
     restaurantAddress,
@@ -53,6 +59,113 @@ export default function ReceiptPreview({
     taxRate,
     notes,
   } = data;
+
+  // 下载PDF功能
+  const handleDownloadPDF = async () => {
+    if (isDownloadingPDF) return;
+    
+    setIsDownloadingPDF(true);
+    try {
+      const element = document.querySelector(".receipt-preview") as HTMLElement;
+      if (!element) {
+        throw new Error("找不到收据元素");
+      }
+
+      // 临时添加样式以优化截图
+      element.classList.add("receipt-capture");
+
+      // 创建canvas
+      const canvas = await html2canvas(element, {
+        scale: 3, // 提高分辨率
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+        width: element.scrollWidth,
+        height: element.scrollHeight,
+      });
+
+      // 移除临时样式
+      element.classList.remove("receipt-capture");
+
+      // 创建PDF
+      const imgData = canvas.toDataURL("image/png", 1.0);
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
+
+      // 计算图片在PDF中的尺寸
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      
+      // 设置合适的尺寸比例
+      const ratio = Math.min((pdfWidth - 20) / imgWidth, (pdfHeight - 40) / imgHeight);
+      const finalWidth = imgWidth * ratio;
+      const finalHeight = imgHeight * ratio;
+      const imgX = (pdfWidth - finalWidth) / 2;
+      const imgY = 20;
+
+      pdf.addImage(imgData, "PNG", imgX, imgY, finalWidth, finalHeight);
+      
+      // 下载PDF
+      const fileName = `收据_${restaurantName || "餐厅"}_${receiptDate.replace(/-/g, '')}.pdf`;
+      pdf.save(fileName);
+    } catch (error) {
+      console.error("生成PDF失败:", error);
+      alert("生成PDF失败，请重试");
+    } finally {
+      setIsDownloadingPDF(false);
+    }
+  };
+
+  // 保存为图片功能
+  const handleSaveAsImage = async () => {
+    if (isSavingImage) return;
+    
+    setIsSavingImage(true);
+    try {
+      const element = document.querySelector(".receipt-preview") as HTMLElement;
+      if (!element) {
+        throw new Error("找不到收据元素");
+      }
+
+      // 临时添加样式以优化截图
+      element.classList.add("receipt-capture");
+
+      // 创建canvas
+      const canvas = await html2canvas(element, {
+        scale: 3, // 提高分辨率
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+        width: element.scrollWidth,
+        height: element.scrollHeight,
+      });
+
+      // 移除临时样式
+      element.classList.remove("receipt-capture");
+
+      // 创建下载链接
+      const link = document.createElement("a");
+      link.download = `收据_${restaurantName || "餐厅"}_${receiptDate.replace(/-/g, '')}.png`;
+      link.href = canvas.toDataURL("image/png", 1.0);
+      
+      // 触发下载
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("保存图片失败:", error);
+      alert("保存图片失败，请重试");
+    } finally {
+      setIsSavingImage(false);
+    }
+  };
 
   return (
     <div id="receiptOutputContainer" className="space-y-6">
@@ -171,9 +284,33 @@ export default function ReceiptPreview({
           <Printer className="h-5 w-5" />
           打印收据
         </Button>
-        <Button variant="outline" size="lg" className="flex items-center gap-2">
-          <Download className="h-5 w-5" />
-          下载 PDF
+        <Button 
+          onClick={handleDownloadPDF} 
+          variant="outline" 
+          size="lg" 
+          className="flex items-center gap-2"
+          disabled={isDownloadingPDF}
+        >
+          {isDownloadingPDF ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <Download className="h-5 w-5" />
+          )}
+          {isDownloadingPDF ? "生成中..." : "下载 PDF"}
+        </Button>
+        <Button 
+          onClick={handleSaveAsImage} 
+          variant="outline" 
+          size="lg" 
+          className="flex items-center gap-2"
+          disabled={isSavingImage}
+        >
+          {isSavingImage ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <Image className="h-5 w-5" />
+          )}
+          {isSavingImage ? "保存中..." : "保存图片"}
         </Button>
       </div>
     </div>

@@ -160,8 +160,8 @@ export default function HomePage() {
             </h1>
           </div>
           <nav className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm">登录</Button>
-            <Button size="sm">注册</Button>
+            {/* <Button variant="ghost" size="sm">登录</Button>
+            <Button size="sm">注册</Button> */}
           </nav>
         </div>
       </header>
@@ -229,7 +229,7 @@ export default function HomePage() {
       <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container py-8">
           <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ReceiptMaker. 使用 Next.js 和 shadcn/ui 构建。
+            © {new Date().getFullYear()} ReceiptMaker
           </div>
         </div>
       </footer>

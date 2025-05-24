@@ -1,0 +1,55 @@
+/* 打印样式 */
+@media print {
+  /* 隐藏不需要打印的元素 */
+  .no-print {
+    display: none !important;
+  }
+  
+  /* 设置页面边距 */
+  @page {
+    margin: 0.5in;
+    size: auto;
+  }
+  
+  /* 收据容器样式 */
+  #receiptOutputContainer {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* 确保收据内容完整显示 */
+  .receipt-preview {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    page-break-inside: avoid;
+  }
+  
+  /* 字体和文本优化 */
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  /* 确保背景色和边框正确显示 */
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* 下载/截图时的样式优化 */
+.receipt-capture {
+  background: white !important;
+  box-shadow: none !important;
+}
+
+.receipt-capture .no-print {
+  display: none !important;
+}
