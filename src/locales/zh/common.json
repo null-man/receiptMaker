@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "收据生成器"
+  },
+  "hero": {
+    "title": "现代化收据生成器",
+    "subtitle": "简单易用的在线收据生成工具，支持多种货币和自定义样式。左侧填写信息，右侧实时预览效果。"
+  },
+  "form": {
+    "createReceipt": "创建收据",
+    "subtitle": "填写下方信息生成专业的收据文档",
+    "businessInfo": "商家信息",
+    "businessName": "商家名称",
+    "businessNamePlaceholder": "请输入商家名称",
+    "city": "城市",
+    "cityPlaceholder": "请输入城市信息",
+    "address": "地址",
+    "addressPlaceholder": "请输入商家地址",
+    "phone": "联系电话",
+    "phonePlaceholder": "请输入联系电话",
+    "currency": "货币",
+    "currencyPlaceholder": "选择货币",
+    "receiptDetails": "收据详情",
+    "date": "日期",
+    "time": "时间",
+    "items": "项目列表",
+    "addItem": "添加项目",
+    "itemName": "项目名称",
+    "quantity": "数量",
+    "price": "单价",
+    "calculation": "金额计算",
+    "subtotal": "小计",
+    "taxRate": "税率 (%)",
+    "taxAmount": "税额",
+    "tip": "小费",
+    "total": "总计",
+    "paymentMethod": "支付方式",
+    "paymentMethodPlaceholder": "选择支付方式",
+    "notes": "备注",
+    "additionalNotes": "备注信息",
+    "notesPlaceholder": "例如：谢谢惠顾！欢迎下次光临。",
+    "generateReceipt": "生成收据",
+    "required": "*"
+  },
+  "preview": {
+    "title": "实时预览",
+    "subtitle": "选择模板或自定义收据内容",
+    "receiptTemplate": "收据模板：",
+    "selectTemplate": "选择模板",
+    "customReceipt": "自定义收据"
+  },
+  "templates": {
+    "posTerminal": "POS机收据",
+    "thermal": "热敏纸收据",
+    "posRetail": "POS零售收据",
+    "restaurant": "餐厅账单",
+    "coffee": "咖啡店收据",
+    "gas": "加油站收据",
+    "grocery": "超市收据",
+    "pharmacy": "药店收据",
+    "chinese": "中式餐厅"
+  },
+  "currencies": {
+    "usd": "美元 ($)",
+    "eur": "欧元 (€)",
+    "gbp": "英镑 (£)",
+    "cny": "人民币 (RMB)",
+    "jpy": "日元 (¥)"
+  },
+  "paymentMethods": {
+    "cash": "现金",
+    "card": "银行卡",
+    "creditCard": "信用卡",
+    "debitCard": "借记卡",
+    "mobilePay": "移动支付",
+    "wechatPay": "微信支付",
+    "alipay": "支付宝",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "支票"
+  },
+  "validation": {
+    "businessNameRequired": "请输入商家名称",
+    "itemsRequired": "请确保所有项目都填写了有效的名称、数量和单价"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

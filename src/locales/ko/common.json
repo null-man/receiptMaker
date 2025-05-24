@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "영수증 생성기"
+  },
+  "hero": {
+    "title": "현대적인 영수증 생성기",
+    "subtitle": "사용하기 쉬운 온라인 영수증 생성 도구입니다. 다양한 통화와 맞춤 스타일을 지원합니다. 왼쪽에 정보를 입력하고 오른쪽에서 실시간 미리보기를 확인하세요."
+  },
+  "form": {
+    "createReceipt": "영수증 생성",
+    "subtitle": "아래 양식을 작성하여 전문적인 영수증 문서를 생성하세요",
+    "businessInfo": "사업체 정보",
+    "businessName": "사업체명",
+    "businessNamePlaceholder": "사업체명을 입력하세요",
+    "city": "도시",
+    "cityPlaceholder": "도시 정보를 입력하세요",
+    "address": "주소",
+    "addressPlaceholder": "사업체 주소를 입력하세요",
+    "phone": "전화번호",
+    "phonePlaceholder": "전화번호를 입력하세요",
+    "currency": "통화",
+    "currencyPlaceholder": "통화 선택",
+    "receiptDetails": "영수증 세부사항",
+    "date": "날짜",
+    "time": "시간",
+    "items": "항목",
+    "addItem": "항목 추가",
+    "itemName": "항목명",
+    "quantity": "수량",
+    "price": "가격",
+    "calculation": "계산",
+    "subtotal": "소계",
+    "taxRate": "세율 (%)",
+    "taxAmount": "세금",
+    "tip": "팁",
+    "total": "총계",
+    "paymentMethod": "결제 방법",
+    "paymentMethodPlaceholder": "결제 방법 선택",
+    "notes": "메모",
+    "additionalNotes": "추가 메모",
+    "notesPlaceholder": "예: 이용해 주셔서 감사합니다!",
+    "generateReceipt": "영수증 생성",
+    "required": "*"
+  },
+  "preview": {
+    "title": "실시간 미리보기",
+    "subtitle": "템플릿을 선택하거나 영수증 내용을 맞춤 설정하세요",
+    "receiptTemplate": "영수증 템플릿:",
+    "selectTemplate": "템플릿 선택",
+    "customReceipt": "맞춤 영수증"
+  },
+  "templates": {
+    "posTerminal": "POS 터미널 영수증",
+    "thermal": "감열지 영수증",
+    "posRetail": "POS 소매 영수증",
+    "restaurant": "레스토랑 계산서",
+    "coffee": "커피숍 영수증",
+    "gas": "주유소 영수증",
+    "grocery": "마트 영수증",
+    "pharmacy": "약국 영수증",
+    "chinese": "중국 음식점"
+  },
+  "currencies": {
+    "usd": "미국 달러 ($)",
+    "eur": "유로 (€)",
+    "gbp": "영국 파운드 (£)",
+    "cny": "중국 위안 (RMB)",
+    "jpy": "일본 엔 (¥)"
+  },
+  "paymentMethods": {
+    "cash": "현금",
+    "card": "카드",
+    "creditCard": "신용카드",
+    "debitCard": "체크카드",
+    "mobilePay": "모바일 결제",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "수표"
+  },
+  "validation": {
+    "businessNameRequired": "사업체명을 입력해주세요",
+    "itemsRequired": "모든 항목에 유효한 이름, 수량, 가격이 입력되었는지 확인해주세요"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

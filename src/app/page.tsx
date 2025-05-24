@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/select";
 import ReceiptForm from "@/components/ReceiptForm";
 import ReceiptPreview from "@/components/ReceiptPreview";
+import LanguageSelector from "@/components/LanguageSelector";
+import I18nProvider from "@/components/I18nProvider";
 
 interface ReceiptItem {
   id: number;
@@ -36,6 +39,7 @@ interface ReceiptData {
 }
 
 export default function HomePage() {
+  const { t } = useTranslation('common');
   const initialItem: ReceiptItem = { id: 1, name: "", qty: 1, price: "" };
   
   // 模板数据
@@ -56,7 +60,7 @@ export default function HomePage() {
         ],
         taxRate: 0,
         tipAmount: 0,
-        notes: "SALE\nBATCH #:06B2D\nAPPR #:C8910\nTRACE #: 9\n\nAPPROVED\nTHANK YOU\nCUSTOMER COPY",
+        notes: "",
       },
     },
     thermal: {
@@ -384,7 +388,7 @@ export default function HomePage() {
     e.preventDefault();
     // 简单的表单验证示例
     if (!receiptData.restaurantName) {
-      alert("Please enter business name");
+      alert(t('validation.businessNameRequired'));
       return;
     }
     if (
@@ -392,7 +396,7 @@ export default function HomePage() {
         (item) => !item.name || Number(item.qty) <= 0 || Number(item.price) <= 0
       )
     ) {
-      alert("Please ensure all items have valid name, quantity and price");
+      alert(t('validation.itemsRequired'));
       return;
     }
     // 滚动到预览区域
@@ -466,18 +470,17 @@ export default function HomePage() {
   };
 
   return (
-    <>
+    <I18nProvider>
       {/* Header */}
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-2">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              ReceiptMaker
+              {t('nav.title')}
             </h1>
           </div>
           <nav className="flex items-center space-x-4">
-            {/* <Button variant="ghost" size="sm">登录</Button>
-            <Button size="sm">注册</Button> */}
+            <LanguageSelector />
           </nav>
         </div>
       </header>
@@ -488,10 +491,10 @@ export default function HomePage() {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
-              Modern Receipt Generator
+              {t('hero.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Easy-to-use online receipt generation tool. Supports multiple currencies and custom styles. Fill in information on the left, preview in real-time on the right.
+              {t('hero.subtitle')}
             </p>
           </div>
 
@@ -501,9 +504,9 @@ export default function HomePage() {
             <div className="space-y-6">
               <Card className="form-container">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Create Receipt</CardTitle>
+                  <CardTitle className="text-2xl">{t('form.createReceipt')}</CardTitle>
                   <CardDescription>
-                    Fill out the form below to generate a professional receipt document
+                    {t('form.subtitle')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -530,17 +533,17 @@ export default function HomePage() {
                     <div className="flex justify-between items-start">
                       <div>
                         <CardTitle className="text-2xl">
-                          Live Preview
+                          {t('preview.title')}
                         </CardTitle>
                         <CardDescription>
-                          Select a template or customize receipt content
+                          {t('preview.subtitle')}
                         </CardDescription>
                       </div>
                     </div>
                     
                     {/* 快速模板选择器 */}
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border">
-                      <span className="text-sm font-medium text-gray-700">Receipt Template:</span>
+                      <span className="text-sm font-medium text-gray-700">{t('preview.receiptTemplate')}</span>
                       <Select
                         value={isUsingTemplate ? currentTemplateType : 'default'}
                         onValueChange={(value) => {
@@ -552,10 +555,10 @@ export default function HomePage() {
                         }}
                       >
                         <SelectTrigger className="flex-1">
-                          <SelectValue placeholder="Select template" />
+                          <SelectValue placeholder={t('preview.selectTemplate')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="default">🧾 Custom Receipt</SelectItem>
+                          <SelectItem value="default">🧾 {t('preview.customReceipt')}</SelectItem>
                           {Object.entries(templates).map(([key, template]) => (
                             <SelectItem key={key} value={key}>
                               {template.name}
@@ -652,6 +655,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-    </>
+    </I18nProvider>
   );
 }

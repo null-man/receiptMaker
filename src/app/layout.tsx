@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import "./print.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Restaurant invoice generator",
-  description: "restaurant invoice generator",
+  title: "ReceiptMaker",
+  description: "Easy-to-use online receipt generation tool",
 };
 
 export default function RootLayout({
@@ -25,11 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

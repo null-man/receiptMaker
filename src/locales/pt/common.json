@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "Gerador de Recibos"
+  },
+  "hero": {
+    "title": "Gerador de Recibos Moderno",
+    "subtitle": "Ferramenta online fácil de usar para gerar recibos. Suporta várias moedas e estilos personalizados. Preencha as informações à esquerda, visualize em tempo real à direita."
+  },
+  "form": {
+    "createReceipt": "Criar Recibo",
+    "subtitle": "Preencha o formulário abaixo para gerar um documento de recibo profissional",
+    "businessInfo": "Informações da Empresa",
+    "businessName": "Nome da Empresa",
+    "businessNamePlaceholder": "Digite o nome da empresa",
+    "city": "Cidade",
+    "cityPlaceholder": "Digite as informações da cidade",
+    "address": "Endereço",
+    "addressPlaceholder": "Digite o endereço da empresa",
+    "phone": "Telefone",
+    "phonePlaceholder": "Digite o número de telefone",
+    "currency": "Moeda",
+    "currencyPlaceholder": "Selecionar moeda",
+    "receiptDetails": "Detalhes do Recibo",
+    "date": "Data",
+    "time": "Hora",
+    "items": "Itens",
+    "addItem": "Adicionar Item",
+    "itemName": "Nome do item",
+    "quantity": "Quantidade",
+    "price": "Preço",
+    "calculation": "Cálculo",
+    "subtotal": "Subtotal",
+    "taxRate": "Taxa de Imposto (%)",
+    "taxAmount": "Valor do Imposto",
+    "tip": "Gorjeta",
+    "total": "Total",
+    "paymentMethod": "Método de Pagamento",
+    "paymentMethodPlaceholder": "Selecionar método de pagamento",
+    "notes": "Notas",
+    "additionalNotes": "Notas Adicionais",
+    "notesPlaceholder": "ex: Obrigado pelos seus negócios!",
+    "generateReceipt": "Gerar Recibo",
+    "required": "*"
+  },
+  "preview": {
+    "title": "Visualização em Tempo Real",
+    "subtitle": "Selecione um modelo ou personalize o conteúdo do recibo",
+    "receiptTemplate": "Modelo de Recibo:",
+    "selectTemplate": "Selecionar modelo",
+    "customReceipt": "Recibo Personalizado"
+  },
+  "templates": {
+    "posTerminal": "Recibo Terminal POS",
+    "thermal": "Recibo Térmico",
+    "posRetail": "Recibo POS Varejo",
+    "restaurant": "Conta do Restaurante",
+    "coffee": "Recibo da Cafeteria",
+    "gas": "Recibo do Posto de Gasolina",
+    "grocery": "Recibo do Supermercado",
+    "pharmacy": "Recibo da Farmácia",
+    "chinese": "Restaurante Chinês"
+  },
+  "currencies": {
+    "usd": "Dólar Americano ($)",
+    "eur": "Euro (€)",
+    "gbp": "Libra Esterlina (£)",
+    "cny": "Yuan Chinês (RMB)",
+    "jpy": "Iene Japonês (¥)"
+  },
+  "paymentMethods": {
+    "cash": "Dinheiro",
+    "card": "Cartão",
+    "creditCard": "Cartão de Crédito",
+    "debitCard": "Cartão de Débito",
+    "mobilePay": "Pagamento Móvel",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "Cheque"
+  },
+  "validation": {
+    "businessNameRequired": "Por favor, digite o nome da empresa",
+    "itemsRequired": "Por favor, certifique-se de que todos os itens tenham nome, quantidade e preço válidos"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

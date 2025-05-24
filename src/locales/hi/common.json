@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "रसीद जेनरेटर"
+  },
+  "hero": {
+    "title": "आधुनिक रसीद जेनरेटर",
+    "subtitle": "उपयोग में आसान ऑनलाइन रसीद निर्माण उपकरण। कई मुद्राओं और कस्टम स्टाइल का समर्थन करता है। बाईं ओर जानकारी भरें, दाईं ओर रियल-टाइम पूर्वावलोकन देखें।"
+  },
+  "form": {
+    "createReceipt": "रसीद बनाएं",
+    "subtitle": "एक पेशेवर रसीद दस्तावेज़ बनाने के लिए नीचे दिया गया फॉर्म भरें",
+    "businessInfo": "व्यापारिक जानकारी",
+    "businessName": "व्यापार का नाम",
+    "businessNamePlaceholder": "व्यापार का नाम दर्ज करें",
+    "city": "शहर",
+    "cityPlaceholder": "शहर की जानकारी दर्ज करें",
+    "address": "पता",
+    "addressPlaceholder": "व्यापार का पता दर्ज करें",
+    "phone": "फोन",
+    "phonePlaceholder": "फोन नंबर दर्ज करें",
+    "currency": "मुद्रा",
+    "currencyPlaceholder": "मुद्रा चुनें",
+    "receiptDetails": "रसीद विवरण",
+    "date": "दिनांक",
+    "time": "समय",
+    "items": "आइटम",
+    "addItem": "आइटम जोड़ें",
+    "itemName": "आइटम का नाम",
+    "quantity": "मात्रा",
+    "price": "कीमत",
+    "calculation": "गणना",
+    "subtotal": "उप-योग",
+    "taxRate": "कर दर (%)",
+    "taxAmount": "कर राशि",
+    "tip": "टिप",
+    "total": "कुल योग",
+    "paymentMethod": "भुगतान विधि",
+    "paymentMethodPlaceholder": "भुगतान विधि चुनें",
+    "notes": "टिप्पणियां",
+    "additionalNotes": "अतिरिक्त टिप्पणियां",
+    "notesPlaceholder": "उदाहरण: आपके व्यापार के लिए धन्यवाद!",
+    "generateReceipt": "रसीद बनाएं",
+    "required": "*"
+  },
+  "preview": {
+    "title": "लाइव पूर्वावलोकन",
+    "subtitle": "एक टेम्प्लेट चुनें या रसीद सामग्री को कस्टमाइज़ करें",
+    "receiptTemplate": "रसीद टेम्प्लेट:",
+    "selectTemplate": "टेम्प्लेट चुनें",
+    "customReceipt": "कस्टम रसीद"
+  },
+  "templates": {
+    "posTerminal": "POS टर्मिनल रसीद",
+    "thermal": "थर्मल रसीद",
+    "posRetail": "POS रिटेल रसीद",
+    "restaurant": "रेस्टोरेंट बिल",
+    "coffee": "कॉफी शॉप रसीद",
+    "gas": "गैस स्टेशन रसीद",
+    "grocery": "किराना स्टोर रसीद",
+    "pharmacy": "फार्मेसी रसीद",
+    "chinese": "चीनी रेस्टोरेंट"
+  },
+  "currencies": {
+    "usd": "अमेरिकी डॉलर ($)",
+    "eur": "यूरो (€)",
+    "gbp": "ब्रिटिश पाउंड (£)",
+    "cny": "चीनी युआन (RMB)",
+    "jpy": "जापानी येन (¥)"
+  },
+  "paymentMethods": {
+    "cash": "नकद",
+    "card": "कार्ड",
+    "creditCard": "क्रेडिट कार्ड",
+    "debitCard": "डेबिट कार्ड",
+    "mobilePay": "मोबाइल पे",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "चेक"
+  },
+  "validation": {
+    "businessNameRequired": "कृपया व्यापार का नाम दर्ज करें",
+    "itemsRequired": "कृपया सुनिश्चित करें कि सभी आइटम में वैध नाम, मात्रा और कीमत है"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

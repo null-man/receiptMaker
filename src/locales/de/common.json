@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "Quittungsgenerator"
+  },
+  "hero": {
+    "title": "Moderner Quittungsgenerator",
+    "subtitle": "Einfach zu verwendendes Online-Tool zur Quittungserstellung. Unterstützt mehrere Währungen und benutzerdefinierte Stile. Füllen Sie links die Informationen aus, sehen Sie rechts die Live-Vorschau."
+  },
+  "form": {
+    "createReceipt": "Quittung Erstellen",
+    "subtitle": "Füllen Sie das folgende Formular aus, um ein professionelles Quittungsdokument zu erstellen",
+    "businessInfo": "Geschäftsinformationen",
+    "businessName": "Geschäftsname",
+    "businessNamePlaceholder": "Geschäftsname eingeben",
+    "city": "Stadt",
+    "cityPlaceholder": "Stadtinformationen eingeben",
+    "address": "Adresse",
+    "addressPlaceholder": "Geschäftsadresse eingeben",
+    "phone": "Telefon",
+    "phonePlaceholder": "Telefonnummer eingeben",
+    "currency": "Währung",
+    "currencyPlaceholder": "Währung auswählen",
+    "receiptDetails": "Quittungsdetails",
+    "date": "Datum",
+    "time": "Zeit",
+    "items": "Artikel",
+    "addItem": "Artikel hinzufügen",
+    "itemName": "Artikelname",
+    "quantity": "Menge",
+    "price": "Preis",
+    "calculation": "Berechnung",
+    "subtotal": "Zwischensumme",
+    "taxRate": "Steuersatz (%)",
+    "taxAmount": "Steuerbetrag",
+    "tip": "Trinkgeld",
+    "total": "Gesamt",
+    "paymentMethod": "Zahlungsmethode",
+    "paymentMethodPlaceholder": "Zahlungsmethode auswählen",
+    "notes": "Notizen",
+    "additionalNotes": "Zusätzliche Notizen",
+    "notesPlaceholder": "z.B.: Vielen Dank für Ihr Geschäft!",
+    "generateReceipt": "Quittung Generieren",
+    "required": "*"
+  },
+  "preview": {
+    "title": "Live-Vorschau",
+    "subtitle": "Wählen Sie eine Vorlage oder passen Sie den Quittungsinhalt an",
+    "receiptTemplate": "Quittungsvorlage:",
+    "selectTemplate": "Vorlage auswählen",
+    "customReceipt": "Benutzerdefinierte Quittung"
+  },
+  "templates": {
+    "posTerminal": "POS-Terminal Quittung",
+    "thermal": "Thermoquittung",
+    "posRetail": "POS-Einzelhandel Quittung",
+    "restaurant": "Restaurantrechnung",
+    "coffee": "Café-Quittung",
+    "gas": "Tankstellen-Quittung",
+    "grocery": "Supermarkt-Quittung",
+    "pharmacy": "Apotheken-Quittung",
+    "chinese": "Chinesisches Restaurant"
+  },
+  "currencies": {
+    "usd": "US-Dollar ($)",
+    "eur": "Euro (€)",
+    "gbp": "Britisches Pfund (£)",
+    "cny": "Chinesischer Yuan (RMB)",
+    "jpy": "Japanischer Yen (¥)"
+  },
+  "paymentMethods": {
+    "cash": "Bargeld",
+    "card": "Karte",
+    "creditCard": "Kreditkarte",
+    "debitCard": "Debitkarte",
+    "mobilePay": "Mobile Zahlung",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "Scheck"
+  },
+  "validation": {
+    "businessNameRequired": "Bitte geben Sie den Geschäftsnamen ein",
+    "itemsRequired": "Bitte stellen Sie sicher, dass alle Artikel gültigen Namen, Menge und Preis haben"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

@@ -371,9 +371,9 @@ export default function ReceiptPreview({
               <div className="mb-1"></div>
               
               <div className="space-y-0 mb-1 mt-6">
-                <div>TIP: &nbsp;&nbsp;---------------------</div>
+                <div>TIP: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatCurrency(data.tipAmount.toString(), currency)}</div>
                 <div>&nbsp;</div>
-                <div>TOTAL:  ---------------------</div>
+                <div>TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatCurrency((parseFloat(totalAmount) + parseFloat(data.tipAmount.toString())).toString(), currency)}</div>
               </div>
               
               <div className="mb-2"></div>
@@ -390,7 +390,7 @@ export default function ReceiptPreview({
               {/* 餐厅信息 */}
               <div className={`text-center ${styles.spacing}`}>
                 <h3 className={styles.title}>
-                  {restaurantName || "您的餐厅名称"}
+                  {restaurantName || "YOUR RESTAURANT NAME"}
                 </h3>
                 {restaurantCity && (
                   <div className={`${styles.address} text-muted-foreground mb-1`}>
@@ -411,8 +411,8 @@ export default function ReceiptPreview({
 
           {/* 日期时间 */}
           <div className={`flex justify-between ${type === 'thermal' || type === 'gas' ? 'text-xs' : 'text-xs'} ${styles.spacing}`}>
-            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptDate.replace(/-/g, '/') : `日期: ${receiptDate}`}</span>
-            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptTime : `时间: ${receiptTime}`}</span>
+            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptDate.replace(/-/g, '/') : `Date: ${receiptDate}`}</span>
+            <span>{type === 'thermal' || type === 'pos' || type === 'gas' ? receiptTime : `Time: ${receiptTime}`}</span>
           </div>
 
           <Separator className={styles.spacing} />
@@ -421,9 +421,9 @@ export default function ReceiptPreview({
           {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && type !== 'pos_terminal' && (
             <>
               <div className={`grid gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
-                <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : '项目'}</span>
-                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'QTY' : '数量'}</span>
-                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'AMOUNT' : '金额'}</span>
+                <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : 'Item'}</span>
+                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'QTY' : 'Qty'}</span>
+                <span className="text-right">{type === 'pos' || type === 'pharmacy' ? 'AMOUNT' : 'Amount'}</span>
               </div>
               <Separator className="my-1" />
             </>
@@ -474,7 +474,7 @@ export default function ReceiptPreview({
                     <div className="flex-1 pr-4">
                       <div className="font-medium">{item.name || "未命名项目"}</div>
                       {qty !== 1 && (
-                        <div className="text-xs text-muted-foreground">数量: {qty}</div>
+                        <div className="text-xs text-muted-foreground">Qty: {qty}</div>
                       )}
                     </div>
                     <span className="font-semibold">{formatCurrency(itemTotal.toString(), currency)}</span>
@@ -484,7 +484,7 @@ export default function ReceiptPreview({
               
               return (
                 <div key={item.id || index} className={`grid gap-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
-                  <span className="break-words">{item.name || "未命名项目"}</span>
+                  <span className="break-words">{item.name || "Unnamed Item"}</span>
                   <span className="text-right">{qty}</span>
                   <span className="text-right">{formatCurrency(itemTotal.toString(), currency)}</span>
                 </div>
@@ -497,28 +497,28 @@ export default function ReceiptPreview({
           {/* 总计部分 */}
           <div className={`space-y-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`}>
             <div className="flex justify-between">
-              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'SUBTOTAL:' : '小计:'}</span>
+              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'SUBTOTAL:' : 'Subtotal:'}</span>
               <span className="font-semibold">{formatCurrency(subtotal, currency)}</span>
             </div>
             
             {parseFloat(taxAmount) > 0 && (
               <div className="flex justify-between">
-                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? `TAX:` : `税额 (${taxRate}%):`}</span>
+                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? `TAX:` : `Tax (${taxRate}%):`}</span>
                 <span className="font-semibold">{formatCurrency(taxAmount, currency)}</span>
               </div>
             )}
             
             {parseFloat(data.tipAmount.toString()) > 0 && (
               <div className="flex justify-between">
-                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TIP:' : '小费:'}</span>
+                <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TIP:' : 'Tip:'}</span>
                 <span className="font-semibold">{formatCurrency(data.tipAmount.toString(), currency)}</span>
-              </div>
+              </div>    
             )}
 
             <Separator className="my-2" />
 
             <div className={`flex justify-between font-bold ${type === 'restaurant' ? 'text-lg' : type === 'thermal' || type === 'gas' ? 'text-sm' : 'text-base'}`}>
-              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TOTAL:' : '总计:'}</span>
+              <span>{type === 'pos' || type === 'thermal' || type === 'gas' || type === 'pharmacy' ? 'TOTAL:' : 'Total:'}</span>
               <span className={type === 'restaurant' ? 'text-primary' : ''}>{formatCurrency(totalAmount, currency)}</span>
             </div>
           </div>
@@ -539,7 +539,7 @@ export default function ReceiptPreview({
             <>
               <Separator className="my-4" />
               <div className="text-center text-xs italic text-muted-foreground">
-                谢谢惠顾！
+                Thank you for your business!
               </div>
             </>
           )}
@@ -547,8 +547,8 @@ export default function ReceiptPreview({
               {/* 收据底部信息 - 仅非POS机收据显示 */}
               {type !== 'pos_terminal' && (
                 <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
-                  <p>收据编号: #{receiptNumber || "--------"}</p>
-                  <p className="mt-1">ReceiptMaker 生成</p>
+                  <p>Receipt Number: #{receiptNumber || "--------"}</p>
+                  <p className="mt-1">ReceiptMaker Generated</p>
                 </div>
               )}
             </>

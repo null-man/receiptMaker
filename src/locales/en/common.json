@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "ReceiptMaker"
+  },
+  "hero": {
+    "title": "Modern Receipt Generator",
+    "subtitle": "Easy-to-use online receipt generation tool. Supports multiple currencies and custom styles. Fill in information on the left, preview in real-time on the right."
+  },
+  "form": {
+    "createReceipt": "Create Receipt",
+    "subtitle": "Fill out the form below to generate a professional receipt document",
+    "businessInfo": "Business Information",
+    "businessName": "Business Name",
+    "businessNamePlaceholder": "Enter business name",
+    "city": "City",
+    "cityPlaceholder": "Enter city information",
+    "address": "Address",
+    "addressPlaceholder": "Enter business address",
+    "phone": "Phone",
+    "phonePlaceholder": "Enter phone number",
+    "currency": "Currency",
+    "currencyPlaceholder": "Select currency",
+    "receiptDetails": "Receipt Details",
+    "date": "Date",
+    "time": "Time",
+    "items": "Items",
+    "addItem": "Add Item",
+    "itemName": "Item name",
+    "quantity": "Quantity",
+    "price": "Price",
+    "calculation": "Calculation",
+    "subtotal": "Subtotal",
+    "taxRate": "Tax Rate (%)",
+    "taxAmount": "Tax Amount",
+    "tip": "Tip",
+    "total": "Total",
+    "paymentMethod": "Payment Method",
+    "paymentMethodPlaceholder": "Select payment method",
+    "notes": "Notes",
+    "additionalNotes": "Additional Notes",
+    "notesPlaceholder": "e.g., Thank you for your business!",
+    "generateReceipt": "Generate Receipt",
+    "required": "*"
+  },
+  "preview": {
+    "title": "Live Preview",
+    "subtitle": "Select a template or customize receipt content",
+    "receiptTemplate": "Receipt Template:",
+    "selectTemplate": "Select template",
+    "customReceipt": "Custom Receipt"
+  },
+  "templates": {
+    "posTerminal": "POS Terminal Receipt",
+    "thermal": "Thermal Receipt",
+    "posRetail": "POS Retail Receipt",
+    "restaurant": "Restaurant Bill",
+    "coffee": "Coffee Shop Receipt",
+    "gas": "Gas Station Receipt",
+    "grocery": "Grocery Store Receipt",
+    "pharmacy": "Pharmacy Receipt",
+    "chinese": "Chinese Restaurant"
+  },
+  "currencies": {
+    "usd": "US Dollar ($)",
+    "eur": "Euro (€)",
+    "gbp": "British Pound (£)",
+    "cny": "Chinese Yuan (RMB)",
+    "jpy": "Japanese Yen (¥)"
+  },
+  "paymentMethods": {
+    "cash": "Cash",
+    "card": "Card",
+    "creditCard": "Credit Card",
+    "debitCard": "Debit Card",
+    "mobilePay": "Mobile Pay",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "Check"
+  },
+  "validation": {
+    "businessNameRequired": "Please enter business name",
+    "itemsRequired": "Please ensure all items have valid name, quantity and price"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 

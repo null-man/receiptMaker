@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { PlusCircle, Trash2, Calculator, Receipt } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 interface ReceiptItem {
   id: number;
@@ -59,6 +60,8 @@ export default function ReceiptForm({
   taxAmount,
   totalAmount,
 }: ReceiptFormProps) {
+  const { t } = useTranslation('common');
+  
   // Parse 12-hour time format (e.g., "11:07 AM") to component state
   const parseTime12Hour = (timeStr: string) => {
     if (!timeStr) return { hours: '12', minutes: '00', ampm: 'AM' };
@@ -120,66 +123,66 @@ export default function ReceiptForm({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Receipt className="h-5 w-5" />
-            Business Information
+            {t('form.businessInfo')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="restaurantName">Business Name *</Label>
+              <Label htmlFor="restaurantName">{t('form.businessName')} {t('form.required')}</Label>
               <Input
                 id="restaurantName"
                 name="restaurantName"
                 value={formData.restaurantName}
                 onChange={onInputChange}
-                placeholder="Enter business name"
+                placeholder={t('form.businessNamePlaceholder')}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="restaurantCity">City</Label>
+              <Label htmlFor="restaurantCity">{t('form.city')}</Label>
               <Input
                 id="restaurantCity"
                 name="restaurantCity"
                 value={formData.restaurantCity}
                 onChange={onInputChange}
-                placeholder="Enter city information"
+                placeholder={t('form.cityPlaceholder')}
               />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="restaurantAddress">Address</Label>
+              <Label htmlFor="restaurantAddress">{t('form.address')}</Label>
               <Input
                 id="restaurantAddress"
                 name="restaurantAddress"
                 value={formData.restaurantAddress}
                 onChange={onInputChange}
-                placeholder="Enter business address"
+                placeholder={t('form.addressPlaceholder')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="restaurantPhone">Phone</Label>
+              <Label htmlFor="restaurantPhone">{t('form.phone')}</Label>
               <Input
                 id="restaurantPhone"
                 name="restaurantPhone"
                 value={formData.restaurantPhone}
                 onChange={onInputChange}
-                placeholder="Enter phone number"
+                placeholder={t('form.phonePlaceholder')}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency">{t('form.currency')}</Label>
               <Select value={formData.currency} onValueChange={handleCurrencyChange}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select currency" />
+                  <SelectValue placeholder={t('form.currencyPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="$">US Dollar ($)</SelectItem>
-                  <SelectItem value="€">Euro (€)</SelectItem>
-                  <SelectItem value="£">British Pound (£)</SelectItem>
-                  <SelectItem value="RMB">Chinese Yuan (RMB)</SelectItem>
-                  <SelectItem value="¥">Japanese Yen (¥)</SelectItem>
+                  <SelectItem value="$">{t('currencies.usd')}</SelectItem>
+                  <SelectItem value="€">{t('currencies.eur')}</SelectItem>
+                  <SelectItem value="£">{t('currencies.gbp')}</SelectItem>
+                  <SelectItem value="RMB">{t('currencies.cny')}</SelectItem>
+                  <SelectItem value="¥">{t('currencies.jpy')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -191,12 +194,12 @@ export default function ReceiptForm({
       {/* 收据详情 */}
       <Card>
         <CardHeader>
-          <CardTitle>Receipt Details</CardTitle>
+          <CardTitle>{t('form.receiptDetails')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="receiptDate">Date *</Label>
+              <Label htmlFor="receiptDate">{t('form.date')} {t('form.required')}</Label>
               <Input
                 type="date"
                 id="receiptDate"
@@ -207,7 +210,7 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="receiptTime">Time *</Label>
+              <Label htmlFor="receiptTime">{t('form.time')} {t('form.required')}</Label>
               <div className="flex gap-2">
                 {/* Hour selection */}
                 <Select value={timeState.hours} onValueChange={(value) => handleTimeChange('hours', value)}>
@@ -266,10 +269,10 @@ export default function ReceiptForm({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>Items</CardTitle>
+            <CardTitle>{t('form.items')}</CardTitle>
             <Button type="button" onClick={onAddItem} size="sm" className="flex items-center gap-2">
               <PlusCircle className="h-4 w-4" />
-              Add Item
+              {t('form.addItem')}
             </Button>
           </div>
         </CardHeader>
@@ -279,7 +282,7 @@ export default function ReceiptForm({
               <div key={item.id} className="flex items-center gap-3 p-4 border rounded-lg bg-muted/30">
                 <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-3">
                   <Input
-                    placeholder="Item name"
+                    placeholder={t('form.itemName')}
                     name="name"
                     value={item.name}
                     onChange={(e) => onItemChange(index, e)}
@@ -287,7 +290,7 @@ export default function ReceiptForm({
                   />
                   <Input
                     type="number"
-                    placeholder="Quantity"
+                    placeholder={t('form.quantity')}
                     name="qty"
                     value={item.qty}
                     onChange={(e) => onItemChange(index, e)}
@@ -297,7 +300,7 @@ export default function ReceiptForm({
                   />
                   <Input
                     type="number"
-                    placeholder="Price"
+                    placeholder={t('form.price')}
                     name="price"
                     value={item.price}
                     onChange={(e) => onItemChange(index, e)}
@@ -328,13 +331,13 @@ export default function ReceiptForm({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
-            Calculation
+            {t('form.calculation')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="subtotal">Subtotal</Label>
+              <Label htmlFor="subtotal">{t('form.subtotal')}</Label>
               <Input
                 id="subtotal"
                 value={`${formData.currency} ${subtotal.toFixed(2)}`}
@@ -343,7 +346,7 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="taxRate">Tax Rate (%)</Label>
+              <Label htmlFor="taxRate">{t('form.taxRate')}</Label>
               <Input
                 type="number"
                 id="taxRate"
@@ -356,7 +359,7 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="taxAmount">Tax Amount</Label>
+              <Label htmlFor="taxAmount">{t('form.taxAmount')}</Label>
               <Input
                 id="taxAmount"
                 value={`${formData.currency} ${taxAmount.toFixed(2)}`}
@@ -365,7 +368,7 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="tipAmount">Tip</Label>
+              <Label htmlFor="tipAmount">{t('form.tip')}</Label>
               <Input
                 type="number"
                 id="tipAmount"
@@ -378,23 +381,23 @@ export default function ReceiptForm({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="paymentMethod">Payment Method</Label>
+              <Label htmlFor="paymentMethod">{t('form.paymentMethod')}</Label>
               <Select value={formData.paymentMethod} onValueChange={handlePaymentMethodChange}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select payment method" />
+                  <SelectValue placeholder={t('form.paymentMethodPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="cash">💵 Cash</SelectItem>
-                  <SelectItem value="card">💳 Card</SelectItem>
-                  <SelectItem value="credit_card">💳 Credit Card</SelectItem>
-                  <SelectItem value="debit_card">💳 Debit Card</SelectItem>
-                  <SelectItem value="mobile_pay">📱 Mobile Pay</SelectItem>
-                  <SelectItem value="wechat_pay">💚 WeChat Pay</SelectItem>
-                  <SelectItem value="alipay">🔵 Alipay</SelectItem>
-                  <SelectItem value="apple_pay">🍎 Apple Pay</SelectItem>
-                  <SelectItem value="google_pay">🔍 Google Pay</SelectItem>
-                  <SelectItem value="paypal">🅿️ PayPal</SelectItem>
-                  <SelectItem value="check">📄 Check</SelectItem>
+                  <SelectItem value="cash">💵 {t('paymentMethods.cash')}</SelectItem>
+                  <SelectItem value="card">💳 {t('paymentMethods.card')}</SelectItem>
+                  <SelectItem value="credit_card">💳 {t('paymentMethods.creditCard')}</SelectItem>
+                  <SelectItem value="debit_card">💳 {t('paymentMethods.debitCard')}</SelectItem>
+                  <SelectItem value="mobile_pay">📱 {t('paymentMethods.mobilePay')}</SelectItem>
+                  <SelectItem value="wechat_pay">💚 {t('paymentMethods.wechatPay')}</SelectItem>
+                  <SelectItem value="alipay">🔵 {t('paymentMethods.alipay')}</SelectItem>
+                  <SelectItem value="apple_pay">🍎 {t('paymentMethods.applePay')}</SelectItem>
+                  <SelectItem value="google_pay">🔍 {t('paymentMethods.googlePay')}</SelectItem>
+                  <SelectItem value="paypal">🅿️ {t('paymentMethods.paypal')}</SelectItem>
+                  <SelectItem value="check">📄 {t('paymentMethods.check')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -403,7 +406,7 @@ export default function ReceiptForm({
           <Separator />
           
           <div className="flex justify-between items-center p-4 bg-primary/5 rounded-lg border-2 border-primary/20">
-            <span className="text-lg font-semibold">Total</span>
+            <span className="text-lg font-semibold">{t('form.total')}</span>
             <span className="text-2xl font-bold text-primary">
               {formData.currency} {totalAmount.toFixed(2)}
             </span>
@@ -414,17 +417,17 @@ export default function ReceiptForm({
       {/* 备注 */}
       <Card>
         <CardHeader>
-          <CardTitle>Notes</CardTitle>
+          <CardTitle>{t('form.notes')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <Label htmlFor="notes">Additional Notes</Label>
+            <Label htmlFor="notes">{t('form.additionalNotes')}</Label>
             <Textarea
               id="notes"
               name="notes"
               value={formData.notes}
               onChange={onInputChange}
-              placeholder="e.g., Thank you for your business!"
+              placeholder={t('form.notesPlaceholder')}
               rows={3}
             />
           </div>
@@ -435,7 +438,7 @@ export default function ReceiptForm({
       <div className="flex justify-center">
         <Button type="submit" size="lg" className="w-full md:w-auto px-8">
           <Receipt className="mr-2 h-5 w-5" />
-          Generate Receipt
+          {t('form.generateReceipt')}
         </Button>
       </div>
     </form>

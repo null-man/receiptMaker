@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "title": "Générateur de Reçus"
+  },
+  "hero": {
+    "title": "Générateur de Reçus Moderne",
+    "subtitle": "Outil en ligne facile à utiliser pour la génération de reçus. Prend en charge plusieurs devises et styles personnalisés. Remplissez les informations à gauche, visualisez en temps réel à droite."
+  },
+  "form": {
+    "createReceipt": "Créer un Reçu",
+    "subtitle": "Remplissez le formulaire ci-dessous pour générer un document de reçu professionnel",
+    "businessInfo": "Informations de l'Entreprise",
+    "businessName": "Nom de l'Entreprise",
+    "businessNamePlaceholder": "Entrez le nom de l'entreprise",
+    "city": "Ville",
+    "cityPlaceholder": "Entrez les informations de la ville",
+    "address": "Adresse",
+    "addressPlaceholder": "Entrez l'adresse de l'entreprise",
+    "phone": "Téléphone",
+    "phonePlaceholder": "Entrez le numéro de téléphone",
+    "currency": "Devise",
+    "currencyPlaceholder": "Sélectionner la devise",
+    "receiptDetails": "Détails du Reçu",
+    "date": "Date",
+    "time": "Heure",
+    "items": "Articles",
+    "addItem": "Ajouter un Article",
+    "itemName": "Nom de l'article",
+    "quantity": "Quantité",
+    "price": "Prix",
+    "calculation": "Calcul",
+    "subtotal": "Sous-total",
+    "taxRate": "Taux de Taxe (%)",
+    "taxAmount": "Montant de la Taxe",
+    "tip": "Pourboire",
+    "total": "Total",
+    "paymentMethod": "Mode de Paiement",
+    "paymentMethodPlaceholder": "Sélectionner le mode de paiement",
+    "notes": "Notes",
+    "additionalNotes": "Notes Supplémentaires",
+    "notesPlaceholder": "ex : Merci pour votre entreprise !",
+    "generateReceipt": "Générer le Reçu",
+    "required": "*"
+  },
+  "preview": {
+    "title": "Aperçu en Temps Réel",
+    "subtitle": "Sélectionnez un modèle ou personnalisez le contenu du reçu",
+    "receiptTemplate": "Modèle de Reçu :",
+    "selectTemplate": "Sélectionner un modèle",
+    "customReceipt": "Reçu Personnalisé"
+  },
+  "templates": {
+    "posTerminal": "Reçu Terminal TPV",
+    "thermal": "Reçu Thermique",
+    "posRetail": "Reçu TPV Vente au Détail",
+    "restaurant": "Facture Restaurant",
+    "coffee": "Reçu Café",
+    "gas": "Reçu Station-Service",
+    "grocery": "Reçu Épicerie",
+    "pharmacy": "Reçu Pharmacie",
+    "chinese": "Restaurant Chinois"
+  },
+  "currencies": {
+    "usd": "Dollar Américain ($)",
+    "eur": "Euro (€)",
+    "gbp": "Livre Sterling (£)",
+    "cny": "Yuan Chinois (RMB)",
+    "jpy": "Yen Japonais (¥)"
+  },
+  "paymentMethods": {
+    "cash": "Espèces",
+    "card": "Carte",
+    "creditCard": "Carte de Crédit",
+    "debitCard": "Carte de Débit",
+    "mobilePay": "Paiement Mobile",
+    "wechatPay": "WeChat Pay",
+    "alipay": "Alipay",
+    "applePay": "Apple Pay",
+    "googlePay": "Google Pay",
+    "paypal": "PayPal",
+    "check": "Chèque"
+  },
+  "validation": {
+    "businessNameRequired": "Veuillez entrer le nom de l'entreprise",
+    "itemsRequired": "Veuillez vous assurer que tous les articles ont un nom, une quantité et un prix valides"
+  },
+  "language": {
+    "en": "English",
+    "pt": "Português",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ko": "한국어",
+    "hi": "हिन्दी",
+    "fr": "Français"
+  }
+} 
