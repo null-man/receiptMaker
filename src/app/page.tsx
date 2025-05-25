@@ -45,6 +45,26 @@ export default function HomePage() {
   
   // 模板数据
   const templates = {
+    store_pos: {
+      name: "🏪 Store POS Receipt",
+      data: {
+        restaurantName: "POSPOS",
+        restaurantCity: "",
+        restaurantAddress: "ADDRESS STRISN",
+        restaurantPhone: "",
+        receiptDate: "2025-05-25",
+        receiptTime: "02:58 PM",
+        currency: "$",
+        paymentMethod: "card",
+        items: [
+          { id: 1, name: "XXXX", qty: 1, price: 1.00 },
+          { id: 2, name: "XXSS", qty: 2, price: 2.00 },
+        ],
+        taxRate: 1,
+        tipAmount: 0,
+        notes: "",
+      },
+    },
     pos_terminal: {
       name: "💳 POS Terminal Receipt",
       data: {
@@ -302,7 +322,8 @@ export default function HomePage() {
       gas: "⛽ Gas Station Receipt",
       grocery: "🛒 Grocery Store Receipt",
       pharmacy: "💊 Pharmacy Receipt",
-      pos_terminal: "💳 POS Terminal Receipt"
+      pos_terminal: "💳 POS Terminal Receipt",
+      store_pos: "🏪 Store POS Receipt"
     };
     return templateNames[templateKey] || "Receipt Template";
   };

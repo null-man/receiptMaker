@@ -58,7 +58,8 @@
     "gas": "Reçu Station-Service",
     "grocery": "Reçu Épicerie",
     "pharmacy": "Reçu Pharmacie",
-    "chinese": "Restaurant Chinois"
+    "chinese": "Restaurant Chinois",
+    "storePos": "Reçu TPV Magasin"
   },
   "currencies": {
     "usd": "Dollar Américain ($)",

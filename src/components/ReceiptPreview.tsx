@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Printer, Download, Image, Loader2 } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import JsBarcode from "jsbarcode";
 
 interface ReceiptItem {
   id: number;
@@ -52,6 +53,7 @@ export default function ReceiptPreview({
   const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
   const [isSavingImage, setIsSavingImage] = useState(false);
   const [receiptNumber, setReceiptNumber] = useState<string>("");
+  const barcodeRef = useRef<SVGSVGElement>(null);
 
   const {
     restaurantName,
@@ -70,7 +72,37 @@ export default function ReceiptPreview({
   // 避免水合错误，在客户端生成收据编号
   useEffect(() => {
     setReceiptNumber(Date.now().toString().slice(-8));
-  }, []);
+    
+    // 为Store POS Receipt生成条形码
+    if (type === 'store_pos' && barcodeRef.current) {
+      // 延迟生成条形码，确保DOM完全渲染
+      setTimeout(() => {
+        if (barcodeRef.current) {
+          // 基于当前时间生成条形码数据
+          const now = new Date();
+          const timestamp = now.getTime().toString();
+          const barcodeData = timestamp.slice(-12); // 取最后12位数字
+          
+          try {
+            // 清空之前的内容
+            barcodeRef.current.innerHTML = '';
+            
+            JsBarcode(barcodeRef.current, barcodeData, {
+              format: "CODE128",
+              width: 1.5,  /* 增加线条宽度 */
+              height: 35,
+              displayValue: false,
+              background: "transparent",
+              lineColor: "#000000",
+              margin: 0
+            });
+          } catch (error) {
+            console.error("生成条形码失败:", error);
+          }
+        }
+      }, 200);
+    }
+  }, [type]);
 
   // 下载PDF功能
   const handleDownloadPDF = async () => {
@@ -86,6 +118,30 @@ export default function ReceiptPreview({
       // 临时添加样式以优化截图
       element.classList.add("receipt-capture");
 
+      // 如果是store_pos类型，等待条形码完全渲染
+      if (type === 'store_pos' && barcodeRef.current) {
+        // 重新生成条形码确保完整渲染
+        const now = new Date();
+        const timestamp = now.getTime().toString();
+        const barcodeData = timestamp.slice(-12);
+        
+        // 清空之前的内容
+        barcodeRef.current.innerHTML = '';
+        
+        JsBarcode(barcodeRef.current, barcodeData, {
+          format: "CODE128",
+          width: 1.5,  /* 增加线条宽度 */
+          height: 35,
+          displayValue: false,
+          background: "transparent",
+          lineColor: "#000000",
+          margin: 0
+        });
+        
+        // 等待SVG渲染完成
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+
       // 创建canvas
       const canvas = await html2canvas(element, {
         scale: 3, // 提高分辨率
@@ -95,6 +151,14 @@ export default function ReceiptPreview({
         logging: false,
         width: element.scrollWidth,
         height: element.scrollHeight,
+        onclone: (clonedDoc) => {
+          // 确保克隆的文档中SVG也正确渲染
+          const clonedSvg = clonedDoc.querySelector('svg');
+          if (clonedSvg && type === 'store_pos') {
+            clonedSvg.style.display = 'block';
+            clonedSvg.style.margin = '0 auto';
+          }
+        }
       });
 
       // 移除临时样式
@@ -129,8 +193,25 @@ export default function ReceiptPreview({
 
       pdf.addImage(imgData, "PNG", imgX, imgY, finalWidth, finalHeight);
       
+      // 根据模板类型生成文件名
+      const getTemplateFileName = (templateType: string) => {
+        const templateNames: { [key: string]: string } = {
+          'store_pos': 'Store_POS_Receipt',
+          'pos_terminal': 'POS_Terminal_Receipt',
+          'thermal': 'Thermal_Receipt',
+          'pos': 'POS_Retail_Receipt',
+          'restaurant': 'Restaurant_Bill',
+          'coffee': 'Coffee_Shop_Receipt',
+          'gas': 'Gas_Station_Receipt',
+          'grocery': 'Grocery_Store_Receipt',
+          'pharmacy': 'Pharmacy_Receipt',
+          'chinese': 'Chinese_Restaurant_Receipt'
+        };
+        return templateNames[templateType] || 'Receipt';
+      };
+      
       // 下载PDF
-      const fileName = `receipt_${receiptDate.replace(/-/g, '')}.pdf`;
+      const fileName = `${getTemplateFileName(type)}_${receiptDate.replace(/-/g, '')}.pdf`;
       pdf.save(fileName);
     } catch (error) {
       console.error("生成PDF失败:", error);
@@ -154,6 +235,27 @@ export default function ReceiptPreview({
       // 临时添加样式以优化截图
       element.classList.add("receipt-capture");
 
+      // 如果是store_pos类型，等待条形码完全渲染
+      if (type === 'store_pos' && barcodeRef.current) {
+        // 重新生成条形码确保完整渲染
+        const now = new Date();
+        const timestamp = now.getTime().toString();
+        const barcodeData = timestamp.slice(-12);
+        
+        JsBarcode(barcodeRef.current, barcodeData, {
+          format: "CODE128",
+          width: 1.5,  /* 增加线条宽度 */
+          height: 35,
+          displayValue: false,
+          background: "transparent",
+          lineColor: "#000000",
+          margin: 0
+        });
+        
+        // 等待SVG渲染完成
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+
       // 创建canvas
       const canvas = await html2canvas(element, {
         scale: 3, // 提高分辨率
@@ -161,8 +263,25 @@ export default function ReceiptPreview({
         allowTaint: true,
         backgroundColor: "#ffffff",
         logging: false,
-        width: element.scrollWidth,
-        height: element.scrollHeight,
+        // 只有pos_terminal模板应用压缩
+        width: type === 'pos_terminal' ? element.scrollWidth * 0.9 : element.scrollWidth,
+        height: type === 'pos_terminal' ? element.scrollHeight * 1.15 : element.scrollHeight,
+        
+        onclone: (clonedDoc) => {
+          // 确保克隆的文档中SVG也正确渲染
+          const clonedSvg = clonedDoc.querySelector('svg');
+          if (clonedSvg && type === 'store_pos') {
+            clonedSvg.style.display = 'block';
+            clonedSvg.style.margin = '0 auto';
+          }
+          
+          // 只对pos_terminal模板应用变形
+          const clonedElement = clonedDoc.querySelector(".receipt-preview") as HTMLElement;
+          if (clonedElement && type === 'pos_terminal') {
+            clonedElement.style.transform = 'scaleX(0.9) scaleY(1.15)'; // 压缩宽度，增加高度
+            clonedElement.style.transformOrigin = 'top center';
+          }
+        }
       });
 
       // 移除临时样式
@@ -183,8 +302,25 @@ export default function ReceiptPreview({
           const url = URL.createObjectURL(blob);
           console.log('Created object URL:', url);
           
+          // 根据模板类型生成文件名
+          const getTemplateFileName = (templateType: string) => {
+            const templateNames: { [key: string]: string } = {
+              'store_pos': 'Store_POS_Receipt',
+              'pos_terminal': 'POS_Terminal_Receipt',
+              'thermal': 'Thermal_Receipt',
+              'pos': 'POS_Retail_Receipt',
+              'restaurant': 'Restaurant_Bill',
+              'coffee': 'Coffee_Shop_Receipt',
+              'gas': 'Gas_Station_Receipt',
+              'grocery': 'Grocery_Store_Receipt',
+              'pharmacy': 'Pharmacy_Receipt',
+              'chinese': 'Chinese_Restaurant_Receipt'
+            };
+            return templateNames[templateType] || 'Receipt';
+          };
+          
           const link = document.createElement("a");
-          link.download = `receipt_${receiptDate.replace(/-/g, '')}.png`;
+          link.download = `${getTemplateFileName(type)}_${receiptDate.replace(/-/g, '')}.png`;
           link.href = url;
           link.style.cssText = 'position: absolute; left: -9999px; visibility: hidden;';
           link.rel = 'noopener';
@@ -283,6 +419,14 @@ export default function ReceiptPreview({
           title: "text-xs font-bold mb-1 tracking-wider text-center",
           address: "text-xs text-center",
           spacing: "my-0"
+        };
+      case 'store_pos':
+        return {
+          card: "receipt-preview mx-auto bg-white shadow-lg store-pos-receipt",
+          content: "p-3 font-mono text-xs leading-tight store-pos-content",
+          title: "text-sm font-bold mb-1 tracking-wider text-center",
+          address: "text-xs text-center",
+          spacing: "my-1"
         };
       default:
         return {
@@ -385,6 +529,100 @@ export default function ReceiptPreview({
                 <div>CUSTOMER COPY</div>
               </div>
             </div>
+          ) : type === 'store_pos' ? (
+            /* Store POS收据特殊布局 - 匹配用户图片 */
+            <div className="text-left font-mono leading-tight" style={{
+              textTransform: 'uppercase'
+            }}>
+              {/* 餐厅信息 */}
+              <div className="text-center space-y-0 mb-2">
+                <div className="font-bold">{restaurantName.toUpperCase() || "POSPOS"}</div>
+                <div className="font-bold">{restaurantAddress.toUpperCase() || "ADDRESS STRISN"}</div>
+                <div className="font-bold">{restaurantCity.toUpperCase() || "NEW YORK"}</div>
+              </div>
+              
+              {/* 日期时间 */}
+              <div className="flex justify-between text-xs mb-2">
+                <span>{receiptDate.replace(/-/g, '/')}</span>
+                <span>{receiptTime}</span>
+              </div>
+              
+              {/* TAB和HOST信息 */}
+              <div className="flex justify-between text-xs mb-2">
+                <span>TAB 1</span>
+                <span>HOST PAULA</span>
+              </div>
+              
+              <div className="mb-2"></div>
+              
+              {/* 表头 */}
+              <div className="flex justify-between text-xs font-bold border-b border-dashed border-gray-400 pb-1 mb-1">
+                <span>QTY</span>
+                <span>DESC</span>
+                <span>AMT</span>
+              </div>
+              
+              {/* 商品信息 */}
+              <div className="space-y-1 mb-2">
+                {items.length > 0 ? (
+                  items.map((item, index) => {
+                    const itemTotal = (parseFloat(item.qty.toString()) || 0) * (parseFloat(item.price.toString()) || 0);
+                    return (
+                      <div key={index} className="flex justify-between text-xs">
+                        <span>{item.qty}</span>
+                        <span className="flex-1 text-center">{item.name.toUpperCase()}</span>
+                        <span>{formatCurrency(itemTotal.toString(), currency)}</span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>
+                    <div className="flex justify-between text-xs">
+                      <span>1</span>
+                      <span className="flex-1 text-center">XXXX</span>
+                      <span>$1.00</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span>2</span>
+                      <span className="flex-1 text-center">XXSS</span>
+                      <span>$2.00</span>
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              <div className="mb-3"></div>
+              
+              {/* 金额部分 */}
+              <div className="space-y-1 text-xs">
+                <div className="flex justify-between font-bold">
+                  <span>AMT</span>
+                  <span>{formatCurrency(totalAmount, currency)}</span>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span>SUBTOTAL</span>
+                  <span>{formatCurrency(subtotal, currency)}</span>
+                </div>
+                
+                <div className="flex justify-between">
+                  <span>TAX</span>
+                  <span>{formatCurrency(taxAmount, currency)}</span>
+                </div>
+                
+                <div className="flex justify-between font-bold">
+                  <span>BALANCE</span>
+                  <span>{formatCurrency(totalAmount, currency)}</span>
+                </div>
+              </div>
+              
+              <div className="mb-4"></div>
+              
+              {/* 条形码区域 */}
+              <div className="text-center">
+                <svg ref={barcodeRef} className="mx-auto"></svg>
+              </div>
+            </div>
           ) : (
             <>
               {/* 餐厅信息 */}
@@ -418,7 +656,7 @@ export default function ReceiptPreview({
           <Separator className={styles.spacing} />
 
           {/* 项目标题 */}
-          {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && type !== 'pos_terminal' && (
+          {type !== 'thermal' && type !== 'gas' && type !== 'restaurant' && type !== 'pos_terminal' && type !== 'store_pos' && (
             <>
               <div className={`grid gap-2 font-semibold mb-2 ${type === 'restaurant' ? 'text-sm' : 'text-xs'}`} style={{gridTemplateColumns: 'minmax(0, 2fr) auto auto'}}>
                 <span>{type === 'pos' || type === 'pharmacy' ? 'ITEM' : 'Item'}</span>
@@ -545,7 +783,7 @@ export default function ReceiptPreview({
           )}
               
               {/* 收据底部信息 - 仅非POS机收据显示 */}
-              {type !== 'pos_terminal' && (
+              {type !== 'pos_terminal' && type !== 'store_pos' && (
                 <div className="text-center text-xs text-muted-foreground mt-6 pt-4 border-t border-dashed">
                   {/* <p>Receipt Number: #{receiptNumber || "--------"}</p> */}
                   {/* <p className="mt-1">ReceiptMaker Generated</p> */}

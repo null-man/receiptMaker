@@ -58,7 +58,8 @@
     "gas": "Gas Station Receipt",
     "grocery": "Grocery Store Receipt",
     "pharmacy": "Pharmacy Receipt",
-    "chinese": "Chinese Restaurant"
+    "chinese": "Chinese Restaurant",
+    "storePos": "Store POS Receipt"
   },
   "currencies": {
     "usd": "US Dollar ($)",

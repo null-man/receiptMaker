@@ -58,7 +58,8 @@
     "gas": "加油站收据",
     "grocery": "超市收据",
     "pharmacy": "药店收据",
-    "chinese": "中式餐厅"
+    "chinese": "中式餐厅",
+    "storePos": "商店POS收据"
   },
   "currencies": {
     "usd": "美元 ($)",

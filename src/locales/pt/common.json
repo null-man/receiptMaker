@@ -58,7 +58,8 @@
     "gas": "Recibo do Posto de Gasolina",
     "grocery": "Recibo do Supermercado",
     "pharmacy": "Recibo da Farmácia",
-    "chinese": "Restaurante Chinês"
+    "chinese": "Restaurante Chinês",
+    "storePos": "Recibo POS da Loja"
   },
   "currencies": {
     "usd": "Dólar Americano ($)",

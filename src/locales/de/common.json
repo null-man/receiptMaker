@@ -58,7 +58,8 @@
     "gas": "Tankstellen-Quittung",
     "grocery": "Supermarkt-Quittung",
     "pharmacy": "Apotheken-Quittung",
-    "chinese": "Chinesisches Restaurant"
+    "chinese": "Chinesisches Restaurant",
+    "storePos": "Geschäft POS-Quittung"
   },
   "currencies": {
     "usd": "US-Dollar ($)",
